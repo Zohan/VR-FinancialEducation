@@ -21,6 +21,7 @@ public class Questionnaire : MonoBehaviour {
     Text displayText;
     GameObject displayCanvas;
     Material displayMaterial;
+    Animator displayAnimator;
 
 	// Use this for initialization
 	void Start () {
@@ -39,26 +40,50 @@ public class Questionnaire : MonoBehaviour {
         displayText = displayCanvas.transform.GetChild(0).GetComponent<Text>();
         // Get reference to cube material
         displayMaterial = GetComponent<Renderer>().material;
+        // Get reference to Animator component
+        displayAnimator = GetComponent<Animator>();
 
         //Debug.Log("startAlpha = " + displayMaterial.color.a);
-        displayMaterial.color = new Color(displayMaterial.color.r, displayMaterial.color.g, displayMaterial.color.b, 0.0f);
+        //displayMaterial.color = new Color(displayMaterial.color.r, displayMaterial.color.g, displayMaterial.color.b, 0.0f);
 
         // Set the welcome text
         displayText.text = "Welcome to your Financial Education experience!";
         // Hide display
-        displayCanvas.SetActive(false);
+        //displayCanvas.SetActive(false);
 
         // Disable input buttons at the start of the questionnaire
-        leftButton.SetActive(false);
-        rightButton.SetActive(false);
+        //leftButton.SetActive(false);
+        //rightButton.SetActive(false);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void enableButtons (int value)
+    {
+        switch(value)
+        {
+            case 1:
+                // Enable input buttons at the start of the questionnaire
+                leftButton.SetActive(true);
+                rightButton.SetActive(true);
+                break;
+            default:
+                // Disable input buttons at the start of the questionnaire
+                leftButton.SetActive(false);
+                rightButton.SetActive(false);
+                break;
+        }
+    }
+
+    public void setText(string value)
+    {
+        displayText.text = value;
+    }
+
+    // Update is called once per frame
+    void Update () {
         // Initial display timer
         if (!isDisplayTime)
         {
-            startTimer -= Time.deltaTime;
+            //startTimer -= Time.deltaTime;
             genTimer += Time.deltaTime;
             if (genTimer >= startDelay)
             {
@@ -79,7 +104,7 @@ public class Questionnaire : MonoBehaviour {
                 if (genTimer >= fadeTime)
                 {
                     // Show display
-                    displayMaterial.color = new Color(displayMaterial.color.r, displayMaterial.color.g, displayMaterial.color.b, 1f);
+                    //displayMaterial.color = new Color(displayMaterial.color.r, displayMaterial.color.g, displayMaterial.color.b, 1f);
                     displayCanvas.SetActive(true);
                     genTimer = 0.0f;
                     isQuestionTime = true;
@@ -88,7 +113,7 @@ public class Questionnaire : MonoBehaviour {
                 {
                     // Gradually fade in the shape via alpha value
                     float calcAlpha = (fadeTime - fadePerSecond) / fadeTime;
-                    displayMaterial.color = new Color(displayMaterial.color.r, displayMaterial.color.g, displayMaterial.color.b, calcAlpha);
+                    //displayMaterial.color = new Color(displayMaterial.color.r, displayMaterial.color.g, displayMaterial.color.b, calcAlpha);
                 }
             }
             else
@@ -97,13 +122,13 @@ public class Questionnaire : MonoBehaviour {
                 if (genTimer >= welcomeTime)
                 {
                     // Set first question text
-                    displayText.text = "Does your partner control how your money is spent?";
+                    //displayText.text = "Does your partner control how your money is spent?";
                     // Show display
-                    displayCanvas.SetActive(true);
+                    //displayCanvas.SetActive(true);
 
                     // Enable input buttons at the start of the questionnaire
-                    leftButton.SetActive(true);
-                    rightButton.SetActive(true);
+                    //leftButton.SetActive(true);
+                    //rightButton.SetActive(true);
                 }
             }
         }
