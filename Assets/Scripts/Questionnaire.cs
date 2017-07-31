@@ -80,6 +80,7 @@ public class Questionnaire : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        /*
         // Initial display timer
         if (!isDisplayTime)
         {
@@ -132,5 +133,6 @@ public class Questionnaire : MonoBehaviour {
                 }
             }
         }
+        */
 	}
 }
