@@ -47,13 +47,10 @@ public class QuizQuestions : MonoBehaviour {
 	}
 
 	public void forwardButtonPressed(){
-		//Debug.Log ("Forward button pressed");
-
-		//offset = transform.position - player.transform.position;
-		//transform.position = player.transform.position + offset;
-		/*GameObject player = GameObject.FindGameObjectsWithTag ("Player");
-		GameObject camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		player.transform.position = player.transform.position + camera.transform.forward;*/
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		Vector3 movementVector = new Vector3 (-0.4f, 0, 4.25f);
+		player [0].transform.Translate (movementVector);
 	}
 
 	public void backwardButtonPressed(){
