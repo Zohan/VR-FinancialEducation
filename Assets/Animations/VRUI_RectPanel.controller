@@ -179,7 +179,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: VRUI_RectPanel_Hover
+  m_Name: VRUI_RectPanel_Hover_Questionnaire
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

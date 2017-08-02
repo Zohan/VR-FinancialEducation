@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Questionnaire : MonoBehaviour {
 
@@ -11,6 +13,7 @@ public class Questionnaire : MonoBehaviour {
     public float fadeTime = 3.0f;
 
     // Private fields
+	int questionNumber;
     float genTimer;
     float fadePerSecond;
     float startDelay;
@@ -31,6 +34,7 @@ public class Questionnaire : MonoBehaviour {
         startTimer = startDelay;
         welcomeTime = 4.0f;
         genTimer = 0.0f;
+		questionNumber = 0; // Restart questionnaire
         isDisplayTime = false;
         isQuestionTime = false;
 
@@ -80,7 +84,7 @@ public class Questionnaire : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        /*
+        
         // Initial display timer
         if (!isDisplayTime)
         {
@@ -122,10 +126,32 @@ public class Questionnaire : MonoBehaviour {
                 // If we've reached the expected time
                 if (genTimer >= welcomeTime)
                 {
-                    // Set first question text
-                    //displayText.text = "Does your partner control how your money is spent?";
+					/*switch (questionNumber) {
+					case 0:
+						displayText.text = "Does your partner control how your money is spent?";
+						displayCanvas.SetActive(true);
+						break;
+
+					case 1:
+						break;
+
+					case 2:
+						break;
+
+					default: 
+						break;
+					}*/
+
+					// Set first question text
+                    displayText.text = "Where would you like to start??";
                     // Show display
-                    //displayCanvas.SetActive(true);
+                    displayCanvas.SetActive(true);
+					//AssetBundle myLoadedAssetBundle = AssetBundle.LoadFromFile("Assets/Scenes/");
+					//string[] scenePaths;
+					//scenePaths = myLoadedAssetBundle.GetAllScenePaths();
+					SceneManager.LoadScene("Scenes/MountainLake");
+					//Debug.Log("scene2 loading: " + scenePaths[0]);
+					//SceneManager.LoadScene(scenePaths[0], LoadSceneMode.Single);
 
                     // Enable input buttons at the start of the questionnaire
                     //leftButton.SetActive(true);
@@ -133,6 +159,6 @@ public class Questionnaire : MonoBehaviour {
                 }
             }
         }
-        */
+        
 	}
 }

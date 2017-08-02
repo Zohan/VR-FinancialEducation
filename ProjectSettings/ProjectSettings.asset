@@ -3,7 +3,7 @@
 --- !u!129 &1
 PlayerSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   productGUID: c247d8f9f168ea641870d26bbd76f3ca
   AndroidProfiler: 0
   defaultScreenOrientation: 4
@@ -592,9 +592,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 74f57a9f-2f8b-4075-a9d5-974ac7954b45
-  projectName: VR Financial Education (2)
-  organizationId: arcainne
+  cloudProjectId: c43c2ddf-21c9-465e-b05e-51ea0098db4e
+  projectName: VR Financial Education
+  organizationId: sonzohan
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
