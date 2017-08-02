@@ -176,7 +176,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0
     functionName: setText
-    data: ur partner control how your money is spent?
+    data: Does your partner control how your money is spent?
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

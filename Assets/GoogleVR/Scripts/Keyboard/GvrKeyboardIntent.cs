@@ -11,14 +11,16 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-#if UNITY_ANDROID || UNITY_EDITOR
+
 using UnityEngine;
 using System;
 
 public class GvrKeyboardIntent {
 
-  // The Play Store intent is requested via an Android Activity Fragment java object.
+#if UNITY_ANDROID && !UNITY_EDITOR
+  // The Play Store intent is requested via an Android Activity Fragment Java object.
   private AndroidJavaObject keyboardFragment = null;
+#endif  // UNITY_ANDROID && !UNITY_EDITOR
 
   // Constants used via JNI to access the keyboard fragment.
   private const string FRAGMENT_CLASSNAME =
@@ -49,10 +51,10 @@ public class GvrKeyboardIntent {
   /// </summary>
   /// <returns>True if fragment was initialized.</returns>
   protected bool InitializeFragment() {
-#if UNITY_EDITOR
+#if !UNITY_ANDROID || UNITY_EDITOR
     Debug.LogWarning("GvrKeyboardIntent requires the Android runtime environment");
     return false;
-#elif UNITY_ANDROID
+#else
     AndroidJavaClass ajc = new AndroidJavaClass(FRAGMENT_CLASSNAME);
 
     if (ajc != null) {
@@ -63,12 +65,16 @@ public class GvrKeyboardIntent {
 
     return keyboardFragment != null &&
         keyboardFragment.GetRawObject() != IntPtr.Zero;
-#endif
+#endif  // !UNITY_ANDROID || UNITY_EDITOR
   }
 
   public void LaunchPlayStore() {
+#if !UNITY_ANDROID || UNITY_EDITOR
+    Debug.LogError("GvrKeyboardIntent requires the Android runtime environment");
+#else
     KeyboardCallback cb = new KeyboardCallback();
     keyboardFragment.Call("launchPlayStore", cb);
+#endif  // !UNITY_ANDROID || UNITY_EDITOR
   }
 
   /// <summary>
@@ -91,4 +97,3 @@ public class GvrKeyboardIntent {
   }
 
 }
-#endif // UNITY_ANDROID || UNITY_EDITOR
