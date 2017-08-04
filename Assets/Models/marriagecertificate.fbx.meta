@@ -1,17 +1,23 @@
 fileFormatVersion: 2
-guid: 24827f8c26ce644f493e8f6f360ed69c
-timeCreated: 1501812839
+guid: 82367b70624804ba4b9cd209387c1722
+timeCreated: 1501889044
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
+    100000: Camera
+    100002: Lamp
+    100004: //RootNode
+    100006: Plane
+    400000: Camera
+    400002: Lamp
+    400004: //RootNode
+    400006: Plane
+    2000000: Camera
+    2300000: Plane
+    3300000: Plane
     4300000: Plane
-    7400000: Default Take
-    9500000: //RootNode
+    10800000: Lamp
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,7 +45,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 3
     meshCompression: 0
     addColliders: 0
     importVisibility: 0
@@ -81,7 +87,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
