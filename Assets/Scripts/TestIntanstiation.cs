@@ -29,7 +29,7 @@ public class TestIntanstiation : MonoBehaviour
 
             // instantiate the object
             GameObject go = (GameObject)Instantiate(equipPrefab, position, rotation);
-            
+			Handheld.PlayFullScreenMovie ("videoplayback.mp4", Color.black, FullScreenMovieControlMode.CancelOnInput);
             createdObjects.Add(go);
         }
     }    
