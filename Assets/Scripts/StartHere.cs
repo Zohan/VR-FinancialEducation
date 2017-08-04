@@ -86,6 +86,10 @@ public class StartHere : MonoBehaviour {
 	}
 
 	public void navDonePressed(){
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		Vector3 movementVector = new Vector3 (-0.4f, 0, 3.25f);
+		player [0].transform.Translate (movementVector);
 		navigationCanvas.enabled = false;
 		newMovementCanvas.enabled = true;
 	}

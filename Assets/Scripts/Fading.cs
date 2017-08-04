@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Fading : MonoBehaviour {
 	public Texture2D fadeOutTexture;
-	public string newScene = "Scenes/MountainLake";
+	public string newScene = "Scenes/MainArea";
 	public float fadeSpeed = 0.8f;
 
 	private int drawDepth = -1000;

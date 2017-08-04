@@ -5185,10 +5185,10 @@ GameObject:
   - component: {fileID: 1120586106}
   - component: {fileID: 1120586110}
   - component: {fileID: 1120586109}
-  - component: {fileID: 1120586108}
   - component: {fileID: 1120586107}
+  - component: {fileID: 1120586108}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ReturnButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5253,7 +5253,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1120586108}
-        m_MethodName: forwardButtonPressed
+        m_MethodName: touched
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5273,12 +5273,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1120586105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8a3939ac3dc0374e91afe5620626727, type: 3}
+  m_Script: {fileID: 11500000, guid: bafd1b02c99374358ac3d1fafbde0dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navtextBox: {fileID: 0}
-  header: {fileID: 0}
-  navButton: {fileID: 0}
+  fadeOutTexture: {fileID: 2800000, guid: 5e9b50b357e534602b96fd4b929c3cf3, type: 3}
+  newScene: Scenes/MainArea
+  fadeSpeed: 0.8
 --- !u!114 &1120586109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6850,7 +6850,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Forward
+  m_Text: Back to Main Area
 --- !u!222 &1479369004
 CanvasRenderer:
   m_ObjectHideFlags: 0
