@@ -15,5 +15,5 @@ EditorBuildSettings:
     path: Assets/Scenes/SummerForest.unity
     guid: c3c44bdabb1eb46a28ab390fba24d8bd
   - enabled: 1
-    path: Assets/Scenes/Start Here.unity
+    path: Assets/Scenes/StartHere.unity
     guid: 56dec6604b5e4714894f4f3af06ca06e
