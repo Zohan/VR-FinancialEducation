@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// This script only works in Unity 5.6 or newer since older versions of Unity
+// don't have IPreprocessBuild and IPostprocessBuild.
 #if UNITY_5_6_OR_NEWER && (UNITY_ANDROID || UNITY_IOS)
 using UnityEngine;
 using UnityEngine.VR;
@@ -23,14 +25,15 @@ using System.Linq;
 class GvrBuildProcessor : IPreprocessBuild {
   private const string VR_SDK_DAYDREAM = "daydream";
   private const string VR_SDK_CARDBOARD = "cardboard";
-  private const string OK_BUTTON_TEXT = "OK";
-  private const string DISPLAY_DIALOG_TITLE = "Google VR SDK";
-  private const string VR_SETTINGS_NOT_ENABLED_ERROR_MESSAGE =
-    "Please enable the 'Virtual Reality Supported' checkbox in 'Player Settings'.";
+  private const string VR_SETTINGS_NOT_ENABLED_ERROR_MESSAGE_FORMAT =
+    "On {0} 'Player Settings > Virtual Reality Supported' setting must be checked.\n" +
+    "Please fix this setting and rebuild your app.";
   private const string IOS_MISSING_GVR_SDK_ERROR_MESSAGE =
-    "Please add 'Cardboard' in 'Player Settings > Virtual Reality SDKs'.";
+    "On iOS 'Player Settings > Virtual Reality SDKs' must include 'Cardboard'.\n" +
+    "Please fix this setting and rebuild your app.";
   private const string ANDROID_MISSING_GVR_SDK_ERROR_MESSAGE =
-    "Please add 'Daydream' or 'Cardboard' in 'Player Settings > Virtual Reality SDKs'.";
+    "On Android 'Player Settings > Virtual Reality SDKs' must include 'Daydream' or 'Cardboard'.\n" +
+    "Please fix this setting and rebuild your app.";
 
   public int callbackOrder {
     get { return 0; }
@@ -38,28 +41,27 @@ class GvrBuildProcessor : IPreprocessBuild {
 
   public void OnPreprocessBuild (BuildTarget target, string path)
   {
+    if (target != BuildTarget.Android && target != BuildTarget.iOS) {
+      // Do nothing when not building for Android or iOS.
+      return;
+    }
+
     // 'Player Settings > Virtual Reality Supported' must be enabled.
     if (!IsVRSupportEnabled()) {
-        EditorUtility.DisplayDialog (DISPLAY_DIALOG_TITLE,
-            VR_SETTINGS_NOT_ENABLED_ERROR_MESSAGE, OK_BUTTON_TEXT);
-        return;
+      Debug.LogErrorFormat(VR_SETTINGS_NOT_ENABLED_ERROR_MESSAGE_FORMAT, target);
     }
 
     if (target == BuildTarget.Android) {
       // On Android VR SDKs must include 'Daydream' and/or 'Cardboard'.
       if (!IsDaydreamSDKIncluded() && !IsCardboardSDKIncluded()) {
-        EditorUtility.DisplayDialog(DISPLAY_DIALOG_TITLE,
-            ANDROID_MISSING_GVR_SDK_ERROR_MESSAGE, OK_BUTTON_TEXT);
-        return;
+        Debug.LogError(ANDROID_MISSING_GVR_SDK_ERROR_MESSAGE);
       }
     }
 
     if (target == BuildTarget.iOS) {
       // On iOS VR SDKs must include 'Cardboard'.
       if (!IsCardboardSDKIncluded()) {
-        EditorUtility.DisplayDialog(DISPLAY_DIALOG_TITLE,
-            IOS_MISSING_GVR_SDK_ERROR_MESSAGE, OK_BUTTON_TEXT);
-        return;
+        Debug.LogError(IOS_MISSING_GVR_SDK_ERROR_MESSAGE);
       }
     }
   }

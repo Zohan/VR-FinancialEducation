@@ -51,10 +51,10 @@ public class GvrPermissionsRequester {
   /// </summary>
   /// <returns>True if fragment was initialized.</returns>
   protected bool InitializeFragment() {
-#if UNITY_EDITOR
+#if !UNITY_ANDROID || UNITY_EDITOR
     Debug.LogWarning("GvrPermissionsRequester requires the Android runtime environment");
     return false;
-#elif UNITY_ANDROID
+#else
     AndroidJavaClass ajc = new AndroidJavaClass(FRAGMENT_CLASSNAME);
 
     if (ajc != null) {
@@ -65,7 +65,7 @@ public class GvrPermissionsRequester {
 
     return permissionsFragment != null &&
         permissionsFragment.GetRawObject() != IntPtr.Zero;
-#endif
+#endif  // !UNITY_ANDROID || UNITY_EDITOR
   }
 
   public bool IsPermissionGranted(string permission) {

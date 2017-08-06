@@ -17,8 +17,6 @@
 /// Accesses and configures Daydream settings.
 /// </summary>
 
-// This class is defined only for versions of Unity with the GVR native integration.
-#if UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
 using UnityEngine;
 using UnityEngine.VR;
 using System;
@@ -47,7 +45,13 @@ public static class GvrSettings {
     set {
       editorEmulatorOnlyViewerPlatformType = value;
     }
+#elif !UNITY_ANDROID
+    // Running in non-Android player.
+    get {
+      return ViewerPlatformType.Error;
+    }
 #else
+    // Running on Android.
     get {
       IntPtr gvrContextPtr = VRDevice.GetNativePtr();
       if (gvrContextPtr == IntPtr.Zero) {
@@ -79,13 +83,18 @@ public static class GvrSettings {
     Left
   }
   public static UserPrefsHandedness Handedness {
-    // Expose a setter only for the editor emulator, for development testing purposes.
 #if UNITY_EDITOR
+    // Expose a setter only for the editor emulator, for development testing purposes.
     get {
       return (UserPrefsHandedness)EditorPrefs.GetInt(EMULATOR_HANDEDNESS_PREF_NAME, (int)UserPrefsHandedness.Right);
     }
     set {
       EditorPrefs.SetInt(EMULATOR_HANDEDNESS_PREF_NAME, (int)value);
+    }
+#elif !UNITY_ANDROID
+    // Running in non-Android player.
+    get {
+      return UserPrefsHandedness.Error;
     }
 #else
     // Running on Android.
@@ -112,7 +121,7 @@ public static class GvrSettings {
 #endif  // UNITY_EDITOR
 
   private static void SetSustainedPerformanceMode(bool enabled) {
-#if !UNITY_EDITOR
+#if UNITY_ANDROID && !UNITY_EDITOR
     AndroidJavaObject androidActivity = null;
     try {
       androidActivity = GvrActivityHelper.GetActivity();
@@ -134,9 +143,10 @@ public static class GvrSettings {
           Debug.Log("Set sustained performance mode: " + (enabled ? "ON" : "OFF"));
       })
     );
-#endif  // !UNITY_EDITOR
+#endif  // UNITY_ANDROID && !UNITY_EDITOR
   }
 
+#if UNITY_ANDROID && !UNITY_EDITOR
   [DllImport(GvrActivityHelper.GVR_DLL_NAME)]
   private static extern IntPtr gvr_get_user_prefs(IntPtr gvrContextPtr);
 
@@ -145,5 +155,5 @@ public static class GvrSettings {
 
   [DllImport(GvrActivityHelper.GVR_DLL_NAME)]
   private static extern int gvr_user_prefs_get_controller_handedness(IntPtr gvrUserPrefsPtr);
+#endif  // UNITY_ANDROID && !UNITY_EDITOR
 }
-#endif  // UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
