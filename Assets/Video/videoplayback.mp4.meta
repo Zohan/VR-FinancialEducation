@@ -12,7 +12,7 @@ VideoClipImporter:
   frameRange: 0
   startFrame: -1
   endFrame: -1
-  frameCount: 2565
+  frameCount: 2566
   frameRate: 30
   colorSpace: 0
   deinterlace: 0
@@ -29,18 +29,18 @@ VideoClipImporter:
       enableTranscoding: 1
       codec: 0
       resizeFormat: 0
-      aspectRatio: 0
+      aspectRatio: 5
       customWidth: 1280
       customHeight: 720
       bitrateMode: 2
       spatialQuality: 2
   output:
-    format: 0
+    format: 1
     settings:
       enableTranscoding: 1
       codec: 0
       resizeFormat: 0
-      aspectRatio: 0
+      aspectRatio: 5
       customWidth: 1280
       customHeight: 720
       bitrateMode: 2
@@ -48,11 +48,11 @@ VideoClipImporter:
     encodedWidth: 1280
     encodedHeight: 720
     encodedStartFrame: 0
-    encodedEndFrame: 2565
+    encodedEndFrame: 2566
     streamedResource:
       source: library/metadata/e1/e1dd6679abdd70c409a03c3d2c0e0597.resource
       offset: 0
-      size: 11656549
+      size: 9221297
   userData: 
   assetBundleName: 
   assetBundleVariant: 
