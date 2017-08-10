@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class StartHere : MonoBehaviour {
 
 	private Canvas cardboardCanvas;
@@ -16,6 +17,8 @@ public class StartHere : MonoBehaviour {
 	private Text headerText;
 	public GameObject navButton;
 	private Text navButtonText;
+
+	public AudioClip footsteps;
 
 	int counter;
 	int forwardCounter;
@@ -53,6 +56,10 @@ public class StartHere : MonoBehaviour {
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
 		Vector3 movementVector = new Vector3 (0.2f, 0, 4.25f);
 		player [0].transform.Translate (movementVector);
+
+		AudioSource sound = GetComponent<AudioSource>();
+		sound.PlayOneShot(footsteps, 0.7F);
+
 
 		forwardCounter++;
 		if (forwardCounter == 1) {
