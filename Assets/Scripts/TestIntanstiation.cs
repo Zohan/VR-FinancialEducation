@@ -12,25 +12,32 @@ public class TestIntanstiation : MonoBehaviour
     // list that holds all created objects - deleate all instances if desired
     public List<GameObject> createdObjects = new List<GameObject>();
 
+    bool active = true;
 
     public void CreateObject()
     {
         // a prefab is need to perform the instantiation
-        if (equipPrefab != null)
+        if (equipPrefab != null & active == true) 
         {
             // get a random postion to instantiate the prefab - you can change this to be created at a fied point if desired
-            Vector3 position = transform.position;
+            Vector3 position = new Vector3 (1.6f,1.5f,1.7f);
             
-            position.x += 1;
-            position.z -= 1;
-            Quaternion rotation = Quaternion.identity;
-            rotation.y += 250;
-            rotation.x -= 10;
 
+            Quaternion rotation = Quaternion.identity;
+            rotation.y = 40;
+            
             // instantiate the object
             GameObject go = (GameObject)Instantiate(equipPrefab, position, rotation);
-			Handheld.PlayFullScreenMovie ("videoplayback.mp4", Color.black, FullScreenMovieControlMode.CancelOnInput);
+			//Handheld.PlayFullScreenMovie ("videoplayback.mp4", Color.black, FullScreenMovieControlMode.CancelOnInput);
             createdObjects.Add(go);
+            active = false;
         }
-    }    
+        if (equipPrefab != null & active == false)
+        {
+            createdObjects.Clear();
+            active = true;
+        }
+    }  
+    
+    
 }
