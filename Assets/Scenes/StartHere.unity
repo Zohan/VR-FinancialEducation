@@ -496,6 +496,7 @@ MonoBehaviour:
   navtextBox: {fileID: 0}
   header: {fileID: 0}
   navButton: {fileID: 0}
+  footsteps: {fileID: 0}
 --- !u!114 &69294677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4023,6 +4024,7 @@ MonoBehaviour:
   navtextBox: {fileID: 1840319519}
   header: {fileID: 46594303}
   navButton: {fileID: 1037158122}
+  footsteps: {fileID: 0}
 --- !u!114 &891147709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9418,6 +9420,7 @@ MonoBehaviour:
   navtextBox: {fileID: 0}
   header: {fileID: 0}
   navButton: {fileID: 0}
+  footsteps: {fileID: 0}
 --- !u!1 &1893284000
 GameObject:
   m_ObjectHideFlags: 0
@@ -9903,6 +9906,7 @@ MonoBehaviour:
   navtextBox: {fileID: 0}
   header: {fileID: 0}
   navButton: {fileID: 0}
+  footsteps: {fileID: 8300000, guid: f15089da019624911a681be319b5a27e, type: 3}
 --- !u!1 &2001820415
 GameObject:
   m_ObjectHideFlags: 0
