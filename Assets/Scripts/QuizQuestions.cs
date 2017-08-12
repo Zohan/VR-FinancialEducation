@@ -26,7 +26,7 @@ public class QuizQuestions : MonoBehaviour {
 	private Canvas q4PromptCanvas;
 	private Canvas q4Canvas;
 
-	/*private Canvas movement5Canvas;
+	private Canvas movement5Canvas;
 	private Canvas q5PromptCanvas;
 	private Canvas q5Canvas;
 
@@ -42,7 +42,7 @@ public class QuizQuestions : MonoBehaviour {
 	private Canvas q8PromptCanvas;
 	private Canvas q8Canvas;
 
-	private Canvas endMovementCanvas;*/
+	/*private Canvas endMovementCanvas;*/
 
 	//int qNumber;
 	//int score;
@@ -83,12 +83,13 @@ public class QuizQuestions : MonoBehaviour {
 		q4Canvas.enabled = false;
 
 		// initializatin for Q5
-		/*movement5Canvas = GameObject.Find ("MoveToQ5").GetComponent<Canvas> ();
+		movement5Canvas = GameObject.Find ("MoveToQ5").GetComponent<Canvas> ();
 		q5PromptCanvas = GameObject.Find ("Question5").GetComponent<Canvas> ();
 		q5Canvas = GameObject.Find ("Q5").GetComponent<Canvas> ();
 		movement5Canvas.enabled = false;
 		q5PromptCanvas.enabled = false;
 		q5Canvas.enabled = false;
+
 		// initializatin for Q6
 		movement6Canvas = GameObject.Find ("MoveToQ6").GetComponent<Canvas> ();
 		q6PromptCanvas = GameObject.Find ("Question6").GetComponent<Canvas> ();
@@ -96,6 +97,7 @@ public class QuizQuestions : MonoBehaviour {
 		movement6Canvas.enabled = false;
 		q6PromptCanvas.enabled = false;
 		q6Canvas.enabled = false;
+
 		// initializatin for Q7
 		movement7Canvas = GameObject.Find ("MoveToQ7").GetComponent<Canvas> ();
 		q7PromptCanvas = GameObject.Find ("Question7").GetComponent<Canvas> ();
@@ -103,6 +105,7 @@ public class QuizQuestions : MonoBehaviour {
 		movement7Canvas.enabled = false;
 		q7PromptCanvas.enabled = false;
 		q7Canvas.enabled = false;
+
 		// initializatin for Q8
 		movement8Canvas = GameObject.Find ("MoveToQ8").GetComponent<Canvas> ();
 		q8PromptCanvas = GameObject.Find ("Question8").GetComponent<Canvas> ();
@@ -111,7 +114,7 @@ public class QuizQuestions : MonoBehaviour {
 		q8PromptCanvas.enabled = false;
 		q8Canvas.enabled = false;
 		// initializatin for final canvas  
-		endMovementCanvas = GameObject.Find ("MoveToEnd").GetComponent<Canvas> ();
+		/*endMovementCanvas = GameObject.Find ("MoveToEnd").GetComponent<Canvas> ();
 		endMovementCanvas.enabled = false;*/
 	
 		//qNumber = 0;
@@ -202,10 +205,93 @@ public class QuizQuestions : MonoBehaviour {
 	public void forwardToQ4(){
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		Vector3 movementVector = new Vector3 (-0.3f, 0, 3f);
+		Vector3 movementVector = new Vector3 (3f, 0, 3f);
 		player [0].transform.Translate (movementVector);
-		//q4PromptCanvas.enabled = true;
 		movement4Canvas.enabled = false;  
+		q4PromptCanvas.enabled = true;
 	}
 
-}
+	public void showQ4(){
+		q4Canvas.enabled = true;
+		q4PromptCanvas.enabled = false;
+	}
+
+	public void q4NextPressed(){
+		q4Canvas.enabled = false;
+		movement5Canvas.enabled = true;
+	}
+
+	public void forwardToQ5(){
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		Vector3 movementVector = new Vector3 (2f, 0, .5f);
+		player [0].transform.Translate (movementVector);
+		movement5Canvas.enabled = false;  
+		q5PromptCanvas.enabled = true;
+	}
+
+	public void showQ5(){
+		q5PromptCanvas.enabled = false;
+		q5Canvas.enabled = true;
+	}
+
+	public void q5NextPressed(){
+		q5Canvas.enabled = false;
+		movement6Canvas.enabled = true;
+	}
+
+	public void forwardToQ6(){
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		Vector3 movementVector = new Vector3 (3f, 0, 1f);
+		player [0].transform.Translate (movementVector);
+		movement6Canvas.enabled = false;  
+		q6PromptCanvas.enabled = true;
+	}
+
+	public void showQ6(){
+		q6PromptCanvas.enabled = false;
+		q6Canvas.enabled = true;
+	}
+
+	public void q6NextPressed(){
+		q6Canvas.enabled = false;
+		movement7Canvas.enabled = true;
+	}
+
+	public void forwardToQ7(){
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		Vector3 movementVector = new Vector3 (3f, 0, -2f);
+		player [0].transform.Translate (movementVector);
+		movement7Canvas.enabled = false;  
+		q7PromptCanvas.enabled = true;
+		q7Canvas.enabled = false;
+	}
+
+	public void showQ7(){
+		q7PromptCanvas.enabled = false;
+		q7Canvas.enabled = true;
+	}
+
+	public void q7NextPressed(){
+		q7Canvas.enabled = false;
+		movement8Canvas.enabled = true;
+	}
+
+	public void forwardToQ8(){
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		Vector3 movementVector = new Vector3 (2f, 0, -3f);
+		player [0].transform.Translate (movementVector);
+		movement8Canvas.enabled = false;  
+		q8PromptCanvas.enabled = true;
+	}
+
+	public void showQ8(){
+		q8PromptCanvas.enabled = false;
+		q8Canvas.enabled = true;
+	}
+
+
+} 
