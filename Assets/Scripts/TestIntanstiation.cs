@@ -24,7 +24,7 @@ public class TestIntanstiation : MonoBehaviour
             
 
             Quaternion rotation = Quaternion.identity;
-            rotation.y = 40;
+            rotation *= Quaternion.Euler(0, 230, 0);
             
             // instantiate the object
             GameObject go = (GameObject)Instantiate(equipPrefab, position, rotation);
