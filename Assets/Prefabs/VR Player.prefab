@@ -399,7 +399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1847335785388936
 GameObject:
   m_ObjectHideFlags: 1
@@ -907,6 +907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c173f7c6a736fe469d4acc5b108d6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pose: 0
+  armModel: {fileID: 0}
 --- !u!114 &114100236989089170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -931,6 +933,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa952cbcc0eb13d4ca558b6da550ff55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maximumAlpha: 1
+  attachmentPrefabs: []
+  touchPadColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  appButtonColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  systemButtonColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+  readControllerState: 1
+  displayState:
+    batteryLevel: 0
+    batteryCharging: 0
+    clickButton: 0
+    appButton: 0
+    homeButton: 0
+    touching: 0
+    touchPos: {x: 0, y: 0}
 --- !u!114 &114123014433872114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -991,6 +1007,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c52851ea0de74a228fa29a84de008ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  location: 0
+  text: {fileID: 0}
+  alwaysVisible: 0
 --- !u!114 &114156027523116076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1002,6 +1021,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c52851ea0de74a228fa29a84de008ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  location: 0
+  text: {fileID: 0}
+  alwaysVisible: 0
 --- !u!114 &114170922359134588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1079,6 +1101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c52851ea0de74a228fa29a84de008ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  location: 0
+  text: {fileID: 0}
+  alwaysVisible: 0
 --- !u!114 &114276604405970468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1213,8 +1238,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7dcc90c2e60c4011896c7f21fc1f557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raycastMode: 0
+  overridePointerCamera: {fileID: 0}
   reticleSegments: 20
   reticleGrowthSpeed: 8
+  reticleSortingOrder: 32767
 --- !u!114 &114460461725805386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1226,10 +1254,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5dd43baba2d4dc1bab789615567e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastMode: 0
+  drawDebugRays: 0
   raycasterEventMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  maxRaycastHits: 64
 --- !u!114 &114496583347674702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1450,6 +1479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c173f7c6a736fe469d4acc5b108d6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pose: 0
+  armModel: {fileID: 0}
 --- !u!114 &114699181781927574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1524,6 +1555,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3bf9c1bacbb04f72bb43e892c3a98a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserVisual: {fileID: 0}
+  controllerVisual: {fileID: 0}
+  armModel: {fileID: 0}
+  isLaserVisualEnabled: 1
+  isControllerVisualEnabled: 1
+  isVisibleWhenDisconnected: 0
 --- !u!114 &114792420507017592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1549,6 +1586,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c52851ea0de74a228fa29a84de008ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  location: 0
+  text: {fileID: 0}
+  alwaysVisible: 0
 --- !u!114 &114812069828004844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1560,6 +1600,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b65678ccdd949e9a58874d2880c0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raycastMode: 0
+  overridePointerCamera: {fileID: 0}
+  maxPointerDistance: 20
+  defaultReticleDistance: 20
 --- !u!114 &114872648900814980
 MonoBehaviour:
   m_ObjectHideFlags: 1
