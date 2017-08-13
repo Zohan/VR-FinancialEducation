@@ -47,17 +47,8 @@ public class Questionnaire : MonoBehaviour {
 		// Get reference to Animator component
 		displayAnimator = GetComponent<Animator>();
 
-		//Debug.Log("startAlpha = " + displayMaterial.color.a);
-		//displayMaterial.color = new Color(displayMaterial.color.r, displayMaterial.color.g, displayMaterial.color.b, 0.0f);
-
 		// Set the welcome text
 		displayText.text = "Welcome to your Financial Education experience!";
-		// Hide display
-		//displayCanvas.SetActive(false);
-
-		// Disable input buttons at the start of the questionnaire
-		//leftButton.SetActive(false);
-		//rightButton.SetActive(false);
 	}
 
 	public void enableButtons (int value)
@@ -85,79 +76,5 @@ public class Questionnaire : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		// Initial display timer
-		if (!isDisplayTime)
-		{
-			//startTimer -= Time.deltaTime;
-			genTimer += Time.deltaTime;
-			if (genTimer >= startDelay)
-			{
-				isDisplayTime = true;
-				genTimer = 0.0f;
-			}
-		}
-		// If it's time to display the welcome text
-		else
-		{
-			// Start timer
-			fadePerSecond -= Time.deltaTime;
-			genTimer += Time.deltaTime;
-
-			if (!isQuestionTime)
-			{
-				// If we've reached the expected time
-				if (genTimer >= fadeTime)
-				{
-					// Show display
-					//displayMaterial.color = new Color(displayMaterial.color.r, displayMaterial.color.g, displayMaterial.color.b, 1f);
-					displayCanvas.SetActive(true);
-					genTimer = 0.0f;
-					isQuestionTime = true;
-				}
-				else
-				{
-					// Gradually fade in the shape via alpha value
-					float calcAlpha = (fadeTime - fadePerSecond) / fadeTime;
-					//displayMaterial.color = new Color(displayMaterial.color.r, displayMaterial.color.g, displayMaterial.color.b, calcAlpha);
-				}
-			}
-			else
-			{
-				// If we've reached the expected time
-				if (genTimer >= welcomeTime)
-				{
-					/*switch (questionNumber) {
-					case 0:
-						displayText.text = "Does your partner control how your money is spent?";
-						displayCanvas.SetActive(true);
-						break;
-
-					case 1:
-						break;
-
-					case 2:
-						break;
-
-					default: 
-						break;
-					}*/
-
-					// Set first question text
-					displayText.text = "Where would you like to start??";
-					// Show display
-					displayCanvas.SetActive(true);
-					//AssetBundle myLoadedAssetBundle = AssetBundle.LoadFromFile("Assets/Scenes/");
-					//string[] scenePaths;
-					//scenePaths = myLoadedAssetBundle.GetAllScenePaths();
-					SceneManager.LoadScene("Scenes/MountainLake");
-					//Debug.Log("scene2 loading: " + scenePaths[0]);
-					//SceneManager.LoadScene(scenePaths[0], LoadSceneMode.Single);
-
-					// Enable input buttons at the start of the questionnaire
-					//leftButton.SetActive(true);
-					//rightButton.SetActive(true);
-				}
-			}
-		}
 	}
 }

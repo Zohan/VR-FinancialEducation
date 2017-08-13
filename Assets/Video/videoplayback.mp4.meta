@@ -41,7 +41,11 @@ VideoClipImporter:
     streamedResource:
       source: 
       offset: 0
+<<<<<<< HEAD
+      size: 9250250
+=======
       size: 3808628
+>>>>>>> master
   userData: 
   assetBundleName: 
   assetBundleVariant: 
