@@ -10,42 +10,42 @@ public class Questionnaire : MonoBehaviour {
 	// Public fields
 	public GameObject leftButton;
 	public GameObject rightButton;
-	public float fadeTime = 3.0f;
+	//public float fadeTime = 3.0f;
 
 	// Private fields
-	int questionNumber;
-	float genTimer;
-	float fadePerSecond;
-	float startDelay;
-	float startTimer;
-	float welcomeTime;
-	bool isDisplayTime;
-	bool isQuestionTime;
+	//int questionNumber;
+	//float genTimer;
+	//float fadePerSecond;
+	//float startDelay;
+	//float startTimer;
+	//float welcomeTime;
+	//bool isDisplayTime;
+	//bool isQuestionTime;
 	Text displayText;
 	GameObject displayCanvas;
-	Material displayMaterial;
-	Animator displayAnimator;
+	//Material displayMaterial;
+	//Animator displayAnimator;
 
 	// Use this for initialization
 	void Start () {
 		// Initialize private fields
-		fadePerSecond = fadeTime;
-		startDelay = 3.0f;
-		startTimer = startDelay;
-		welcomeTime = 4.0f;
-		genTimer = 0.0f;
-		questionNumber = 0; // Restart questionnaire
-		isDisplayTime = false;
-		isQuestionTime = false;
+		//fadePerSecond = fadeTime;
+		//startDelay = 3.0f;
+		//startTimer = startDelay;
+		//welcomeTime = 4.0f;
+		//genTimer = 0.0f;
+		//questionNumber = 0; // Restart questionnaire
+		//isDisplayTime = false;
+		//isQuestionTime = false;
 
 		// Get reference to child canvas gameobject
 		displayCanvas = transform.GetChild(0).gameObject;
 		// Get reference to canvas text
 		displayText = displayCanvas.transform.GetChild(0).GetComponent<Text>();
 		// Get reference to cube material
-		displayMaterial = GetComponent<Renderer>().material;
+		//displayMaterial = GetComponent<Renderer>().material;
 		// Get reference to Animator component
-		displayAnimator = GetComponent<Animator>();
+		//displayAnimator = GetComponent<Animator>();
 
 		// Set the welcome text
 		displayText.text = "Welcome to your Financial Education experience!";
