@@ -20,7 +20,7 @@ public class TestIntanstiation : MonoBehaviour
         if (equipPrefab != null & active == true) 
         {
             // get a random postion to instantiate the prefab - you can change this to be created at a fied point if desired
-            Vector3 position = new Vector3 (1.6f,1.5f,1.7f);
+            Vector3 position = new Vector3 (-2.0f,1.5f,1.5f);
             
 
             Quaternion rotation = Quaternion.identity;
