@@ -9,6 +9,9 @@ public class Module2_Main : MonoBehaviour {
 	// Reference to the main display object (containing header + body + sides)
 	public GameObject mainDisplayObj;
 
+    // Reference to player's transform
+    private Transform playerTransform;
+
 	// References to the corresponding children of the main display object
 	private Canvas headerDisplayObj;
 	private Canvas bodyDisplayObj;
@@ -23,28 +26,25 @@ public class Module2_Main : MonoBehaviour {
 	private Animator mainDisplayAnimator;
 	private Animator bodyDisplayAnimator;
 
-	// Reference to the state scripts
-	private Module2_MainDisplayFadeInState mainDisplayFadeInScript;
-	private Module2_IntroductionState introStateScript;
+    // Reference to the state scripts
+    private Module2_StartMenuState startMenuStateScript;
+    private Module2_MainDisplayFadeInState mainDisplayFadeInScript;
+    private Module2_MainDisplayFadeOutState mainDisplayFadeOutScript;
+    private Module2_IntroductionState introStateScript;
 	private Module2_QuestionsState questionsStateScript;
+    private Module2_NeedsWantsStateMachine needsWantsStateMachineScript;
+    private Module2_NeedsWants_ExplainState needsWantsExplainStateScript;
 
-	// Reference to the header and body display text
-	private Text headerDisplayText;
+    // Reference to the header and body display text
+    private Text headerDisplayText;
 	private Text bodyDisplayText;
-
-	// Reference to the current state in the module progression animator controller
-	//private AnimatorStateInfo currentProgressionState;
-
-	// References to triggers within the animator controllers
-	//private int resetTriggerHash = Animator.StringToHash("reset");
-	//private int fadeInTriggerHash = Animator.StringToHash("fadeIn");
-
-	// References to the module progression animator controller states
-	//private int startMenuStateHash = Animator.StringToHash("Base Layer.Start Menu");
-	//private int introStateHash = Animator.StringToHash("Base Layer.Intro");
 
 	// Use this for initialization
 	void Start () {
+
+        // Get reference to the player's transform
+        playerTransform = gameObject.transform;
+
 		// Get references to display objects
 		headerDisplayObj = mainDisplayObj.transform.Find("Header Display").GetComponent<Canvas>();
 		bodyDisplayObj = mainDisplayObj.transform.Find("Body Display").GetComponent<Canvas>();
@@ -63,37 +63,44 @@ public class Module2_Main : MonoBehaviour {
 		headerDisplayText = headerDisplayObj.transform.Find("Header Text").GetComponent<Text>();
 		bodyDisplayText = bodyDisplayObj.transform.Find("Body Text").GetComponent<Text>();
 
-		// Get reference to Main Display Fade In State behavior script
-		mainDisplayFadeInScript = mainDisplayAnimator.GetBehaviour<Module2_MainDisplayFadeInState>();
-		mainDisplayFadeInScript.mainScript = this;
+        // Initialize the links to the states
+        SetupStateScripts();
+    }
 
-		// Get reference to Intro State behavior script
-		introStateScript = moduleProgressionAnimator.GetBehaviour<Module2_IntroductionState>();
-		introStateScript.mainScript = this;
+    void SetupStateScripts()
+    {
+        // Get reference to Start Menu State behavior script and pass reference to this Module 2 Main script
+        startMenuStateScript = moduleProgressionAnimator.GetBehaviour<Module2_StartMenuState>();
+        startMenuStateScript.mainScript = this;
+        
+        // Get reference to Intro State behavior script and pass reference to this Module 2 Main script
+        introStateScript = moduleProgressionAnimator.GetBehaviour<Module2_IntroductionState>();
+        introStateScript.mainScript = this;
 
-		// Get reference to Questions State behavior script
-		questionsStateScript = moduleProgressionAnimator.GetBehaviour<Module2_QuestionsState>();
-		questionsStateScript.mainScript = this;
-	}
-	
+        // Get reference to Questions State behavior script and pass reference to this Module 2 Main script
+        questionsStateScript = moduleProgressionAnimator.GetBehaviour<Module2_QuestionsState>();
+        questionsStateScript.mainScript = this;
+
+        // Get reference to Needs and Wants State Machine behavior script and pass reference to this Module 2 Main script
+        needsWantsStateMachineScript = moduleProgressionAnimator.GetBehaviour<Module2_NeedsWantsStateMachine>();
+        needsWantsStateMachineScript.mainScript = this;
+
+        // Get reference to Needs and Wants Explain State behavior script and pass reference to this Module 2 Main script
+        needsWantsExplainStateScript = moduleProgressionAnimator.GetBehaviour<Module2_NeedsWants_ExplainState>();
+        needsWantsExplainStateScript.mainScript = this;
+
+        // Get reference to Main Display Fade In State behavior script and pass reference to this Module 2 Main script
+        mainDisplayFadeInScript = mainDisplayAnimator.GetBehaviour<Module2_MainDisplayFadeInState>();
+        mainDisplayFadeInScript.mainScript = this;
+
+        // Get reference to Main Display Fade Out State behavior script and pass reference to this Module 2 Main script
+        mainDisplayFadeOutScript = mainDisplayAnimator.GetBehaviour<Module2_MainDisplayFadeOutState>();
+        mainDisplayFadeOutScript.mainScript = this;
+    }
+    
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-	public void DisplayNextContent() {
-		// PSUEDOCODE:
-		// Get reference to current state to know which content (text) 'pool' to pull from
-		// Get reference to current content (text)
-		// Queue next content to display
-		// Trigger content transition
-		// Check if this is the end of this current state and call NextState()
-
-		// Get the current state of the main module progression
-		//currentProgressionState = mainProgressionAnimator.GetCurrentAnimatorStateInfo(0);
-		//if (currentProgressionState.fullPathHash == introStateHash) {
-		//	centerDisplayAnimator.SetTrigger ("fadeIn");
-		//}
+        //playerTransform.Translate(Vector3.forward * Time.deltaTime);
 	}
 
 	// Getter functions
@@ -132,4 +139,20 @@ public class Module2_Main : MonoBehaviour {
 		// Set the body display text to the passed text
 		bodyDisplayText.text = text;
 	}
+    public void SetPlayerPosition(Vector3 position)
+    {
+        if (position == null || transform == null)
+            return;
+        
+        // Set the position of the player
+        playerTransform.position = position;
+    }
+    public void SetPlayerRotation(Quaternion rotation)
+    {
+        if (rotation == null || transform == null)
+            return;
+
+        // Set the rotation of the player
+        playerTransform.rotation = rotation;
+    }
 }
