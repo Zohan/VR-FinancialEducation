@@ -10,7 +10,7 @@ public class Module2_MainDisplayFadeInState : StateMachineBehaviour {
 	private Animator bodyDisplayAnimator;
 
 	// Header text
-	private const string h0 = "Module 2:\nFinancial Fundamentals";
+	//private const string h0 = "Module 2:\nFinancial Fundamentals";
 
 	// OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -25,9 +25,13 @@ public class Module2_MainDisplayFadeInState : StateMachineBehaviour {
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-		// Set the header text
-		mainScript.SetHeaderText(h0);
+        // Reset this animator "fadeIn" trigger
+        animator.ResetTrigger("fadeIn");
 
+		// Set the header text
+		//mainScript.SetHeaderText(h0);
+
+        // Trigger the body text "fadeIn" animation/state
 		bodyDisplayAnimator = mainScript.GetBodyDisplayAnimator ();
 		if (bodyDisplayAnimator != null) {
 			bodyDisplayAnimator.SetTrigger ("fadeIn");
