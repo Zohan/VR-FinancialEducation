@@ -39,11 +39,6 @@ public class StartHere : MonoBehaviour {
 		counter = 0;
 		forwardCounter = 0;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void donePressed(){
 		cardboardCanvas.enabled = false;
