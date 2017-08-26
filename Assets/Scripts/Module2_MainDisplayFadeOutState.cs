@@ -12,6 +12,7 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
 
     // Hash of main progression states
     private int questionsState = Animator.StringToHash("Base Layer.Introduction.Questions");
+    private int explanationState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Explanation");
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -32,6 +33,8 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
         // Reset this animator's "fadeOut" trigger
         animator.ResetTrigger("fadeOut");
 
+        // Perform a state transition to the next desired state
+        // TODO: Make functionality to pass state from calling state (e.g., questions) to this animator/state script
         if (progressionAnimator != null)
         {
             // If the main progression animator is in the "Questions" state
@@ -39,6 +42,11 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
             {
                 // Trigger the next state (firstSteps)
                 progressionAnimator.SetTrigger("firstSteps");
+            }
+            else if (progressionAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == explanationState)
+            {
+                // Trigger the next state (examples)
+                progressionAnimator.SetTrigger("needsWants_examples");
             }
         }
     }

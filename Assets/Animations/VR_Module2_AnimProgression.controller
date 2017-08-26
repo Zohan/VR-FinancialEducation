@@ -56,6 +56,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: needsWants_stayFocused
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -117,6 +123,18 @@ MonoBehaviour:
   mainScript: {fileID: 0}
   playerPosition: {x: 151, y: 183.5, z: 97}
   playerRotation: {x: 0, y: -90, z: 0}
+--- !u!114 &114661993702393338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3878d7439e4ea047ae21847757ed50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 0}
 --- !u!114 &114674297855862966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,7 +247,10 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: needsWants_stayFocused
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102715036108952996}
   m_Solo: 0
@@ -589,7 +610,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101362612978407374}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114661993702393338}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -774,10 +796,6 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions:
     data:
-      first: {fileID: 1107112213685238388}
-      second:
-      - {fileID: 1109558494737065022}
-    data:
       first: {fileID: 0}
       second:
       - {fileID: 1109789874710770294}
@@ -793,6 +811,10 @@ AnimatorStateMachine:
       first: {fileID: 1107666967311075882}
       second:
       - {fileID: 1109969508621099514}
+    data:
+      first: {fileID: 1107112213685238388}
+      second:
+      - {fileID: 1109558494737065022}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 288, y: 60, z: 0}
   m_EntryPosition: {x: 60, y: 132, z: 0}

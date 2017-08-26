@@ -18,17 +18,22 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     private Button backButton;
 
     // Fields for content text
+    private string[] headerText;
     private string[] contentText;
     private int currentTextIndex;
-    private const int TEXT_COUNT = 3;
+    private const int HEADER_COUNT = 2;
+    private const int TEXT_COUNT = 5;
 
     // Header text
-    private const string h0 = "Prioritizing:\nWants vs. Needs";
+    //private const string h0 = "Prioritizing:\nWants vs. Needs";
+    //private const string h1 = "First Steps";
 
     // Content text for the introduction state
-    private const string t0 = "It's important to know the difference between a 'need' and a 'want' when thinking about spending.";
-    private const string t1 = "A 'need' is something you must have to survive, like food or shelter.";
-    private const string t2 = "A 'want' is something that makes life more pleasant or easier.";
+    //private const string t0 = "Early on, it's important to get priorities and resources straight.";
+    //private const string t1 = "What do we really need, what resources are available?";
+    //private const string t2 = "It's important to know the difference between a 'need' and a 'want' when thinking about spending.";
+    //private const string t3 = "A 'need' is something you must have to survive, like food or shelter.";
+    //private const string t4 = "A 'want' is something that makes life more pleasant or easier.";
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -54,17 +59,34 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     // Initialize the display content
     private void SetupContent()
     {
+        // Setup string array of header text
+        headerText = new string[HEADER_COUNT] {
+            "First Steps",
+            "Prioritizing:\nWants vs. Needs"
+        };
+
         // Setup string array of context text
-        contentText = new string[TEXT_COUNT];
-        contentText[0] = t0;
-        contentText[1] = t1;
-        contentText[2] = t2;
+        contentText = new string[TEXT_COUNT] {
+            "Early on, it's important to get priorities and resources straight.",
+            "What do we really need, what resources are available?",
+            "It's important to know the difference between a 'need' and a 'want' when thinking about spending.",
+            "A 'need' is something you must have to survive, like food or shelter.",
+            "A 'want' is something that makes life more pleasant or easier."
+        };
+
+        //for (int i = 0; i < TEXT_COUNT; i++)
+        //{
+        //    //contentText[i] = 
+        //}
+        //contentText[0] = t0;
+        //contentText[1] = t1;
+        //contentText[2] = t2;
 
         // Set initial text index
         currentTextIndex = 0;
 
         // Set the header text
-        mainScript.SetHeaderText(h0);
+        mainScript.SetHeaderText(headerText[0]);
 
         // Set the body display text to the starting text
         mainScript.SetBodyText(contentText[currentTextIndex]);
@@ -90,6 +112,17 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     // Called when the "Next" button is clicked
     void NextContent()
     {
+        // Check which display stage we're in (i.e., first portion of content, or second portion)
+        if (currentTextIndex + 1 < 2)
+        {
+            // Display the first header text for the first portion of content
+            mainScript.SetHeaderText(headerText[0]);
+        } else
+        {
+            // Display the second header text for the second portion of content
+            mainScript.SetHeaderText(headerText[1]);
+        }
+
         // Set the body display text to the next text in the array or go to the next state
         if (currentTextIndex + 1 < TEXT_COUNT)
         {
@@ -97,6 +130,9 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
         }
         else
         {
+            // Go to the next state
+
+
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
                 progressionAnimator.ResetTrigger("firstSteps");
@@ -110,6 +146,18 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     // Called when the "Back" button is clicked
     void PrevContent()
     {
+        // Check which display stage we're in (i.e., first portion of content, or second portion)
+        if (currentTextIndex - 1 < 2)
+        {
+            // Display the first header text for the first portion of content
+            mainScript.SetHeaderText(headerText[0]);
+        }
+        else
+        {
+            // Display the second header text for the second portion of content
+            mainScript.SetHeaderText(headerText[1]);
+        }
+
         // Set the body display text to the previous text in the array or go to the previous state
         if (currentTextIndex - 1 >= 0)
         {
@@ -117,6 +165,8 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
         }
         else
         {
+            // Go to the previous state
+
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
             {
