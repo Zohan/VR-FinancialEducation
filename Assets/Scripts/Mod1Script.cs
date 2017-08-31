@@ -52,6 +52,13 @@ public class Mod1Script : MonoBehaviour {
 	public GameObject sdcBody;
 	private Text sdcBodyText;
 
+	private Canvas f5ButtonCanvas;
+	private Canvas return2Canvas;
+	private Canvas privacyCanvasPrompt;
+	private Canvas privacyCanvas;
+
+	private Canvas toQuizCanvas;
+	private Canvas return3Canvas;
 
 
 
@@ -94,7 +101,7 @@ public class Mod1Script : MonoBehaviour {
 		step3WhyCanvas = GameObject.Find ("Step3WhyCanvas").GetComponent<Canvas> ();
 		step3WhyCanvas.enabled = false;
 		step3BasicsCanvas = GameObject.Find ("Step3BasicsCanvas").GetComponent<Canvas> ();
-		step3BasicsCanvas.enabled = true;
+		step3BasicsCanvas.enabled = false;
 
 		stepOneHeaderText = GameObject.Find ("S1CHeader").GetComponent<Text> ();
 		stepOneBodyText = GameObject.Find ("S1CBody").GetComponent<Text> ();
@@ -118,10 +125,21 @@ public class Mod1Script : MonoBehaviour {
 		sdcHeaderText = GameObject.Find ("CHeader").GetComponent<Text> ();
 		sdcBodyText = GameObject.Find ("CBody").GetComponent<Text> ();
 
-	
+		
+		return2Canvas = GameObject.Find ("Return2").GetComponent<Canvas> ();
+		return2Canvas.enabled = false;
+		f5ButtonCanvas = GameObject.Find ("Forward5").GetComponent<Canvas> ();
+		f5ButtonCanvas.enabled = false;
+		privacyCanvasPrompt = GameObject.Find ("PCanvasPrompt").GetComponent<Canvas> ();
+		privacyCanvasPrompt.enabled = false;
+		privacyCanvas = GameObject.Find ("PCanvas").GetComponent<Canvas> ();
+		privacyCanvas.enabled = false;
 
 
-
+		return3Canvas = GameObject.Find ("Return3").GetComponent<Canvas> ();
+		return3Canvas.enabled = false;
+		toQuizCanvas = GameObject.Find ("ToQuiz").GetComponent<Canvas> ();
+		toQuizCanvas.enabled = false;
 	}
 
 	public void sPButtonPressed(){
@@ -145,6 +163,7 @@ public class Mod1Script : MonoBehaviour {
 		Vector3 movementVector = new Vector3 (-2f, -.7f, 4f);
 		player [0].transform.Translate (movementVector);
 		step1Prompt.enabled = true;
+		f1ButtonCanvas.enabled = false;
 	}
 
 	public void showStep1(){
@@ -199,6 +218,7 @@ public class Mod1Script : MonoBehaviour {
 		Vector3 movementVector = new Vector3 (-2f, -.7f, 4f);
 		player [0].transform.Translate (movementVector);
 		step2Prompt.enabled = true;
+		f2ButtonCanvas.enabled = false;
 	}
 
 	public void showStep2(){
@@ -337,7 +357,23 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	public void returnPressed(){
+		sdcCanvas.enabled = false;
+		privacyCanvas.enabled = false;
+		step3Canvas.enabled = false;
+		beginCanvas.enabled = true;
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		Vector3 movementVector = new Vector3 (148f,182.8f,98f);
+		player [0].transform.position = movementVector;
+	}
 
+	public void sDCButtonPressed(){
+		sdcCanvasPrompt.enabled = true;
+		beginCanvas.enabled = false;
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		Vector3 movementVector = new Vector3 (123f,180f,100f);
+		player [0].transform.position = movementVector;
 	}
 
 	public void forwardToSDCCavnas(){
@@ -350,9 +386,9 @@ public class Mod1Script : MonoBehaviour {
 		sdcCanvasPrompt.enabled = true;
 	}
 
-	public void sDCButtonPressed(){
-		sdcCanvas.enabled = true;
+	public void sDCPromptPressed(){
 		sdcCanvasPrompt.enabled = false;
+		sdcCanvas.enabled = true;
 	}
 
 	public void beforeButtonPressed(){
@@ -396,14 +432,47 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	public void sdcNextPressed(){
-
+		sdcCanvas.enabled = false;
+		f5ButtonCanvas.enabled = true;
+		return2Canvas.enabled = true;
 	}
 
 	public void privacyButtonPressed(){
-
+		privacyCanvasPrompt.enabled = true;
+		beginCanvas.enabled = false;
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		Vector3 movementVector = new Vector3 (119f,178.8f,101f);
+		player [0].transform.position = movementVector;
+	}
+		
+	public void forwardToPrivacyCavnas(){
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		Vector3 movementVector = new Vector3 (1f, -.7f, 3.5f);
+		player [0].transform.Translate (movementVector);
+		f5ButtonCanvas.enabled = false;
+		privacyCanvasPrompt.enabled = true;
 	}
 
+	public void privacyCanvasPromptPressed(){
+		privacyCanvasPrompt.enabled = false;
+		privacyCanvas.enabled = true;
+	}
+
+	public void privacyURLButtonPressed(){
+		Application.OpenURL ("http://nnedv.org/downloads/SafetyNet/NNEDV_IdentityChange_MythsAndRealities.pdf");
+	}
+
+	public void privacyNextPressed(){
+		toQuizCanvas.enabled = true;
+		return3Canvas.enabled = true;
+		privacyCanvas.enabled = false;
+	}
+
+	// check knowledge at starting canvas pressed OR toQuiz button on privacy canvas pressed
 	public void checkButtonPressed(){
+		//transition to quiz scene
 
 	}
 }
