@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 223124334885995776}
   - component: {fileID: 114043973976699848}
   - component: {fileID: 114102570058605802}
+  - component: {fileID: 65525695729044628}
   m_Layer: 5
   m_Name: VRUI_DisplayPanel
   m_TagString: Untagged
@@ -63,6 +64,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &65525695729044628
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206710195165796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 200, y: 50, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114043973976699848
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -22,7 +22,7 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     private string[] contentText;
     private int currentTextIndex;
     private const int HEADER_COUNT = 2;
-    private const int TEXT_COUNT = 5;
+    private const int TEXT_COUNT = 4;
 
     // Header text
     //private const string h0 = "Prioritizing:\nWants vs. Needs";
@@ -69,9 +69,9 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
         contentText = new string[TEXT_COUNT] {
             "Early on, it's important to get priorities and resources straight.",
             "What do we really need, what resources are available?",
-            "It's important to know the difference between a 'need' and a 'want' when thinking about spending.",
-            "A 'need' is something you must have to survive, like food or shelter.",
-            "A 'want' is something that makes life more pleasant or easier."
+            "It's important to know the difference between a NEED and a WANT when thinking about spending.",
+            "A NEED is something you must have to survive, like food or shelter."//,
+            //"A 'want' is something that makes life more pleasant or easier."
         };
 
         //for (int i = 0; i < TEXT_COUNT; i++)
@@ -139,7 +139,9 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
 
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
+            {
                 mainDisplayAnimator.SetTrigger("fadeOut");
+            }
         }
     }
 

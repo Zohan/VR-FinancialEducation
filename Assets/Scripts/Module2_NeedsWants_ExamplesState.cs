@@ -21,8 +21,8 @@ public class Module2_NeedsWants_ExamplesState : StateMachineBehaviour {
     private string[] headerText;
     private string[] contentText;
     private int currentTextIndex;
-    private const int HEADER_COUNT = 5;
-    private const int TEXT_COUNT = 5;
+    private const int HEADER_COUNT = 1;
+    private const int TEXT_COUNT = 2;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -34,15 +34,15 @@ public class Module2_NeedsWants_ExamplesState : StateMachineBehaviour {
         SetupReferences();
 
         // Set "fadeIn" trigger to active
-        //if (mainDisplayAnimator != null)
-        //    mainDisplayAnimator.SetTrigger("fadeIn");
+        if (mainDisplayAnimator != null)
+            mainDisplayAnimator.SetTrigger("fadeIn");
 
         // Set button event listeners
-        //if (nextButton != null)
-        //    nextButton.onClick.AddListener(NextContent);
+        if (nextButton != null)
+            nextButton.onClick.AddListener(NextContent);
 
-        //if (backButton != null)
-        //    backButton.onClick.AddListener(PrevContent);
+        if (backButton != null)
+            backButton.onClick.AddListener(PrevContent);
     }
 
     // Initialize the display content
@@ -50,21 +50,14 @@ public class Module2_NeedsWants_ExamplesState : StateMachineBehaviour {
     {
         // Setup string array of header text
         headerText = new string[HEADER_COUNT] {
-            "Healthy food",
-            "Shelter",
-            "Clothing",
-            "Heat and utilities",
-            "Car and gas"
+            "Examples of Needs"
         };
 
         // Setup string array of context text
-        //contentText = new string[TEXT_COUNT] {
-        //    "Healthy food",
-        //    "Shelter",
-        //    "Clothing",
-        //    "Heat and utilities",
-        //    "Car and gas"
-        //};
+        contentText = new string[TEXT_COUNT] {
+            "Take a look around at some examples of NEEDS.",
+            "Tap 'Next' to hide this display and look around. When you're finished, tap 'Next' to continue."
+        };
 
         // Set initial text index
         currentTextIndex = 0;
@@ -73,7 +66,7 @@ public class Module2_NeedsWants_ExamplesState : StateMachineBehaviour {
         mainScript.SetHeaderText(headerText[0]);
 
         // Set the body display text to the starting text
-        mainScript.SetBodyText("");
+        mainScript.SetBodyText(contentText[0]);
     }
 
     // Setup references to objects
@@ -96,50 +89,38 @@ public class Module2_NeedsWants_ExamplesState : StateMachineBehaviour {
     // Called when the "Next" button is clicked
     void NextContent()
     {
-        // Check which display stage we're in (i.e., first portion of content, or second portion)
-        if (currentTextIndex + 1 < 2)
-        {
-            // Display the first header text for the first portion of content
-            mainScript.SetHeaderText(headerText[0]);
-        }
-        else
-        {
-            // Display the second header text for the second portion of content
-            mainScript.SetHeaderText(headerText[1]);
-        }
-
         // Set the body display text to the next text in the array or go to the next state
         if (currentTextIndex + 1 < TEXT_COUNT)
         {
             mainScript.SetBodyText(contentText[++currentTextIndex]);
         }
-        else
+        else if (currentTextIndex + 1 == TEXT_COUNT)
         {
+            // Progress to the next state
+
+            ++currentTextIndex;
+
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
-                progressionAnimator.ResetTrigger("firstSteps");
+                progressionAnimator.ResetTrigger("needsWants_examples");
+
+            //if (bodyDisplayAnimator != null)
+            //{
+            //    bodyDisplayAnimator.SetTrigger("fadeOut");
+            //}
 
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
-                mainDisplayAnimator.SetTrigger("fadeOut");
+            {
+                //mainDisplayAnimator.SetTrigger("fadeOut");
+                mainDisplayAnimator.SetTrigger("headerBody_fadeOut");
+            }
         }
     }
 
     // Called when the "Back" button is clicked
     void PrevContent()
     {
-        // Check which display stage we're in (i.e., first portion of content, or second portion)
-        if (currentTextIndex - 1 < 2)
-        {
-            // Display the first header text for the first portion of content
-            mainScript.SetHeaderText(headerText[0]);
-        }
-        else
-        {
-            // Display the second header text for the second portion of content
-            mainScript.SetHeaderText(headerText[1]);
-        }
-
         // Set the body display text to the previous text in the array or go to the previous state
         if (currentTextIndex - 1 >= 0)
         {
@@ -152,8 +133,7 @@ public class Module2_NeedsWants_ExamplesState : StateMachineBehaviour {
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
             {
-                progressionAnimator.ResetTrigger("firstSteps");
-                //progressionAnimator.SetTrigger("questions");
+                progressionAnimator.ResetTrigger("needsWants_examples");
             }
         }
     }
