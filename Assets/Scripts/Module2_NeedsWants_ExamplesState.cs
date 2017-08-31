@@ -50,7 +50,7 @@ public class Module2_NeedsWants_ExamplesState : StateMachineBehaviour {
     {
         // Setup string array of header text
         headerText = new string[HEADER_COUNT] {
-            "Examples of Needs"
+            "Examples of NEEDS"
         };
 
         // Setup string array of context text
@@ -96,24 +96,32 @@ public class Module2_NeedsWants_ExamplesState : StateMachineBehaviour {
         }
         else if (currentTextIndex + 1 == TEXT_COUNT)
         {
-            // Progress to the next state
+            // Look around pseudo-state
 
+            // Increment progress tracker
             ++currentTextIndex;
-
-            // Reset the progression animator's trigger for this state in case it's active
-            if (progressionAnimator != null)
-                progressionAnimator.ResetTrigger("needsWants_examples");
-
-            //if (bodyDisplayAnimator != null)
-            //{
-            //    bodyDisplayAnimator.SetTrigger("fadeOut");
-            //}
 
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
             {
                 //mainDisplayAnimator.SetTrigger("fadeOut");
                 mainDisplayAnimator.SetTrigger("headerBody_fadeOut");
+            }
+        }
+        else if (currentTextIndex + 1 > TEXT_COUNT)
+        {
+            // Progress to the next state
+            Debug.Log("Trigger 'moveToWants'!");
+
+            // Reset the progression animator's trigger for this state in case it's active
+            if (progressionAnimator != null)
+                progressionAnimator.ResetTrigger("needsWants_examples");
+
+            // Set main display animator's "fadeOut" trigger
+            if (mainDisplayAnimator != null)
+            {
+                mainDisplayAnimator.SetTrigger("fadeOut");
+                //mainDisplayAnimator.SetTrigger("headerBody_fadeOut");
             }
         }
     }
