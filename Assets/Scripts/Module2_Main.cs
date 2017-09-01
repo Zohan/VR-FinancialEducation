@@ -35,6 +35,7 @@ public class Module2_Main : MonoBehaviour {
     private Module2_NeedsWantsStateMachine needsWantsStateMachineScript;
     private Module2_NeedsWants_ExplainState needsWantsExplainStateScript;
     private Module2_NeedsWants_ExamplesState needsWantsExamplesStateScript;
+    private Module2_WantsExamplesState wantsExamplesStateScript;
 
     // Reference to the header and body display text
     private Text headerDisplayText;
@@ -70,6 +71,14 @@ public class Module2_Main : MonoBehaviour {
 
     void SetupStateScripts()
     {
+        // Get reference to Main Display Fade In State behavior script and pass reference to this Module 2 Main script
+        mainDisplayFadeInScript = mainDisplayAnimator.GetBehaviour<Module2_MainDisplayFadeInState>();
+        mainDisplayFadeInScript.mainScript = this;
+
+        // Get reference to Main Display Fade Out State behavior script and pass reference to this Module 2 Main script
+        mainDisplayFadeOutScript = mainDisplayAnimator.GetBehaviour<Module2_MainDisplayFadeOutState>();
+        mainDisplayFadeOutScript.mainScript = this;
+
         // Get reference to Start Menu State behavior script and pass reference to this Module 2 Main script
         startMenuStateScript = moduleProgressionAnimator.GetBehaviour<Module2_StartMenuState>();
         startMenuStateScript.mainScript = this;
@@ -94,13 +103,9 @@ public class Module2_Main : MonoBehaviour {
         needsWantsExamplesStateScript = moduleProgressionAnimator.GetBehaviour<Module2_NeedsWants_ExamplesState>();
         needsWantsExamplesStateScript.mainScript = this;
 
-        // Get reference to Main Display Fade In State behavior script and pass reference to this Module 2 Main script
-        mainDisplayFadeInScript = mainDisplayAnimator.GetBehaviour<Module2_MainDisplayFadeInState>();
-        mainDisplayFadeInScript.mainScript = this;
-
-        // Get reference to Main Display Fade Out State behavior script and pass reference to this Module 2 Main script
-        mainDisplayFadeOutScript = mainDisplayAnimator.GetBehaviour<Module2_MainDisplayFadeOutState>();
-        mainDisplayFadeOutScript.mainScript = this;
+        // Get reference to Needs and Wants Examples State behavior script and pass reference to this Module 2 Main script
+        wantsExamplesStateScript = moduleProgressionAnimator.GetBehaviour<Module2_WantsExamplesState>();
+        wantsExamplesStateScript.mainScript = this;
     }
     
 	// Update is called once per frame
