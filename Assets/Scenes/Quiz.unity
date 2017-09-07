@@ -23870,6 +23870,64 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1988752670}
+--- !u!1001 &1996492661
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400022, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: masterVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400022, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: fairyDust
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400022, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: animalActivity
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400022, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+      propertyPath: timeOfDay
+      value: 0.416
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c4365bb8d61bd409b92c575b521da641, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2001820415
 GameObject:
   m_ObjectHideFlags: 0
