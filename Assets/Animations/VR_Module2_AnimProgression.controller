@@ -13,61 +13,61 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: intro
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: questions
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: firstSteps
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: inFirstSteps
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: inIntroduction
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: pubResources
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: needsWants_examples
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: needsWants_stayFocused
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: moveToWants
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3af97aba7e1f374ca5282e91f2bacfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainScript: {fileID: 0}
 --- !u!114 &114443550213218310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -965,21 +966,21 @@ AnimatorStateMachine:
       second:
       - {fileID: 1109789874710770294}
     data:
-      first: {fileID: 1107799347117876570}
-      second:
-      - {fileID: 1109361515001047660}
-    data:
       first: {fileID: 1107036613351494242}
       second:
       - {fileID: 1109587322584074800}
+    data:
+      first: {fileID: 1107112213685238388}
+      second:
+      - {fileID: 1109558494737065022}
     data:
       first: {fileID: 1107666967311075882}
       second:
       - {fileID: 1109969508621099514}
     data:
-      first: {fileID: 1107112213685238388}
+      first: {fileID: 1107799347117876570}
       second:
-      - {fileID: 1109558494737065022}
+      - {fileID: 1109361515001047660}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 288, y: 60, z: 0}
   m_EntryPosition: {x: 60, y: 132, z: 0}
