@@ -145,7 +145,7 @@ public class Mod1Script : MonoBehaviour {
 	public void sPButtonPressed(){
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		Vector3 movementVector = new Vector3 (-1f, 0, 8.5f);
+		Vector3 movementVector = new Vector3 (-1f, 0, 7f);
 		player [0].transform.Translate (movementVector);
 		safetyPlanningCanvas.enabled = true;
 		beginCanvas.enabled = false;
@@ -160,7 +160,7 @@ public class Mod1Script : MonoBehaviour {
 	public void forwardToStepOne(){
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		Vector3 movementVector = new Vector3 (-2f, -.7f, 4f);
+		Vector3 movementVector = new Vector3 (-3f, -.7f, 9f);
 		player [0].transform.Translate (movementVector);
 		step1Prompt.enabled = true;
 		f1ButtonCanvas.enabled = false;
@@ -215,7 +215,8 @@ public class Mod1Script : MonoBehaviour {
 	public void forwardToStepTwo(){
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		Vector3 movementVector = new Vector3 (-2f, -.7f, 4f);
+		//Vector3 movementVector = new Vector3 (-2f, -.7f, 4f);
+		Vector3 movementVector = new Vector3 (-2f, -.7f, 10.5f);
 		player [0].transform.Translate (movementVector);
 		step2Prompt.enabled = true;
 		f2ButtonCanvas.enabled = false;
@@ -284,7 +285,7 @@ public class Mod1Script : MonoBehaviour {
 	public void forwardToStepThree(){
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		Vector3 movementVector = new Vector3 (-2f, -.7f, 4f);
+		Vector3 movementVector = new Vector3 (5f, -.7f, 14f);
 		player [0].transform.Translate (movementVector);
 		step3Prompt.enabled = true;
 		f3ButtonCanvas.enabled = false;
@@ -365,6 +366,9 @@ public class Mod1Script : MonoBehaviour {
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
 		Vector3 movementVector = new Vector3 (148f,182.8f,98f);
 		player [0].transform.position = movementVector;
+		return1Canvas.enabled = false;
+		return2Canvas.enabled = false;
+		return3Canvas.enabled = false;
 	}
 
 	public void sDCButtonPressed(){
@@ -372,18 +376,22 @@ public class Mod1Script : MonoBehaviour {
 		beginCanvas.enabled = false;
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		Vector3 movementVector = new Vector3 (123f,180f,100f);
+		//Vector3 movementVector = new Vector3 (123f,180f,100f);
+		Vector3 movementVector = new Vector3 (90f,182f,114f);
 		player [0].transform.position = movementVector;
 	}
 
 	public void forwardToSDCCavnas(){
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		Vector3 movementVector = new Vector3 (1f, -.7f, 3.5f);
+		//Vector3 movementVector = new Vector3 (1f, -.7f, 3.5f);
+		Vector3 movementVector = new Vector3 (-2f, -.7f, 19f);
 		player [0].transform.Translate (movementVector);
 		f2ButtonCanvas.enabled = false;
+		f3ButtonCanvas.enabled = false;
 		step3Canvas.enabled = false;
 		sdcCanvasPrompt.enabled = true;
+		return1Canvas.enabled = false;
 	}
 
 	public void sDCPromptPressed(){
@@ -442,17 +450,19 @@ public class Mod1Script : MonoBehaviour {
 		beginCanvas.enabled = false;
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		Vector3 movementVector = new Vector3 (119f,178.8f,101f);
+		//Vector3 movementVector = new Vector3 (119f,178.8f,101f);
+		Vector3 movementVector = new Vector3 (72f,179.8f,118f);
 		player [0].transform.position = movementVector;
 	}
 		
 	public void forwardToPrivacyCavnas(){
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		Vector3 movementVector = new Vector3 (1f, -.7f, 3.5f);
+		Vector3 movementVector = new Vector3 (-2f, 5f, 19f);
 		player [0].transform.Translate (movementVector);
 		f5ButtonCanvas.enabled = false;
 		privacyCanvasPrompt.enabled = true;
+		return2Canvas.enabled = false;
 	}
 
 	public void privacyCanvasPromptPressed(){
@@ -473,6 +483,7 @@ public class Mod1Script : MonoBehaviour {
 	// check knowledge at starting canvas pressed OR toQuiz button on privacy canvas pressed
 	public void checkButtonPressed(){
 		//transition to quiz scene
-
+		toQuizCanvas.enabled = false;
+		return3Canvas.enabled = false;
 	}
 }
