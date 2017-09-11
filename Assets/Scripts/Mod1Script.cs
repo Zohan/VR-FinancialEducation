@@ -11,6 +11,10 @@ public class Mod1Script : MonoBehaviour {
 	private Canvas step1Prompt;
 	private Canvas step1Canvas;
 	private Canvas step1ContinuedCanvas;
+
+	private Canvas step1DocsCanvas;
+	private Canvas campDoneButtonCanvas;
+
 	private Canvas f2ButtonCanvas;
 	private Canvas step2Prompt;
 	private Canvas step2Canvas;
@@ -78,6 +82,10 @@ public class Mod1Script : MonoBehaviour {
 		step1Canvas.enabled = false;
 		step1ContinuedCanvas = GameObject.Find ("Step1Continued").GetComponent<Canvas> ();
 		step1ContinuedCanvas.enabled = false;
+		step1DocsCanvas = GameObject.Find ("Step1Docs").GetComponent<Canvas>();
+		step1DocsCanvas.enabled = false;
+		campDoneButtonCanvas = GameObject.Find ("CampBackButton").GetComponent<Canvas> ();
+		campDoneButtonCanvas.enabled = false;
 		f2ButtonCanvas = GameObject.Find ("Forward2").GetComponent<Canvas> ();
 		f2ButtonCanvas.enabled = false;
 		step2Prompt = GameObject.Find ("S2Prompt").GetComponent<Canvas> ();
@@ -173,8 +181,9 @@ public class Mod1Script : MonoBehaviour {
 
 	public void docsPressed(){
 		step1Canvas.enabled = false;
-		step1ContinuedCanvas.enabled = true;
-		stepOneHeaderText.text = "What are key financial documents?";
+		step1DocsCanvas.enabled = true;
+		//step1ContinuedCanvas.enabled = true;
+		/*stepOneHeaderText.text = "What are key financial documents?";
 		stepOneBodyText.text = "Get and make copies of these documents:" +
 			"\n\t * Social Security Cards (or just numbers, if " +
 			"\n\t   that's all you have) for you, your children, and" +
@@ -183,7 +192,31 @@ public class Mod1Script : MonoBehaviour {
 			"\n\t * All bank and credit card statemetns" +
 			"\n\t * Proof of any benefits (public assistance, " +
 			"\n\t   disability, retirement) and insurance (medical, " +
-			"\n\t   auto, life)" ;
+			"\n\t   auto, life)" ;*/
+	}
+
+	public void docsBackButtonPressed(){
+		step1Canvas.enabled = true;
+		step1DocsCanvas.enabled = false;
+	}
+
+	public void seeButtonPressed(){
+		step1DocsCanvas.enabled = false;
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		Vector3 movementVector = new Vector3 (85f,182.8f,90f);
+		player [0].transform.position = movementVector;
+		campDoneButtonCanvas.enabled = true;
+	}
+
+	public void campDoneButtonPressed(){
+		step1DocsCanvas.enabled = true;
+		campDoneButtonCanvas.enabled = false;
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		//148f,182.8f,98f
+		Vector3 movementVector = new Vector3 (132.5f,182.8f,100f);
+		player [0].transform.position = movementVector;
 	}
 
 	public void otherPressed(){
@@ -389,6 +422,7 @@ public class Mod1Script : MonoBehaviour {
 		player [0].transform.Translate (movementVector);
 		f2ButtonCanvas.enabled = false;
 		f3ButtonCanvas.enabled = false;
+		f4ButtonCanvas.enabled = false;
 		step3Canvas.enabled = false;
 		sdcCanvasPrompt.enabled = true;
 		return1Canvas.enabled = false;
