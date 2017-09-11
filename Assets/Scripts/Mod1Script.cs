@@ -24,7 +24,7 @@ public class Mod1Script : MonoBehaviour {
 	private Canvas step3Canvas;
 	private Canvas step3BankCanvas;
 	private Canvas step3CreditCanvas;
-	private Canvas step3VidCanvas;
+	//private Canvas step3VidCanvas;
 	private Canvas step3WhyCanvas;
 	private Canvas step3BasicsCanvas;
 
@@ -104,8 +104,8 @@ public class Mod1Script : MonoBehaviour {
 		step3BankCanvas.enabled = false;
 		step3CreditCanvas = GameObject.Find ("Step3CreditCanvas").GetComponent<Canvas> ();
 		step3CreditCanvas.enabled = false;
-		step3VidCanvas = GameObject.Find ("Step3VidCanvas").GetComponent<Canvas> ();
-		step3VidCanvas.enabled = false;
+		//step3VidCanvas = GameObject.Find ("Step3VidCanvas").GetComponent<Canvas> ();
+		//step3VidCanvas.enabled = false;
 		step3WhyCanvas = GameObject.Find ("Step3WhyCanvas").GetComponent<Canvas> ();
 		step3WhyCanvas.enabled = false;
 		step3BasicsCanvas = GameObject.Find ("Step3BasicsCanvas").GetComponent<Canvas> ();
@@ -115,7 +115,7 @@ public class Mod1Script : MonoBehaviour {
 		stepOneBodyText = GameObject.Find ("S1CBody").GetComponent<Text> ();
 		stepTwoHeaderText = GameObject.Find ("S2CHeader").GetComponent<Text> ();
 		stepTwoBodyText = GameObject.Find ("S2CBody").GetComponent<Text> ();
-		s2ButtonText = GameObject.Find ("ButtonText").GetComponent<Text> ();
+		s2ButtonText = GameObject.Find ("ButtonText2").GetComponent<Text> ();
 		stepThreeHeaderText = GameObject.Find ("S3CHeader").GetComponent<Text> ();
 		stepThreeBodyText = GameObject.Find ("S3CBody").GetComponent<Text> ();
 
@@ -182,17 +182,6 @@ public class Mod1Script : MonoBehaviour {
 	public void docsPressed(){
 		step1Canvas.enabled = false;
 		step1DocsCanvas.enabled = true;
-		//step1ContinuedCanvas.enabled = true;
-		/*stepOneHeaderText.text = "What are key financial documents?";
-		stepOneBodyText.text = "Get and make copies of these documents:" +
-			"\n\t * Social Security Cards (or just numbers, if " +
-			"\n\t   that's all you have) for you, your children, and" +
-			"\n\t   your partner" +
-			"\n\t * Copies of marriage and birth certificates" +
-			"\n\t * All bank and credit card statemetns" +
-			"\n\t * Proof of any benefits (public assistance, " +
-			"\n\t   disability, retirement) and insurance (medical, " +
-			"\n\t   auto, life)" ;*/
 	}
 
 	public void docsBackButtonPressed(){
@@ -214,7 +203,6 @@ public class Mod1Script : MonoBehaviour {
 		campDoneButtonCanvas.enabled = false;
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		//148f,182.8f,98f
 		Vector3 movementVector = new Vector3 (132.5f,182.8f,100f);
 		player [0].transform.position = movementVector;
 	}
@@ -274,6 +262,7 @@ public class Mod1Script : MonoBehaviour {
 		"\n\t own private email account." +
 		"\n * Have gifts, raises, or bonuses from work or " +
 		"\n\tfamily deposited directly into the secret account.";
+		s2ButtonText.text = "Back";
 	}
 
 	public void assetsButtonPressed(){
@@ -374,13 +363,14 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	public void videoButtonPressed(){
-		step3VidCanvas.enabled = true;
-		step3Canvas.enabled = false;
-		step3CreditCanvas.enabled = false;
+		//step3VidCanvas.enabled = true;
+		//step3Canvas.enabled = false;
+		//step3CreditCanvas.enabled = false;
+		Application.OpenURL ("https://www.youtube.com/watch?v=4Gv01qrJvcY");
 	}
 
 	public void s3VidBackButtonPressed(){
-		step3VidCanvas.enabled = false;
+		//step3VidCanvas.enabled = false;
 		step3CreditCanvas.enabled = true;
 	}
 

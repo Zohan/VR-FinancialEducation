@@ -921,7 +921,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 31831432}
   m_LocalRotation: {x: 0.10835331, y: 0.83592975, z: 0.17844681, w: -0.5075804}
-  m_LocalPosition: {x: 87.97865, y: -1.7435608, z: 90.46698}
+  m_LocalPosition: {x: 117.93512, y: -1.8923492, z: 101.63673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 728170823}
@@ -2610,9 +2610,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Get information about your finances.\r\nYou need to know what you have
-    --assets-- and what you owe --liabilities.\" \r\n\t * Get proof that these assets
-    and liabilities \n\t\texist.\r\n\t* Keep that proof safe.\" \nThis information
-    will be important if there is ever a legal dispute about property or ownership"
+    --assets-- and what you owe --liabilities.\n\t * Get proof that these assets and
+    liabilities \n\t\texist.\r\n\t* Keep that proof safe.\nThis information will be
+    important if there is ever a legal dispute about property or ownership"
 --- !u!222 &120001351
 CanvasRenderer:
   m_ObjectHideFlags: 0
