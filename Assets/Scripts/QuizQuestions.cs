@@ -82,7 +82,7 @@ public class QuizQuestions : MonoBehaviour {
 	private Text quizScore;
 
 	int score;
-	int questionNum;
+	static int questionNum;
 
 	Color color;
 	Color green = new Color(90,70,10);
@@ -542,51 +542,75 @@ public class QuizQuestions : MonoBehaviour {
 		int playerScore = calculateScore ();
 		resultsCanvas.enabled = true;
 		reviewCanvas.enabled = false;
-		quizScore.text = "You answered " + playerScore + " out of 8 questions correctly";
+		quizScore.text = "You answered " + playerScore + " out of 18 questions correctly";
+		GameObject button = GameObject.Find ("FinishedButton");
+		button.GetComponent<Image> ().color = Color.green;
 	}
-
+		
 	public int calculateScore(){
 		// question 1
-		if (q1O1Pressed == true && q1O2Pressed == true) {
+		if (q1O1Pressed == true) {
 			score++;
-			Debug.Log ("Q1 correct");
+		}
+		if (q1O2Pressed == true) {
+				score++;
 		}
 		// question 2
-		if(q2SSButton == true && q2MCButton == true && q2BCButton == true && q2PIButton == true && q2PBButton == true){
+		if(q2SSButton == true){
 			score++;
-			Debug.Log ("Q2 correct");
+		}
+		if(q2MCButton == true){
+			score++;
+		}
+		if(q2BCButton == true){
+			score++;
+		}
+		if(q2PIButton == true){
+			score++;
+		}
+		if( q2PBButton == true){
+			score++;
+		}		
+		if(q2PicButton = true){
+			score++;
 		}
 		// question 3
-		if(q3ChangeButton == true && q3UIButton == true){
+		if(q3ChangeButton == true){
 			score++;
-			Debug.Log ("Q3 correct");
+		}
+		if(q3UIButton == true){
+			score++;
 		}
 		// question 4
 		if (q4true == true) {
 			score++;
-			Debug.Log ("Q4 correct");
 		}
 		// question 5
 		if(q5AllButton == true){
 			score++;
-			Debug.Log ("Q5 correct");
 		}
 		// question 6
-		if(q6BorrowButton == true && q6CHButton == true){
+		if(q6BorrowButton == true){
 			score++;
-			Debug.Log ("Q6 correct");
+		}
+		if(q6CHButton == true){
+			score++;
 		}
 		//question 7
 		if(q7BothButton == true){
 			score++;
-			Debug.Log ("Q7 correct");
 		}
 		//question 8
-		if(q8SSButton == true && q8StatesButton == true && q8ChangeButton == true){
+		if(q8SSButton == true){
 			score++;
-			Debug.Log ("Q8 correct");
 		}
-		Debug.Log ("Total score: " + score);
+		if(q8StatesButton == true){
+			score++;
+		}
+		if(q8ChangeButton == true){
+			score++;
+		}
+		Debug.Log ("Total score: " + score + "out of 18");
 		return score;
 	}
 
@@ -595,7 +619,8 @@ public class QuizQuestions : MonoBehaviour {
 		reviewCanvas.enabled = true;
 		questionNum++;
 		showQuestion (questionNum);
-	
+		GameObject button = GameObject.Find ("ReviewButton");
+		button.GetComponent<Image> ().color = Color.green;
 	}
 
 	public void showQuestion(int qNum){
@@ -603,23 +628,97 @@ public class QuizQuestions : MonoBehaviour {
 
 		if (qNum == 1) {
 			headerText.text = "Question 1";
+			questionText.fontSize = 20;
 			questionText.text = "Which of the following are true:" +
-				"\n \t\t Answer: I can follow this course from the beginning through to the end" +
-				"\n \t\t\t and" +
-				"\n \t\t\t I can pick and choose what I want to read and learn";
+				"\n" +
+				"\nAnswer: " +
+				"\n\t * I can follow this course from the beginning " +
+				"\n\t   through to the end" +
+				"\n\t * I can pick and choose what I want to read and " +
+				"\n\t   learn";
 		}
 		if (qNum == 2) {
+			questionText.fontSize = 18;
 			headerText.text = "Question 2";
 			questionText.text = "What are some key documents you should get ahold of and keep safe as you work to regain your financial independence? Choose all that apply:" +
-			"\n\t\t Answer: Social security card, " +
-			"\n\t\t copy of marriage certificate, " +
-			"\n\t\t copy of birth certificates, " +
-			"\n\t\t proof of insurance (medical, life, home, auto), " +
-			"\n\t\t proof of any benefits received (disability, public assistance, retirement), " +
-			"\n\t\t and pictures of vaulable possessions in your home";
+			"\n" +
+			"\nAnswer: You need the following:" +
+			"\n\t * Social security card, " +
+			"\n\t * Copy of marriage certificate, " +
+			"\n\t * Copy of birth certificates, " +
+			"\n\t * Proof of insurance (medical, life, home, auto), " +
+			"\n\t * Proof of any benefits received (disability, " +
+			"\n\t   public assistance, retirement), " +
+			"\n\t * and pictures of vaulable possessions in your " +
+			"\n\t   home";
+		}
+		if (qNum == 3) {
+			headerText.text = "Question 3";
+			questionText.fontSize = 20;
+			questionText.text = "What are some good ways to begin saving money as you are leaving an abusive relationship?" +
+			"\n" +
+			"\nAnswer: Save spare change from purchases and have any new or unexpected income (gifts, raises, bonuses) deposited into a new, secret bank account you open in your name";
+		}
+		if (qNum == 4) {
+			headerText.text = "Question 4";
+			questionText.text = "True or False: It is important to document the spending you may do with assets that have been kept in a joint account." +
+				"\n" +
+				"\nAnswer: True";
+		}
+		if (qNum == 5) {
+			headerText.text = "Question 5";
+			questionText.fontSize = 20;
+			questionText.text = "What documents do you typically need to open a bank account at a bank branch office?" +
+				"\n\tAnswer: All of the following:" +
+				"\n\t * A valid ID, such as a drivers license" +
+				"\n\t * A Social Security card" +
+				"\n\t * Some minimum amount of money, which can " +
+				"\n\t   vary from bank to bank (often a couple " +
+				"\n\t   hundred of dollars, sometimes as little " +
+				"\n\t   as $25";
+		}
+		if (qNum == 6) {
+			headerText.text = "Question 6";
+			questionText.fontSize = 20;
+			questionText.text = "What are some of the reasons it's smart to have and use a credit card?" +
+				"\n" +
+				"\nAnswer: It's a good way for you to start showing that you can borrow money and pay it back reliably, and, it's a way to start establishing history.";
+		}
+		if (qNum == 7) {
+			headerText.text = "Question 7";
+			questionText.fontSize = 18;
+			questionText.text = "What is a good first step if you want to find out about getting legally separated, divorced, or getting child support?" +
+				"\n" +
+				"\nAnswer: Both of the following:" +
+				"\n\t * Go to a support agency and inquire about " +
+				"\n\t   getting a lawyer" +
+				"\n\t * Assemble some key documents, like an " +
+				"\n\t   inventory of your possessions, some documentation " +
+				"\n\t   of your living expenses, and evicence of your " +
+				"\n\t   insurances (medical, auto, home, life)";
+		}
+		if (qNum == 8) {
+			headerText.text = "Question 8";
+			questionText.fontSize = 18;
+			questionText.text = "Which of the following are true about changing your name to protect your identity?" +
+				"\n" +
+				"\nAnswer: The following are true:" +
+				"\n\t * If you change your Social Security number, you may " +
+				"\n\t   lose your credit history, educational " +
+				"\n\t   accomplishments, and other information tied to your" +
+				"\n\t   old identity" +
+				"\n\t * Most states require some form of public disclosure of " +
+				"\n\t   your identity" +
+				"\n\t * If you don't want to change your identity (name " +
+				"\n\t   and/or Social Security number) there are other ways " +
+				"\n\t   to protect yourself and your privacy";
+		}
+		if (qNum == 9) {
+			questionNum = 0;
+			resultsCanvas.enabled = true;
+			reviewCanvas.enabled = false;
 		}
 	}
-
 
 
 
@@ -630,11 +729,14 @@ public class QuizQuestions : MonoBehaviour {
 		player [0].transform.position = movementVector;
 		resultsCanvas.enabled = false;
 		startCanvas.enabled = true;
+		GameObject button = GameObject.Find ("RetakeButton");
+		button.GetComponent<Image> ().color = Color.green;
 	
 	}
 
 	// change scene 
-	/*public void returnPressed(){
-
-	}*/
+	public void returnPressed(){
+		GameObject button = GameObject.Find ("ReturnButton");
+		button.GetComponent<Image> ().color = Color.green;
+	}
 } 
