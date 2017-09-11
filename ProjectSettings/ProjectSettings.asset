@@ -7,7 +7,7 @@ PlayerSettings:
   productGUID: 98fe3e7b00df36c4aaaa535b342c6b45
   AndroidProfiler: 0
   defaultScreenOrientation: 4
-  targetDevice: 2
+  targetDevice: 0
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: ICMNC
