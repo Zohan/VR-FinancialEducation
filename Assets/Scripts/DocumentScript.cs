@@ -8,11 +8,13 @@ public class DocumentScript : MonoBehaviour {
 	Vector3 origin;
 	Quaternion origin_rotate;
 	private bool selected;
+	GameObject arr1;
 
 	void Start(){
 		origin = this.gameObject.transform.position;
 		origin_rotate = this.gameObject.transform.rotation;
 		selected = false;
+		arr1 = GameObject.Find ("arrow");
 	}
 
 	public void selectdoc(){
@@ -20,7 +22,6 @@ public class DocumentScript : MonoBehaviour {
 			selected = true;
 			docview ();
 		} else {
-			Debug.Log ("what");
 			selected = false;
 			this.gameObject.transform.rotation = origin_rotate;
 			this.gameObject.transform.position = origin;

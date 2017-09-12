@@ -1,0 +1,219 @@
+fileFormatVersion: 2
+guid: bb2e0241bfc62364891fecb85a7270df
+timeCreated: 1493452195
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: C300_Bamper_Back
+    100004: C300_Bamper_Front
+    100006: C300_Body
+    100008: C300_Body_Physics
+    100010: C300_Bottom
+    100012: C300_Door_Back_Left
+    100014: C300_Door_Back_Right
+    100016: C300_Door_Front_Left
+    100018: C300_Door_Front_Right
+    100020: C300_Hood_Back
+    100022: C300_Hood_Front
+    100024: C300_Light_Back_Left
+    100026: C300_Light_Back_Right
+    100028: C300_Light_Front_Left
+    100030: C300_Light_Front_Right
+    100032: C300_Salon
+    100034: C300_Wheel_Left_Back
+    100036: C300_Wheel_Left_Font
+    100038: C300_Wheel_Right_Back
+    100040: C300_Wheel_Right_Front
+    100042: C300_Win_Back
+    100044: C300_Win_Door_Left_Back
+    100046: C300_Win_Door_Left_Front
+    100048: C300_Win_Door_Right_Back
+    100050: C300_Win_Door_Right_Front
+    100052: C300_Win_Front
+    100054: C300_Win_Light_Front_Left
+    100056: C300_Win_Light_Front_Right
+    400000: //RootNode
+    400002: C300_Bamper_Back
+    400004: C300_Bamper_Front
+    400006: C300_Body
+    400008: C300_Body_Physics
+    400010: C300_Bottom
+    400012: C300_Door_Back_Left
+    400014: C300_Door_Back_Right
+    400016: C300_Door_Front_Left
+    400018: C300_Door_Front_Right
+    400020: C300_Hood_Back
+    400022: C300_Hood_Front
+    400024: C300_Light_Back_Left
+    400026: C300_Light_Back_Right
+    400028: C300_Light_Front_Left
+    400030: C300_Light_Front_Right
+    400032: C300_Salon
+    400034: C300_Wheel_Left_Back
+    400036: C300_Wheel_Left_Font
+    400038: C300_Wheel_Right_Back
+    400040: C300_Wheel_Right_Front
+    400042: C300_Win_Back
+    400044: C300_Win_Door_Left_Back
+    400046: C300_Win_Door_Left_Front
+    400048: C300_Win_Door_Right_Back
+    400050: C300_Win_Door_Right_Front
+    400052: C300_Win_Front
+    400054: C300_Win_Light_Front_Left
+    400056: C300_Win_Light_Front_Right
+    2300000: C300_Bamper_Back
+    2300002: C300_Bamper_Front
+    2300004: C300_Body
+    2300006: C300_Body_Physics
+    2300008: C300_Bottom
+    2300010: C300_Door_Back_Left
+    2300012: C300_Door_Back_Right
+    2300014: C300_Door_Front_Left
+    2300016: C300_Door_Front_Right
+    2300018: C300_Hood_Back
+    2300020: C300_Hood_Front
+    2300022: C300_Light_Back_Left
+    2300024: C300_Light_Back_Right
+    2300026: C300_Light_Front_Left
+    2300028: C300_Light_Front_Right
+    2300030: C300_Salon
+    2300032: C300_Wheel_Left_Back
+    2300034: C300_Wheel_Left_Font
+    2300036: C300_Wheel_Right_Back
+    2300038: C300_Wheel_Right_Front
+    2300040: C300_Win_Back
+    2300042: C300_Win_Door_Left_Back
+    2300044: C300_Win_Door_Left_Front
+    2300046: C300_Win_Door_Right_Back
+    2300048: C300_Win_Door_Right_Front
+    2300050: C300_Win_Front
+    2300052: C300_Win_Light_Front_Left
+    2300054: C300_Win_Light_Front_Right
+    3300000: C300_Bamper_Back
+    3300002: C300_Bamper_Front
+    3300004: C300_Body
+    3300006: C300_Body_Physics
+    3300008: C300_Bottom
+    3300010: C300_Door_Back_Left
+    3300012: C300_Door_Back_Right
+    3300014: C300_Door_Front_Left
+    3300016: C300_Door_Front_Right
+    3300018: C300_Hood_Back
+    3300020: C300_Hood_Front
+    3300022: C300_Light_Back_Left
+    3300024: C300_Light_Back_Right
+    3300026: C300_Light_Front_Left
+    3300028: C300_Light_Front_Right
+    3300030: C300_Salon
+    3300032: C300_Wheel_Left_Back
+    3300034: C300_Wheel_Left_Font
+    3300036: C300_Wheel_Right_Back
+    3300038: C300_Wheel_Right_Front
+    3300040: C300_Win_Back
+    3300042: C300_Win_Door_Left_Back
+    3300044: C300_Win_Door_Left_Front
+    3300046: C300_Win_Door_Right_Back
+    3300048: C300_Win_Door_Right_Front
+    3300050: C300_Win_Front
+    3300052: C300_Win_Light_Front_Left
+    3300054: C300_Win_Light_Front_Right
+    4300000: C300_Body_Physics
+    4300002: C300_Win_Light_Front_Left
+    4300004: C300_Light_Front_Left
+    4300006: C300_Win_Light_Front_Right
+    4300008: C300_Light_Front_Right
+    4300010: C300_Body
+    4300012: C300_Win_Door_Right_Back
+    4300014: C300_Win_Front
+    4300016: C300_Win_Back
+    4300018: C300_Hood_Back
+    4300020: C300_Hood_Front
+    4300022: C300_Bamper_Front
+    4300024: C300_Door_Front_Left
+    4300026: C300_Door_Back_Left
+    4300028: C300_Bamper_Back
+    4300030: C300_Salon
+    4300032: C300_Bottom
+    4300034: C300_Win_Door_Left_Front
+    4300036: C300_Win_Door_Left_Back
+    4300038: C300_Win_Door_Right_Front
+    4300040: C300_Door_Back_Right
+    4300042: C300_Door_Front_Right
+    4300044: C300_Light_Back_Left
+    4300046: C300_Light_Back_Right
+    4300048: C300_Wheel_Left_Font
+    4300050: C300_Wheel_Right_Front
+    4300052: C300_Wheel_Right_Back
+    4300054: C300_Wheel_Left_Back
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
