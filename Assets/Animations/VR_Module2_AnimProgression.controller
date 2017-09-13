@@ -966,21 +966,21 @@ AnimatorStateMachine:
       second:
       - {fileID: 1109789874710770294}
     data:
+      first: {fileID: 1107799347117876570}
+      second:
+      - {fileID: 1109361515001047660}
+    data:
       first: {fileID: 1107036613351494242}
       second:
       - {fileID: 1109587322584074800}
-    data:
-      first: {fileID: 1107112213685238388}
-      second:
-      - {fileID: 1109558494737065022}
     data:
       first: {fileID: 1107666967311075882}
       second:
       - {fileID: 1109969508621099514}
     data:
-      first: {fileID: 1107799347117876570}
+      first: {fileID: 1107112213685238388}
       second:
-      - {fileID: 1109361515001047660}
+      - {fileID: 1109558494737065022}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 288, y: 60, z: 0}
   m_EntryPosition: {x: 60, y: 132, z: 0}
