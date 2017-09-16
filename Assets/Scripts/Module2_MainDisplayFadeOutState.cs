@@ -14,6 +14,7 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
     private int questionsState = Animator.StringToHash("Base Layer.Introduction.Questions");
     private int explanationState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Explanation");
     private int needsExamplesState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Needs Examples");
+    private int wantsExamplesState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Wants Examples");
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -34,8 +35,6 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
         // Reset this animator's "fadeOut" trigger
         animator.ResetTrigger("fadeOut");
 
-        Debug.Log("Inside 'fadeOut' of Main Display.");
-
         // Perform a state transition to the next desired state
         // TODO: Make functionality to pass state from calling state (e.g., questions) to this animator/state script
         if (progressionAnimator != null)
@@ -55,6 +54,12 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
             {
                 // Trigger the next state (wants examples)
                 progressionAnimator.SetTrigger("moveToWants");
+            }
+            else if (progressionAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == wantsExamplesState)
+            {
+                Debug.Log("Move to Stay Focused...");
+                // Trigger the next state (stay focused)
+                progressionAnimator.SetTrigger("moveToStayFocused");
             }
         }
     }
