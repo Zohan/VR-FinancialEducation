@@ -18,7 +18,9 @@ public class Mod1Script : MonoBehaviour {
 	private Canvas f2ButtonCanvas;
 	private Canvas step2Prompt;
 	private Canvas step2Canvas;
-	private Canvas step2ContinuedCanvas;
+	private Canvas step2HowCanvas;
+	private Canvas step2AssetsCanvas;
+	private Canvas step2ImportantCanvas;
 	private Canvas f3ButtonCanvas;
 	private Canvas step3Prompt;
 	private Canvas step3Canvas;
@@ -91,8 +93,12 @@ public class Mod1Script : MonoBehaviour {
 		step2Prompt.enabled = false;
 		step2Canvas = GameObject.Find ("Step2Canvas").GetComponent<Canvas> ();
 		step2Canvas.enabled = false;
-		step2ContinuedCanvas = GameObject.Find ("Step2Continued").GetComponent<Canvas> ();
-		step2ContinuedCanvas.enabled = false;
+		step2HowCanvas = GameObject.Find ("Step2How").GetComponent<Canvas> ();
+		step2HowCanvas.enabled = false;
+		step2AssetsCanvas = GameObject.Find ("Step2Assets").GetComponent<Canvas> ();
+		step2AssetsCanvas.enabled = false;
+		step2ImportantCanvas = GameObject.Find ("Step2Important").GetComponent<Canvas> ();
+		step2ImportantCanvas.enabled = false;
 		f3ButtonCanvas = GameObject.Find ("Forward3").GetComponent<Canvas> ();
 		f3ButtonCanvas.enabled = false;
 		step3Prompt = GameObject.Find ("S3Prompt").GetComponent<Canvas> ();
@@ -111,10 +117,10 @@ public class Mod1Script : MonoBehaviour {
 
 		stepOneHeaderText = GameObject.Find ("S1CHeader").GetComponent<Text> ();
 		stepOneBodyText = GameObject.Find ("S1CBody").GetComponent<Text> ();
-		stepTwoHeaderText = GameObject.Find ("S2CHeader").GetComponent<Text> ();
+		/*stepTwoHeaderText = GameObject.Find ("S2CHeader").GetComponent<Text> ();
 		stepTwoBodyText = GameObject.Find ("S2CBody").GetComponent<Text> ();
 		//s2ButtonText = GameObject.Find ("ButtonText2").GetComponent<Text> ();
-		s2ButtonText = GameObject.Find ("ButtonText").GetComponent<Text> ();
+		s2ButtonText = GameObject.Find ("ButtonText").GetComponent<Text> ();*/
 		stepThreeHeaderText = GameObject.Find ("S3CHeader").GetComponent<Text> ();
 		stepThreeBodyText = GameObject.Find ("S3CBody").GetComponent<Text> ();
 
@@ -250,66 +256,33 @@ public class Mod1Script : MonoBehaviour {
 
 	public void howButtonPressed(){
 		step2Canvas.enabled = false;
-		step2ContinuedCanvas.enabled = true;
-		stepTwoHeaderText.fontSize = 30;
-		stepTwoBodyText.fontSize = 20;
-		stepTwoHeaderText.text = "How can I save money?";
-		stepTwoBodyText.text = "* Save change from purchases and keep it in a " +
-			"\n\tsafe place or in a secret account." +
-		"\n * Open a bank account that your partner is " +
-		"\n\t unaware of. Have bank statemetns sent to a " +
-		"\n\t safe mailing address or electronically to your " +
-		"\n\t own private email account." +
-		"\n * Have gifts, raises, or bonuses from work or " +
-		"\n\tfamily deposited directly into the secret account.";
-		if (text == false) {
-			s2ButtonText.text = "Back";
-		}
+		step2HowCanvas.enabled = true;
 	}
 
 	public void assetsButtonPressed(){
-		text = true;
 		step2Canvas.enabled = false;
-		step2ContinuedCanvas.enabled = true;
-		stepTwoHeaderText.fontSize = 30;
-		stepTwoBodyText.fontSize = 20;
-		stepTwoHeaderText.text = "Take and protect your assets";
-		stepTwoBodyText.text = "* Many abusers drain joint accounts when their " +
-			"\n  partners leave as a means of regaining control." +
-		"\n* Consider withdrawing half of all assets in joint " +
-		"\n  checking and savings account when and if you " +
-		"\n  decide to leave. Also consider changing any " +
-		"\n  passwords and PIN numbers that allow an abuser " +
-		"\n  access to your assets." +
-		"\n * This is your money, and you will need it to take " +
-		"\n   care of yourself and any children you are taking " +
-		"\n   care of.";
-		if (text == true) {
-			s2ButtonText.text = "Continue";
-		}
+		step2AssetsCanvas.enabled = true;
 	}
 
 	public void s2BackButtonPressed(){
-		//Debug.Log (s2ButtonText.text);
-		//if (s2ButtonText.text == "Continue") {
-		if (text == true) {
-			stepTwoHeaderText.fontSize = 20;
-			stepTwoHeaderText.text = "Important! Document your spending from joint assets";
-			stepTwoBodyText.fontSize = 15;
-			stepTwoBodyText.text = "Withdrawing money from a joint account can provide you the means to take care of yourself and your children. However, if you do remove funds from a jointly held account, it's important to keep receipts on track of how the funds were spent. This is in case a judge or court asks you to show how the money was used. This is especially true when children are involved. If you are hesitant to withdraw money, remember that you can always return it. Let taking care of yourself and any children be your top priority.";
-			s2ButtonText.text = "Back";
-			text = false;
-		}
-	//	} 
-	else {
-			step2ContinuedCanvas.enabled = false;
-			step2Canvas.enabled = true;
-		}
+		step2HowCanvas.enabled = false;
+		step2AssetsCanvas.enabled = false;
+		step2Canvas.enabled = true;
+	}
+
+	public void s2ContinueButtonPressed(){
+		step2AssetsCanvas.enabled = false;
+		step2ImportantCanvas.enabled = true;
+	}
+
+	public void s2ImportantBackButtonPressed(){
+		step2ImportantCanvas.enabled = false;
+		step2AssetsCanvas.enabled = true;
 	}
 
 	public void s2NextPressed(){
 		step2Canvas.enabled = false;
-		step2ContinuedCanvas.enabled = false;
+		step2HowCanvas.enabled = false;
 		f3ButtonCanvas.enabled = true;
 	}
 
