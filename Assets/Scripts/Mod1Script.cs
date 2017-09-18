@@ -24,7 +24,6 @@ public class Mod1Script : MonoBehaviour {
 	private Canvas step3Canvas;
 	private Canvas step3BankCanvas;
 	private Canvas step3CreditCanvas;
-	//private Canvas step3VidCanvas;
 	private Canvas step3WhyCanvas;
 	private Canvas step3BasicsCanvas;
 
@@ -65,7 +64,7 @@ public class Mod1Script : MonoBehaviour {
 	private Canvas return3Canvas;
 
 
-
+	static bool text = false;
 
 
 	// Use this for initialization
@@ -104,8 +103,7 @@ public class Mod1Script : MonoBehaviour {
 		step3BankCanvas.enabled = false;
 		step3CreditCanvas = GameObject.Find ("Step3CreditCanvas").GetComponent<Canvas> ();
 		step3CreditCanvas.enabled = false;
-		//step3VidCanvas = GameObject.Find ("Step3VidCanvas").GetComponent<Canvas> ();
-		//step3VidCanvas.enabled = false;
+
 		step3WhyCanvas = GameObject.Find ("Step3WhyCanvas").GetComponent<Canvas> ();
 		step3WhyCanvas.enabled = false;
 		step3BasicsCanvas = GameObject.Find ("Step3BasicsCanvas").GetComponent<Canvas> ();
@@ -115,7 +113,8 @@ public class Mod1Script : MonoBehaviour {
 		stepOneBodyText = GameObject.Find ("S1CBody").GetComponent<Text> ();
 		stepTwoHeaderText = GameObject.Find ("S2CHeader").GetComponent<Text> ();
 		stepTwoBodyText = GameObject.Find ("S2CBody").GetComponent<Text> ();
-		s2ButtonText = GameObject.Find ("ButtonText2").GetComponent<Text> ();
+		//s2ButtonText = GameObject.Find ("ButtonText2").GetComponent<Text> ();
+		s2ButtonText = GameObject.Find ("ButtonText").GetComponent<Text> ();
 		stepThreeHeaderText = GameObject.Find ("S3CHeader").GetComponent<Text> ();
 		stepThreeBodyText = GameObject.Find ("S3CBody").GetComponent<Text> ();
 
@@ -203,7 +202,8 @@ public class Mod1Script : MonoBehaviour {
 		campDoneButtonCanvas.enabled = false;
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
-		Vector3 movementVector = new Vector3 (132.5f,182.8f,100f);
+		//Vector3 movementVector = new Vector3 (132.5f,182.8f,100f);
+		Vector3 movementVector = new Vector3 (131f,182.8f,100f);
 		player [0].transform.position = movementVector;
 	}
 
@@ -262,10 +262,13 @@ public class Mod1Script : MonoBehaviour {
 		"\n\t own private email account." +
 		"\n * Have gifts, raises, or bonuses from work or " +
 		"\n\tfamily deposited directly into the secret account.";
-		s2ButtonText.text = "Back";
+		if (text == false) {
+			s2ButtonText.text = "Back";
+		}
 	}
 
 	public void assetsButtonPressed(){
+		text = true;
 		step2Canvas.enabled = false;
 		step2ContinuedCanvas.enabled = true;
 		stepTwoHeaderText.fontSize = 30;
@@ -281,18 +284,24 @@ public class Mod1Script : MonoBehaviour {
 		"\n * This is your money, and you will need it to take " +
 		"\n   care of yourself and any children you are taking " +
 		"\n   care of.";
-		s2ButtonText.text = "Continue";
+		if (text == true) {
+			s2ButtonText.text = "Continue";
+		}
 	}
 
 	public void s2BackButtonPressed(){
 		//Debug.Log (s2ButtonText.text);
-		if (s2ButtonText.text == "Continue") {
+		//if (s2ButtonText.text == "Continue") {
+		if (text == true) {
 			stepTwoHeaderText.fontSize = 20;
 			stepTwoHeaderText.text = "Important! Document your spending from joint assets";
 			stepTwoBodyText.fontSize = 15;
 			stepTwoBodyText.text = "Withdrawing money from a joint account can provide you the means to take care of yourself and your children. However, if you do remove funds from a jointly held account, it's important to keep receipts on track of how the funds were spent. This is in case a judge or court asks you to show how the money was used. This is especially true when children are involved. If you are hesitant to withdraw money, remember that you can always return it. Let taking care of yourself and any children be your top priority.";
 			s2ButtonText.text = "Back";
-		} else {
+			text = false;
+		}
+	//	} 
+	else {
 			step2ContinuedCanvas.enabled = false;
 			step2Canvas.enabled = true;
 		}
@@ -347,6 +356,11 @@ public class Mod1Script : MonoBehaviour {
 		step3WhyCanvas.enabled = true;
 	}
 
+	public void whyBackButtonPressed(){
+		step3WhyCanvas.enabled = false;
+		step3CreditCanvas.enabled = true;
+	}
+
 	public void basicsButtonPressed(){
 		step3CreditCanvas.enabled = false;
 		step3WhyCanvas.enabled = false;
@@ -363,14 +377,10 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	public void videoButtonPressed(){
-		//step3VidCanvas.enabled = true;
-		//step3Canvas.enabled = false;
-		//step3CreditCanvas.enabled = false;
 		Application.OpenURL ("https://www.youtube.com/watch?v=4Gv01qrJvcY");
 	}
 
 	public void s3VidBackButtonPressed(){
-		//step3VidCanvas.enabled = false;
 		step3CreditCanvas.enabled = true;
 	}
 
