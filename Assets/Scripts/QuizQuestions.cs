@@ -140,7 +140,7 @@ public class QuizQuestions : MonoBehaviour {
 		// initializatin for Q5
 		movement5Canvas = GameObject.Find ("MoveToQ5").GetComponent<Canvas> ();
 		q5PromptCanvas = GameObject.Find ("Question5").GetComponent<Canvas> ();
-		q5Canvas = GameObject.Find ("Q5Canvas").GetComponent<Canvas> ();
+		q5Canvas = GameObject.Find ("Q5").GetComponent<Canvas> ();
 		movement5Canvas.enabled = false;
 		q5PromptCanvas.enabled = false;
 		q5Canvas.enabled = false;
