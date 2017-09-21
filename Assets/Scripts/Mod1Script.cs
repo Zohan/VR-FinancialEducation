@@ -81,8 +81,6 @@ public class Mod1Script : MonoBehaviour {
 		step1Prompt.enabled = false;
 		step1Canvas = GameObject.Find ("Step1Canvas").GetComponent<Canvas> ();
 		step1Canvas.enabled = false;
-		step1ContinuedCanvas = GameObject.Find ("Step1Continued").GetComponent<Canvas> ();
-		step1ContinuedCanvas.enabled = false;
 		step1DocsCanvas = GameObject.Find ("Step1Docs").GetComponent<Canvas>();
 		step1DocsCanvas.enabled = false;
 		campDoneButtonCanvas = GameObject.Find ("CampBackButton").GetComponent<Canvas> ();
@@ -101,28 +99,11 @@ public class Mod1Script : MonoBehaviour {
 		step2ImportantCanvas.enabled = false;
 		f3ButtonCanvas = GameObject.Find ("Forward3").GetComponent<Canvas> ();
 		f3ButtonCanvas.enabled = false;
-		step3Prompt = GameObject.Find ("S3Prompt").GetComponent<Canvas> ();
-		step3Prompt.enabled = false;
-		step3Canvas = GameObject.Find ("Step3Canvas").GetComponent<Canvas> ();
-		step3Canvas.enabled = false;
-		step3BankCanvas = GameObject.Find ("Step3BankCanvas").GetComponent<Canvas> ();
-		step3BankCanvas.enabled = false;
-		step3CreditCanvas = GameObject.Find ("Step3CreditCanvas").GetComponent<Canvas> ();
-		step3CreditCanvas.enabled = false;
 
-		step3WhyCanvas = GameObject.Find ("Step3WhyCanvas").GetComponent<Canvas> ();
-		step3WhyCanvas.enabled = false;
-		step3BasicsCanvas = GameObject.Find ("Step3BasicsCanvas").GetComponent<Canvas> ();
-		step3BasicsCanvas.enabled = false;
-
-		stepOneHeaderText = GameObject.Find ("S1CHeader").GetComponent<Text> ();
-		stepOneBodyText = GameObject.Find ("S1CBody").GetComponent<Text> ();
 		/*stepTwoHeaderText = GameObject.Find ("S2CHeader").GetComponent<Text> ();
 		stepTwoBodyText = GameObject.Find ("S2CBody").GetComponent<Text> ();
 		//s2ButtonText = GameObject.Find ("ButtonText2").GetComponent<Text> ();
 		s2ButtonText = GameObject.Find ("ButtonText").GetComponent<Text> ();*/
-		stepThreeHeaderText = GameObject.Find ("S3CHeader").GetComponent<Text> ();
-		stepThreeBodyText = GameObject.Find ("S3CBody").GetComponent<Text> ();
 
 		return1Canvas = GameObject.Find ("Return1").GetComponent<Canvas> ();
 		return1Canvas.enabled = false;
@@ -177,9 +158,6 @@ public class Mod1Script : MonoBehaviour {
 		player [0].transform.Translate (movementVector);
 		step1Prompt.enabled = true;
 		f1ButtonCanvas.enabled = false;
-	}
-
-	public void showStep1(){
 		step1Prompt.enabled = false;
 		step1Canvas.enabled = true;
 	}
@@ -215,27 +193,23 @@ public class Mod1Script : MonoBehaviour {
 
 	public void otherPressed(){
 		step1Canvas.enabled = false;
-		step1ContinuedCanvas.enabled = true;
 		stepOneHeaderText.text = "Should I document anything else?";
 		stepOneBodyText.text = "Yes! Take pictures of any and all valuables in your home. To show these items were part of your home, include children, family, or friend sin the photos.";
 	}
 
 	public void doPressed(){
 		step1Canvas.enabled = false;
-		step1ContinuedCanvas.enabled = true;
 		stepOneHeaderText.text = "What should I do with these documents?";
 		stepOneBodyText.text = "These documents need to be kept somewhere safe. Hide them if you need to." +
 		"\nConsider using a fireproof safe box with a combination lock. This can be kept at a trusted friend or family member's house.";
 	}
 
 	public void s1BackPressed(){
-		step1ContinuedCanvas.enabled = false;
 		step1Canvas.enabled = true;
 	}
 
 	public void stepOneNextPressed(){
 		step1Canvas.enabled = false;
-		step1ContinuedCanvas.enabled = false;
 		f2ButtonCanvas.enabled = true;
 	}
 
@@ -247,11 +221,11 @@ public class Mod1Script : MonoBehaviour {
 		player [0].transform.Translate (movementVector);
 		step2Prompt.enabled = true;
 		f2ButtonCanvas.enabled = false;
+		step2Prompt.enabled = false;
+		step2Canvas.enabled = true;
 	}
 
 	public void showStep2(){
-		step2Prompt.enabled = false;
-		step2Canvas.enabled = true;
 	}
 
 	public void howButtonPressed(){
@@ -293,12 +267,13 @@ public class Mod1Script : MonoBehaviour {
 		player [0].transform.Translate (movementVector);
 		step3Prompt.enabled = true;
 		f3ButtonCanvas.enabled = false;
+		step3Prompt.enabled = false;
+		step3Canvas.enabled = true;
 		//Debug.Log ("Made it");
 	}
 
 	public void showStep3(){
-		step3Prompt.enabled = false;
-		step3Canvas.enabled = true;
+		
 	}
 				
 	public void accountButtonPressed(){
@@ -326,17 +301,14 @@ public class Mod1Script : MonoBehaviour {
 
 	public void whyButtonPressed(){
 		step3CreditCanvas.enabled = false;
-		step3WhyCanvas.enabled = true;
 	}
 
 	public void whyBackButtonPressed(){
-		step3WhyCanvas.enabled = false;
 		step3CreditCanvas.enabled = true;
 	}
 
 	public void basicsButtonPressed(){
 		step3CreditCanvas.enabled = false;
-		step3WhyCanvas.enabled = false;
 		step3BasicsCanvas.enabled = true;
 	}
 
