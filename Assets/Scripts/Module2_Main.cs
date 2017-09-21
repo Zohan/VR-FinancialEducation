@@ -36,6 +36,7 @@ public class Module2_Main : MonoBehaviour {
     private Module2_NeedsWants_ExplainState needsWantsExplainStateScript;
     private Module2_NeedsWants_ExamplesState needsWantsExamplesStateScript;
     private Module2_WantsExamplesState wantsExamplesStateScript;
+    private Module2_StayFocusedState stayFocusedStateScript;
 
     // Reference to the header and body display text
     private Text headerDisplayText;
@@ -106,6 +107,10 @@ public class Module2_Main : MonoBehaviour {
         // Get reference to Needs and Wants Examples State behavior script and pass reference to this Module 2 Main script
         wantsExamplesStateScript = moduleProgressionAnimator.GetBehaviour<Module2_WantsExamplesState>();
         wantsExamplesStateScript.mainScript = this;
+
+        // Get reference to Stay Focused State behavior script and pass reference to this Module 2 Main script
+        stayFocusedStateScript = moduleProgressionAnimator.GetBehaviour<Module2_StayFocusedState>();
+        stayFocusedStateScript.mainScript = this;
     }
     
 	// Update is called once per frame
