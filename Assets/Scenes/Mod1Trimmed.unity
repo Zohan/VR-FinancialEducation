@@ -20920,7 +20920,7 @@ Prefab:
     - target: {fileID: 328709588099660728, guid: 80f3909fc377c114798004d7477718d0,
         type: 2}
       propertyPath: m_AudioOutputMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114227770997804266, guid: 80f3909fc377c114798004d7477718d0,
         type: 2}
