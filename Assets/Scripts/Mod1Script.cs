@@ -93,8 +93,6 @@ public class Mod1Script : MonoBehaviour {
 		step2Canvas.enabled = false;
 		step2HowCanvas = GameObject.Find ("Step2How").GetComponent<Canvas> ();
 		step2HowCanvas.enabled = false;
-		step2ImportantCanvas = GameObject.Find ("Step2Important").GetComponent<Canvas> ();
-		step2ImportantCanvas.enabled = false;
 		f3ButtonCanvas = GameObject.Find ("Forward3").GetComponent<Canvas> ();
 		f3ButtonCanvas.enabled = false;
 
@@ -107,8 +105,6 @@ public class Mod1Script : MonoBehaviour {
 		return1Canvas.enabled = false;
 		f4ButtonCanvas = GameObject.Find ("Forward4").GetComponent<Canvas> ();
 		f4ButtonCanvas.enabled = false;
-		sdcCanvasPrompt = GameObject.Find ("SDCCanvasPrompt").GetComponent<Canvas> ();
-		sdcCanvasPrompt.enabled = false;
 		sdcCanvas = GameObject.Find ("SDCCanvas").GetComponent<Canvas> ();
 		sdcCanvas.enabled = false;
 		sdcContinuedCanvas = GameObject.Find ("SDCcontinuedCanvas").GetComponent<Canvas> ();
@@ -121,17 +117,20 @@ public class Mod1Script : MonoBehaviour {
 		return2Canvas = GameObject.Find ("Return2").GetComponent<Canvas> ();
 		return2Canvas.enabled = false;
 		f5ButtonCanvas = GameObject.Find ("Forward5").GetComponent<Canvas> ();
-		f5ButtonCanvas.enabled = false;
+		f5ButtonCanvas.enabled = true;
 		privacyCanvasPrompt = GameObject.Find ("PCanvasPrompt").GetComponent<Canvas> ();
 		privacyCanvasPrompt.enabled = false;
 		privacyCanvas = GameObject.Find ("PCanvas").GetComponent<Canvas> ();
 		privacyCanvas.enabled = false;
 
-
+		f5ButtonCanvas = GameObject.Find ("Forward5").GetComponent<Canvas> ();
+		f5ButtonCanvas.enabled = true;
+		return2Canvas = GameObject.Find ("Return2").GetComponent<Canvas> ();
+		return2Canvas.enabled = true;
 		return3Canvas = GameObject.Find ("Return3").GetComponent<Canvas> ();
-		return3Canvas.enabled = false;
+		return3Canvas.enabled = true;
 		toQuizCanvas = GameObject.Find ("ToQuiz").GetComponent<Canvas> ();
-		toQuizCanvas.enabled = false;
+		toQuizCanvas.enabled = true;
 	}
 
 	public void sPButtonPressed(){
@@ -237,9 +236,9 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	public void s2BackButtonPressed(){
-		//step2HowCanvas.enabled = false;
-		//step2AssetsCanvas.enabled = false;
-		//step2Canvas.enabled = true;
+		step2HowCanvas.enabled = false;
+		step2AssetsCanvas.enabled = false;
+		step2Canvas.enabled = true;
 	}
 
 	public void s2ContinueButtonPressed(){
@@ -418,8 +417,10 @@ public class Mod1Script : MonoBehaviour {
 
 	public void sdcNextPressed(){
 		//sdcCanvas.enabled = false;
+		Debug.Log ("Made it");
+		sdcCanvas.enabled = false;
 		//f5ButtonCanvas.enabled = true;
-		return2Canvas.enabled = true;
+		//return2Canvas.enabled = true;
 	}
 
 	public void privacyButtonPressed(){

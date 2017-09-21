@@ -2404,7 +2404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOutTexture: {fileID: 2800000, guid: 5e9b50b357e534602b96fd4b929c3cf3, type: 3}
-  newScene: Scenes/SummerForest
+  newScene: Scenes/MainArea
   fadeSpeed: 0.8
 --- !u!1 &171121971
 GameObject:
