@@ -93,8 +93,6 @@ public class Mod1Script : MonoBehaviour {
 		step2Canvas.enabled = false;
 		step2HowCanvas = GameObject.Find ("Step2How").GetComponent<Canvas> ();
 		step2HowCanvas.enabled = false;
-		step2AssetsCanvas = GameObject.Find ("Step2Assets").GetComponent<Canvas> ();
-		step2AssetsCanvas.enabled = false;
 		step2ImportantCanvas = GameObject.Find ("Step2Important").GetComponent<Canvas> ();
 		step2ImportantCanvas.enabled = false;
 		f3ButtonCanvas = GameObject.Find ("Forward3").GetComponent<Canvas> ();
@@ -239,9 +237,9 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	public void s2BackButtonPressed(){
-		step2HowCanvas.enabled = false;
-		step2AssetsCanvas.enabled = false;
-		step2Canvas.enabled = true;
+		//step2HowCanvas.enabled = false;
+		//step2AssetsCanvas.enabled = false;
+		//step2Canvas.enabled = true;
 	}
 
 	public void s2ContinueButtonPressed(){
@@ -419,8 +417,8 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	public void sdcNextPressed(){
-		sdcCanvas.enabled = false;
-		f5ButtonCanvas.enabled = true;
+		//sdcCanvas.enabled = false;
+		//f5ButtonCanvas.enabled = true;
 		return2Canvas.enabled = true;
 	}
 
@@ -454,8 +452,8 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	public void privacyNextPressed(){
-		toQuizCanvas.enabled = true;
-		return3Canvas.enabled = true;
+		//toQuizCanvas.enabled = true;
+		//return3Canvas.enabled = true;
 		privacyCanvas.enabled = false;
 	}
 
