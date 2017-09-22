@@ -22,7 +22,7 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     private string[] contentText;
     private int currentTextIndex;
     private const int HEADER_COUNT = 2;
-    private const int TEXT_COUNT = 4;
+    private const int TEXT_COUNT = 5;
 
     // Header text
     //private const string h0 = "Prioritizing:\nWants vs. Needs";
@@ -70,8 +70,8 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
             "Early on, it's important to get priorities and resources straight.",
             "What do we really need, what resources are available?",
             "It's important to know the difference between a NEED and a WANT when thinking about spending.",
-            "A NEED is something you must have to survive, like food or shelter."//,
-            //"A 'want' is something that makes life more pleasant or easier."
+            "A NEED is something you must have to survive, like food or shelter.",
+            "A WANT is something that makes life more pleasant or easier."
         };
 
         //for (int i = 0; i < TEXT_COUNT; i++)

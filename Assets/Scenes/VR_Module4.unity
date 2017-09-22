@@ -413,8 +413,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 31831432}
-  m_LocalRotation: {x: 0.2552596, y: 0.52862734, z: 0.17050326, w: -0.7914065}
-  m_LocalPosition: {x: 114.66498, y: 169.21123, z: 110.89138}
+  m_LocalRotation: {x: 0.20682977, y: 0.6425991, z: 0.1861781, w: -0.71388066}
+  m_LocalPosition: {x: 145.10522, y: 164.42053, z: 99.31845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3327,7 +3327,6 @@ GameObject:
   - component: {fileID: 393842348}
   - component: {fileID: 393842347}
   - component: {fileID: 393842346}
-  - component: {fileID: 393842345}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -3372,22 +3371,6 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
---- !u!114 &393842345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 393842343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb5dd43baba2d4dc1bab789615567e3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drawDebugRays: 0
-  raycasterEventMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  maxRaycastHits: 64
 --- !u!114 &393842346
 MonoBehaviour:
   m_ObjectHideFlags: 0

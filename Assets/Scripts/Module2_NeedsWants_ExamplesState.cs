@@ -111,7 +111,6 @@ public class Module2_NeedsWants_ExamplesState : StateMachineBehaviour {
         else if (currentTextIndex + 1 > TEXT_COUNT)
         {
             // Progress to the next state
-            Debug.Log("Trigger 'moveToWants'!");
 
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)

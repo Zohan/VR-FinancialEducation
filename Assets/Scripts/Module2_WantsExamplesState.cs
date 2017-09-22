@@ -107,7 +107,7 @@ public class Module2_WantsExamplesState : StateMachineBehaviour {
                 mainDisplayAnimator.SetTrigger("headerBody_fadeOut");
             }
         }
-        else if (currentTextIndex > TEXT_COUNT)
+        else if (currentTextIndex + 1 > TEXT_COUNT)
         {
             // Progress to the next state
 
@@ -118,6 +118,7 @@ public class Module2_WantsExamplesState : StateMachineBehaviour {
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
             {
+                Debug.Log("Commence transition to Stay Focused...");
                 mainDisplayAnimator.SetTrigger("fadeOut");
                 //mainDisplayAnimator.SetTrigger("headerBody_fadeOut");
             }
