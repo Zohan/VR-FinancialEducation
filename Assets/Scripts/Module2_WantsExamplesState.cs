@@ -118,7 +118,6 @@ public class Module2_WantsExamplesState : StateMachineBehaviour {
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
             {
-                Debug.Log("Commence transition to Stay Focused...");
                 mainDisplayAnimator.SetTrigger("fadeOut");
                 //mainDisplayAnimator.SetTrigger("headerBody_fadeOut");
             }

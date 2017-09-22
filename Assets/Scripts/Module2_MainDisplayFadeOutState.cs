@@ -57,7 +57,6 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
             }
             else if (progressionAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == wantsExamplesState)
             {
-                Debug.Log("Move to Stay Focused...");
                 // Trigger the next state (stay focused)
                 progressionAnimator.SetTrigger("moveToStayFocused");
             }
