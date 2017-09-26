@@ -38,6 +38,7 @@ public class Module2_Main : MonoBehaviour {
     private Module2_WantsExamplesState wantsExamplesStateScript;
     private Module2_StayFocusedState stayFocusedStateScript;
     private Module2_PublicResources publicResourcesStateScript;
+    private Module2_BudgetSaving_Explain budgetSavingsStateScript;
 
     // Reference to the header and body display text
     private Text headerDisplayText;
@@ -116,6 +117,10 @@ public class Module2_Main : MonoBehaviour {
         // Get reference to Public Resources State behavior script and pass reference to this Module 2 Main script
         publicResourcesStateScript = moduleProgressionAnimator.GetBehaviour<Module2_PublicResources>();
         publicResourcesStateScript.mainScript = this;
+
+        // Get reference to Budget and Saving State behavior script and pass reference to this Module 2 Main script
+        budgetSavingsStateScript = moduleProgressionAnimator.GetBehaviour<Module2_BudgetSaving_Explain>();
+        budgetSavingsStateScript.mainScript = this;
     }
     
 	// Update is called once per frame
@@ -174,5 +179,13 @@ public class Module2_Main : MonoBehaviour {
 
         // Set the rotation of the player
         playerTransform.rotation = rotation;
+    }
+    public void ActivateTrigger(string trigger)
+    {
+        if (trigger == null || trigger == "")
+            return;
+
+        // Activate the given animator state trigger
+        moduleProgressionAnimator.SetTrigger(trigger);
     }
 }
