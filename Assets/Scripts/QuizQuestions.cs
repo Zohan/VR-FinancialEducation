@@ -90,11 +90,11 @@ public class QuizQuestions : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		startCanvas = GameObject.Find ("Start").GetComponent<Canvas> ();
+		startCanvas = GameObject.Find ("StartCanvas").GetComponent<Canvas> ();
 		// initializatin for Q1
 		movement1Canvas = GameObject.Find ("MoveToQ1").GetComponent<Canvas> ();
 		q1PromptCanvas = GameObject.Find ("Question1").GetComponent<Canvas> ();
-		q1Canvas = GameObject.Find ("Q1").GetComponent<Canvas> ();
+		q1Canvas = GameObject.Find ("Q1Canvas").GetComponent<Canvas> ();
 		movement1Canvas.enabled = false;
 		q1PromptCanvas.enabled = false;
 		q1Canvas.enabled = false;
@@ -104,7 +104,7 @@ public class QuizQuestions : MonoBehaviour {
 		// initializatin for Q2
 		movement2Canvas = GameObject.Find ("MoveToQ2").GetComponent<Canvas> ();
 		q2PromptCanvas = GameObject.Find ("Question2").GetComponent<Canvas> ();
-		q2Canvas = GameObject.Find ("Q2").GetComponent<Canvas> ();
+		q2Canvas = GameObject.Find ("Q2Canvas").GetComponent<Canvas> ();
 		movement2Canvas.enabled = false;
 		q2PromptCanvas.enabled = false;
 		q2Canvas.enabled = false;
@@ -118,7 +118,7 @@ public class QuizQuestions : MonoBehaviour {
 		// initializatin for Q3
 		movement3Canvas = GameObject.Find ("MoveToQ3").GetComponent<Canvas> ();
 		q3PromptCanvas = GameObject.Find ("Question3").GetComponent<Canvas> ();
-		q3Canvas = GameObject.Find ("Q3").GetComponent<Canvas> ();
+		q3Canvas = GameObject.Find ("Q3Canvas").GetComponent<Canvas> ();
 		movement3Canvas.enabled = false;
 		q3PromptCanvas.enabled = false;
 		q3Canvas.enabled = false;
@@ -130,7 +130,7 @@ public class QuizQuestions : MonoBehaviour {
 		// initializatin for Q4
 		movement4Canvas = GameObject.Find ("MoveToQ4").GetComponent<Canvas> ();
 		q4PromptCanvas = GameObject.Find ("Question4").GetComponent<Canvas> ();
-		q4Canvas = GameObject.Find ("Q4").GetComponent<Canvas> ();
+		q4Canvas = GameObject.Find ("Q4Canvas").GetComponent<Canvas> ();
 		movement4Canvas.enabled = false;
 		q4PromptCanvas.enabled = false;
 		q4Canvas.enabled = false;
@@ -140,7 +140,7 @@ public class QuizQuestions : MonoBehaviour {
 		// initializatin for Q5
 		movement5Canvas = GameObject.Find ("MoveToQ5").GetComponent<Canvas> ();
 		q5PromptCanvas = GameObject.Find ("Question5").GetComponent<Canvas> ();
-		q5Canvas = GameObject.Find ("Q5").GetComponent<Canvas> ();
+		q5Canvas = GameObject.Find ("Q5Canvas").GetComponent<Canvas> ();
 		movement5Canvas.enabled = false;
 		q5PromptCanvas.enabled = false;
 		q5Canvas.enabled = false;
