@@ -106,6 +106,7 @@ public class Module2_NeedsWants_ExamplesState : StateMachineBehaviour {
             {
                 //mainDisplayAnimator.SetTrigger("fadeOut");
                 mainDisplayAnimator.SetTrigger("headerBody_fadeOut");
+                mainScript.ShowNeedsDisplay();
             }
         }
         else if (currentTextIndex + 1 > TEXT_COUNT)
@@ -120,6 +121,7 @@ public class Module2_NeedsWants_ExamplesState : StateMachineBehaviour {
             if (mainDisplayAnimator != null)
             {
                 mainDisplayAnimator.SetTrigger("fadeOut");
+                mainScript.HideNeedsDisplay();
                 //mainDisplayAnimator.SetTrigger("headerBody_fadeOut");
             }
         }

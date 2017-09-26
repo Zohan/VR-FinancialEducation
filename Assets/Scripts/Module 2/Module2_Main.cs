@@ -44,8 +44,12 @@ public class Module2_Main : MonoBehaviour {
     private Text headerDisplayText;
 	private Text bodyDisplayText;
 
-	// Use this for initialization
-	void Start () {
+    // References to Needs and Wants examples displays
+    GameObject needsDisplay;
+    GameObject wantsDisplay;
+
+    // Use this for initialization
+    void Start () {
 
         // Get reference to the player's transform
         playerTransform = gameObject.transform;
@@ -53,7 +57,7 @@ public class Module2_Main : MonoBehaviour {
 		// Get references to display objects
 		headerDisplayObj = mainDisplayObj.transform.Find("Header Display").GetComponent<Canvas>();
 		bodyDisplayObj = mainDisplayObj.transform.Find("Body Display").GetComponent<Canvas>();
-		sidesDisplayObj = mainDisplayObj.transform.Find("Sides Display").GetComponent<Canvas>();
+		sidesDisplayObj = mainDisplayObj.transform.Find("Buttons Display").GetComponent<Canvas>();
 
 		// Get references to the sides display buttons
 		nextButton = sidesDisplayObj.transform.Find("Next Button").GetComponent<Button>();
@@ -70,6 +74,12 @@ public class Module2_Main : MonoBehaviour {
 
         // Initialize the links to the states
         SetupStateScripts();
+
+        // Get references to Needs and Wants examples display controllers and hide them initially
+        needsDisplay = GameObject.Find("Needs Display Controller");
+        wantsDisplay = GameObject.Find("Wants Display Controller");
+        HideNeedsDisplay();
+        HideWantsDisplay();
     }
 
     void SetupStateScripts()
@@ -184,8 +194,24 @@ public class Module2_Main : MonoBehaviour {
     {
         if (trigger == null || trigger == "")
             return;
-
+        
         // Activate the given animator state trigger
         moduleProgressionAnimator.SetTrigger(trigger);
+    }
+    public void ShowNeedsDisplay()
+    {
+        needsDisplay.SetActive(true);
+    }
+    public void HideNeedsDisplay()
+    {
+        needsDisplay.SetActive(false);
+    }
+    public void ShowWantsDisplay()
+    {
+        wantsDisplay.SetActive(true);
+    }
+    public void HideWantsDisplay()
+    {
+        wantsDisplay.SetActive(false);
     }
 }
