@@ -13019,6 +13019,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -17509,6 +17523,20 @@ Light:
   m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -23616,7 +23644,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 477892, guid: 6db5e479d755ba64ca28159873c0ed94, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -6.5679016
+      value: -6.54
       objectReference: {fileID: 0}
     - target: {fileID: 477892, guid: 6db5e479d755ba64ca28159873c0ed94, type: 2}
       propertyPath: m_LocalPosition.z
@@ -26334,8 +26362,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1874315578}
-  m_LocalRotation: {x: 0.1136773, y: 0.23664382, z: 0.027888646, w: -0.96452034}
-  m_LocalPosition: {x: 150.30925, y: 166.41045, z: 95.200386}
+  m_LocalRotation: {x: 0.013295994, y: 0.96823347, z: 0.05269024, w: -0.24407163}
+  m_LocalPosition: {x: 97.074524, y: 172.9864, z: 118.06157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

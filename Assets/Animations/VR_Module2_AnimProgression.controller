@@ -80,6 +80,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: makeBudget
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -202,6 +208,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainScript: {fileID: 0}
   playerPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &114793816985864536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacbc4330e5a32c4b9ed8cfb0d17766a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 0}
 --- !u!114 &114825190987363746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,6 +550,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &1101673492324903000
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102980958134691664}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1101682785456088614
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -556,7 +595,7 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &1101894684399564940
+--- !u!1101 &1101795297230635142
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -564,10 +603,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: whereToPutMoney
+    m_ConditionEvent: makeBudget
     m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 1107352596605152628}
-  m_DstState: {fileID: 0}
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102405652128416772}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -756,7 +795,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 1101894684399564940}
+  - {fileID: 1101795297230635142}
   m_StateMachineBehaviours:
   - {fileID: 114901678405567414}
   m_Position: {x: 50, y: 50, z: 0}
@@ -817,6 +856,30 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+--- !u!1102 &1102405652128416772
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: VR_Player_MoveToBudget_MakeBudget
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 1101673492324903000}
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: a8c598f4c013da640934259f3cea8293, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -907,29 +970,6 @@ AnimatorState:
   - {fileID: 1101682785456088614}
   m_StateMachineBehaviours:
   - {fileID: 114969708054537626}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
---- !u!1102 &1102552877582587232
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Start
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1064,6 +1104,30 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102980958134691664
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Make Budget
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: 114793816985864536}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102999325922481864
 AnimatorState:
   serializedVersion: 5
@@ -1100,15 +1164,18 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 1102259548861102828}
     m_Position: {x: 120, y: 96, z: 0}
-  m_ChildStateMachines:
   - serializedVersion: 1
-    m_StateMachine: {fileID: 1107352596605152628}
-    m_Position: {x: 372, y: 96, z: 0}
+    m_State: {fileID: 1102405652128416772}
+    m_Position: {x: 228, y: 180, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102980958134691664}
+    m_Position: {x: 360, y: 96, z: 0}
+  m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -156, y: 192, z: 0}
+  m_AnyStatePosition: {x: -228, y: 156, z: 0}
   m_EntryPosition: {x: -84, y: 96, z: 0}
   m_ExitPosition: {x: 948, y: 84, z: 0}
   m_ParentStateMachinePosition: {x: -336, y: 84, z: 0}
@@ -1178,27 +1245,6 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 144, y: 384, z: 0}
   m_ParentStateMachinePosition: {x: 120, y: 36, z: 0}
   m_DefaultState: {fileID: 1102497252649316174}
---- !u!1107 &1107352596605152628
-AnimatorStateMachine:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Where To Start
-  m_ChildStates:
-  - serializedVersion: 1
-    m_State: {fileID: 1102552877582587232}
-    m_Position: {x: 264, y: 120, z: 0}
-  m_ChildStateMachines: []
-  m_AnyStateTransitions: []
-  m_EntryTransitions: []
-  m_StateMachineTransitions: {}
-  m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
-  m_ParentStateMachinePosition: {x: -168, y: 108, z: 0}
-  m_DefaultState: {fileID: 1102552877582587232}
 --- !u!1107 &1107666967311075882
 AnimatorStateMachine:
   serializedVersion: 5
@@ -1256,21 +1302,21 @@ AnimatorStateMachine:
       second:
       - {fileID: 1109789874710770294}
     data:
-      first: {fileID: 1107799347117876570}
-      second:
-      - {fileID: 1109361515001047660}
-    data:
       first: {fileID: 1107036613351494242}
       second:
       - {fileID: 1109587322584074800}
+    data:
+      first: {fileID: 1107112213685238388}
+      second:
+      - {fileID: 1109558494737065022}
     data:
       first: {fileID: 1107666967311075882}
       second:
       - {fileID: 1109969508621099514}
     data:
-      first: {fileID: 1107112213685238388}
+      first: {fileID: 1107799347117876570}
       second:
-      - {fileID: 1109558494737065022}
+      - {fileID: 1109361515001047660}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 708, y: 240, z: 0}
   m_EntryPosition: {x: 60, y: 132, z: 0}
