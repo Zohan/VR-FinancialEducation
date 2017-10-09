@@ -115,7 +115,7 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
 
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
-                progressionAnimator.ResetTrigger("makeBudget");
+                progressionAnimator.ResetTrigger("thinkingSaving");
 
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
@@ -151,7 +151,7 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
             {
-                progressionAnimator.ResetTrigger("makeBudget");
+                progressionAnimator.ResetTrigger("thinkingSaving");
             }
         }
     }
