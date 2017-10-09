@@ -18,6 +18,7 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
     private int stayFocusedState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Stay Focused");
     private int publicResourcesState = Animator.StringToHash("Base Layer.First Steps.Public Resources");
     private int budgetExplainState = Animator.StringToHash("Base Layer.Budgeting and Saving.Explanation");
+    private int makeBudgetState = Animator.StringToHash("Base Layer.Budgeting and Saving.Make Budget");
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -77,8 +78,13 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
             }
             else if (currentStateHash == budgetExplainState)
             {
-                // Trigger the next state (budget and saving)
+                // Trigger the next state (make a budget)
                 progressionAnimator.SetTrigger("makeBudget");
+            }
+            else if (currentStateHash == makeBudgetState)
+            {
+                // Trigger the next state (thinking for saving)
+                progressionAnimator.SetTrigger("thinkingSaving");
             }
         }
     }

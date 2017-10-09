@@ -40,6 +40,7 @@ public class Module2_Main : MonoBehaviour {
     private Module2_PublicResources publicResourcesStateScript;
     private Module2_BudgetSaving_Explain budgetSavingsStateScript;
     private Module2_BudgetSaving_MakeBudget makeBudgetStateScript;
+    private Module2_BudgetSaving_ThinkingSaving thinkingSavingStateScript;
 
     // Reference to the header and body display text
     private Text headerDisplayText;
@@ -136,6 +137,10 @@ public class Module2_Main : MonoBehaviour {
         // Get reference to Budget and Saving Make Budget State behavior script and pass reference to this Module 2 Main script
         makeBudgetStateScript = moduleProgressionAnimator.GetBehaviour<Module2_BudgetSaving_MakeBudget>();
         makeBudgetStateScript.mainScript = this;
+
+        // Get reference to Budget and Saving Thinking for Saving State behavior script and pass reference to this Module 2 Main script
+        thinkingSavingStateScript = moduleProgressionAnimator.GetBehaviour<Module2_BudgetSaving_ThinkingSaving>();
+        thinkingSavingStateScript.mainScript = this;
     }
     
 	// Update is called once per frame
