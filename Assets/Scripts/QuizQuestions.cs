@@ -9,19 +9,15 @@ public class QuizQuestions : MonoBehaviour {
 
 	//string url = "www.surveygizmo.com/s3/3701259/Keeping-Safe-and-Starting-Over";
 
-	//private Canvas startCanvas;
-	GameObject startBook;
 	private Canvas startCanvas;
 	private Canvas movement1Canvas;
 	private Canvas q1PromptCanvas;
-	GameObject book1;
 	private Canvas q1Canvas;
 	public static bool q1O1Pressed;
 	public static bool q1O2Pressed;
 
 	private Canvas movement2Canvas;
 	private Canvas q2PromptCanvas;
-	GameObject book2;
 	private Canvas q2Canvas;
 	public static bool q2SSButton;
 	public static bool q2MCButton;
@@ -32,7 +28,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	private Canvas movement3Canvas;
 	private Canvas q3PromptCanvas;
-	GameObject book3;
 	private Canvas q3Canvas;
 	public static bool q3IDButton;
 	public static bool q3ChangeButton;
@@ -41,14 +36,12 @@ public class QuizQuestions : MonoBehaviour {
 
 	private Canvas movement4Canvas;
 	private Canvas q4PromptCanvas;
-	GameObject book4;
 	private Canvas q4Canvas;
 	public static bool q4true;
 	public static bool q4false;
 
 	private Canvas movement5Canvas;
 	private Canvas q5PromptCanvas;
-	GameObject book5;
 	private Canvas q5Canvas;
 	public static bool q5IDButton;
 	public static bool q5SSButton;
@@ -57,7 +50,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	private Canvas movement6Canvas;
 	private Canvas q6PromptCanvas;
-	GameObject book6;
 	private Canvas q6Canvas;
 	public static bool q6SpendButton;
 	public static bool q6DebtButton;
@@ -67,7 +59,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	private Canvas movement7Canvas;
 	private Canvas q7PromptCanvas;
-	GameObject book7;
 	private Canvas q7Canvas;
 	public static bool q7LawyerButton;
 	public static bool q7DocsButton;
@@ -75,7 +66,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	private Canvas movement8Canvas;
 	private Canvas q8PromptCanvas;
-	GameObject book8;
 	private Canvas q8Canvas;
 	public static bool q8SimpleButton;
 	public static bool q8SSButton;
@@ -100,18 +90,13 @@ public class QuizQuestions : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		startBook = GameObject.Find("BookStart");
 		startCanvas = GameObject.Find ("StartCanvas").GetComponent<Canvas> ();
-		startBook.SetActive (true);
-		startCanvas.enabled = true;
 		// initializatin for Q1
 		movement1Canvas = GameObject.Find ("MoveToQ1").GetComponent<Canvas> ();
 		q1PromptCanvas = GameObject.Find ("Question1").GetComponent<Canvas> ();
 		q1Canvas = GameObject.Find ("Q1Canvas").GetComponent<Canvas> ();
-		book1 = GameObject.Find ("Book1");
 		movement1Canvas.enabled = false;
 		q1PromptCanvas.enabled = false;
-		book1.SetActive (false);
 		q1Canvas.enabled = false;
 		q1O1Pressed = false;
 		q1O2Pressed = false;
@@ -120,10 +105,8 @@ public class QuizQuestions : MonoBehaviour {
 		movement2Canvas = GameObject.Find ("MoveToQ2").GetComponent<Canvas> ();
 		q2PromptCanvas = GameObject.Find ("Question2").GetComponent<Canvas> ();
 		q2Canvas = GameObject.Find ("Q2Canvas").GetComponent<Canvas> ();
-		book2 = GameObject.Find ("Book2");
 		movement2Canvas.enabled = false;
 		q2PromptCanvas.enabled = false;
-		book2.SetActive (false);
 		q2Canvas.enabled = false;
 		q2SSButton = false;
 		q2MCButton = false;
@@ -136,10 +119,8 @@ public class QuizQuestions : MonoBehaviour {
 		movement3Canvas = GameObject.Find ("MoveToQ3").GetComponent<Canvas> ();
 		q3PromptCanvas = GameObject.Find ("Question3").GetComponent<Canvas> ();
 		q3Canvas = GameObject.Find ("Q3Canvas").GetComponent<Canvas> ();
-		book3 = GameObject.Find ("Book3");
 		movement3Canvas.enabled = false;
 		q3PromptCanvas.enabled = false;
-		book3.SetActive (false);
 		q3Canvas.enabled = false;
 		q3IDButton = false;
 		q3ChangeButton = false;
@@ -150,10 +131,8 @@ public class QuizQuestions : MonoBehaviour {
 		movement4Canvas = GameObject.Find ("MoveToQ4").GetComponent<Canvas> ();
 		q4PromptCanvas = GameObject.Find ("Question4").GetComponent<Canvas> ();
 		q4Canvas = GameObject.Find ("Q4Canvas").GetComponent<Canvas> ();
-		book4 = GameObject.Find ("Book4");
 		movement4Canvas.enabled = false;
 		q4PromptCanvas.enabled = false;
-		book4.SetActive (false);
 		q4Canvas.enabled = false;
 		q4true = false;
 		q4false = false;
@@ -162,10 +141,8 @@ public class QuizQuestions : MonoBehaviour {
 		movement5Canvas = GameObject.Find ("MoveToQ5").GetComponent<Canvas> ();
 		q5PromptCanvas = GameObject.Find ("Question5").GetComponent<Canvas> ();
 		q5Canvas = GameObject.Find ("Q5Canvas").GetComponent<Canvas> ();
-		book5 = GameObject.Find ("Book5");
 		movement5Canvas.enabled = false;
 		q5PromptCanvas.enabled = false;
-		book5.SetActive (false);
 		q5Canvas.enabled = false;
 		q5IDButton = false;
 		q5SSButton = false;
@@ -175,11 +152,9 @@ public class QuizQuestions : MonoBehaviour {
 		// initializatin for Q6
 		movement6Canvas = GameObject.Find ("MoveToQ6").GetComponent<Canvas> ();
 		q6PromptCanvas = GameObject.Find ("Question6").GetComponent<Canvas> ();
-		q6Canvas = GameObject.Find ("Q6Canvas").GetComponent<Canvas> ();
-		book6 = GameObject.Find ("Book6");
+		q6Canvas = GameObject.Find ("Q6").GetComponent<Canvas> ();
 		movement6Canvas.enabled = false;
 		q6PromptCanvas.enabled = false;
-		book6.SetActive (false);
 		q6Canvas.enabled = false;
 		q6SpendButton = false;
 		q6DebtButton = false;
@@ -190,11 +165,9 @@ public class QuizQuestions : MonoBehaviour {
 		// initializatin for Q7
 		movement7Canvas = GameObject.Find ("MoveToQ7").GetComponent<Canvas> ();
 		q7PromptCanvas = GameObject.Find ("Question7").GetComponent<Canvas> ();
-		q7Canvas = GameObject.Find ("Q7Canvas").GetComponent<Canvas> ();
-		book7 = GameObject.Find ("Book7");
+		q7Canvas = GameObject.Find ("Q7").GetComponent<Canvas> ();
 		movement7Canvas.enabled = false;
 		q7PromptCanvas.enabled = false;
-		book7.SetActive (false);
 		q7Canvas.enabled = false;
 		q7LawyerButton = false;
 		q7DocsButton = false;
@@ -203,11 +176,9 @@ public class QuizQuestions : MonoBehaviour {
 		// initializatin for Q8
 		movement8Canvas = GameObject.Find ("MoveToQ8").GetComponent<Canvas> ();
 		q8PromptCanvas = GameObject.Find ("Question8").GetComponent<Canvas> ();
-		q8Canvas = GameObject.Find ("Q8Canvas").GetComponent<Canvas> ();
-		book8 = GameObject.Find ("Book8");
+		q8Canvas = GameObject.Find ("Q8").GetComponent<Canvas> ();
 		movement8Canvas.enabled = false;
 		q8PromptCanvas.enabled = false;
-		book8.SetActive (false);
 		q8Canvas.enabled = false;
 		q8SimpleButton = false;
 		q8SSButton = false;
@@ -228,7 +199,6 @@ public class QuizQuestions : MonoBehaviour {
 	}
 
 	public void yesButtonPressed(){
-		startBook.SetActive(false);
 		startCanvas.enabled = false;
 		movement1Canvas.enabled = true;
 		resultsCanvas.enabled = false;
@@ -237,7 +207,6 @@ public class QuizQuestions : MonoBehaviour {
 	}
 
 	public void noButtonPressed(){
-		startBook.SetActive(false);
 		startCanvas.enabled = false;
 	}
 
@@ -247,15 +216,12 @@ public class QuizQuestions : MonoBehaviour {
 		Vector3 movementVector = new Vector3 (-0.3f, 0, 4.25f);
 		player [0].transform.Translate (movementVector);
 		q1PromptCanvas.enabled = true;
-		book1.SetActive (false);
 		q1Canvas.enabled = false;
 		movement1Canvas.enabled = false;
 	}
 		
 	public void showQ1(){
-		Debug.Log ("Made it");
 		q1PromptCanvas.enabled = false;
-		//book1.SetActive (true);
 		q1Canvas.enabled = true;
 	}
 
@@ -275,7 +241,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	public void q1NextPressed(){
 		q1Canvas.enabled = false;
-		book1.SetActive (false);
 		movement2Canvas.enabled = true;
 	}
 
@@ -291,7 +256,6 @@ public class QuizQuestions : MonoBehaviour {
 	public void showQ2(){
 		q2PromptCanvas.enabled = false;
 		q2Canvas.enabled = true;
-		book2.SetActive (true);
 	}
 
 	public void q2SSButtonPressed(){
@@ -333,7 +297,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	public void q2NextPressed(){
 		q2Canvas.enabled = false;
-		book2.SetActive (false);
 		movement3Canvas.enabled = true;
 	}
 
@@ -349,7 +312,6 @@ public class QuizQuestions : MonoBehaviour {
 	public void showQ3(){
 		q3PromptCanvas.enabled = false;
 		q3Canvas.enabled = true;
-		book3.SetActive (true);
 	}
 
 	public void q3IDButtonPressed(){
@@ -378,7 +340,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	public void q3NextPressed(){
 		q3Canvas.enabled = false;
-		book3.SetActive (false);
 		movement4Canvas.enabled = true;
 	}
 
@@ -393,7 +354,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	public void showQ4(){
 		q4Canvas.enabled = true;
-		book4.SetActive (true);
 		q4PromptCanvas.enabled = false;
 	}
 
@@ -411,7 +371,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	public void q4NextPressed(){
 		q4Canvas.enabled = false;
-		book4.SetActive (false);
 		movement5Canvas.enabled = true;
 	}
 
@@ -427,7 +386,6 @@ public class QuizQuestions : MonoBehaviour {
 	public void showQ5(){
 		q5PromptCanvas.enabled = false;
 		q5Canvas.enabled = true;
-		book5.SetActive (true);
 	}
 
 	public void q5IDButtonPressed(){
@@ -457,7 +415,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	public void q5NextPressed(){
 		q5Canvas.enabled = false;
-		book5.SetActive (false);
 		movement6Canvas.enabled = true;
 	}
 
@@ -473,7 +430,6 @@ public class QuizQuestions : MonoBehaviour {
 	public void showQ6(){
 		q6PromptCanvas.enabled = false;
 		q6Canvas.enabled = true;
-		book6.SetActive (true);
 	}
 
 	public void q6SpendButtonPressed(){
@@ -502,7 +458,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	public void q6NextPressed(){
 		q6Canvas.enabled = false;
-		book6.SetActive (false);
 		movement7Canvas.enabled = true;
 	}
 
@@ -514,13 +469,11 @@ public class QuizQuestions : MonoBehaviour {
 		movement7Canvas.enabled = false;  
 		q7PromptCanvas.enabled = true;
 		q7Canvas.enabled = false;
-		book7.SetActive (false);
 	}
 
 	public void showQ7(){
 		q7PromptCanvas.enabled = false;
 		q7Canvas.enabled = true;
-		book7.SetActive (true);
 	}
 
 	public void q7LawyerButtonPressed(){
@@ -543,7 +496,6 @@ public class QuizQuestions : MonoBehaviour {
 
 	public void q7NextPressed(){
 		q7Canvas.enabled = false;
-		book7.SetActive (false);
 		movement8Canvas.enabled = true;
 	}
 
@@ -559,7 +511,6 @@ public class QuizQuestions : MonoBehaviour {
 	public void showQ8(){
 		q8PromptCanvas.enabled = false;
 		q8Canvas.enabled = true;
-		book8.SetActive (true);
 	}
 
 	public void q8SimpleButtonPressed(){
@@ -588,7 +539,6 @@ public class QuizQuestions : MonoBehaviour {
 		
 	public void q8FinishPressed(){
 		q8Canvas.enabled = false;
-		book8.SetActive (false);
 		int playerScore = calculateScore ();
 		resultsCanvas.enabled = true;
 		reviewCanvas.enabled = false;
@@ -778,8 +728,6 @@ public class QuizQuestions : MonoBehaviour {
 		Vector3 movementVector = new Vector3 (19f,1.2f,34f);
 		player [0].transform.position = movementVector;
 		resultsCanvas.enabled = false;
-		//startCanvas.enabled = true;
-		startBook.SetActive(true);
 		startCanvas.enabled = true;
 		GameObject button = GameObject.Find ("RetakeButton");
 		button.GetComponent<Image> ().color = Color.green;
