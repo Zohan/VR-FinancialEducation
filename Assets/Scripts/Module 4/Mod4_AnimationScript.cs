@@ -20,5 +20,6 @@ public class Mod4_AnimationScript : MonoBehaviour {
 	public void nextStep(){
 		counter++;
 		animator.SetInteger ("next_step", counter);
+		Debug.Log (counter);
 	}
 }
