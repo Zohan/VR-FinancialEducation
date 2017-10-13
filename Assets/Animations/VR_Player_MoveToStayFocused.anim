@@ -36,13 +36,13 @@ AnimationClip:
         tangentMode: 0
       - serializedVersion: 2
         time: 7
-        value: {x: 0, y: -90, z: 0}
+        value: {x: 0, y: -91.5, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 10
-        value: {x: 0, y: -90.00001, z: 0}
+        value: {x: 4, y: -91.5, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -68,15 +68,15 @@ AnimationClip:
         tangentMode: 0
       - serializedVersion: 2
         time: 5
-        value: {x: 137.4, y: 183.9, z: 100}
-        inSlope: {x: 0, y: 0, z: -0.30000305}
-        outSlope: {x: 0, y: 0, z: -0.30000305}
+        value: {x: 137.4, y: 183.9, z: 99.2}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 7
-        value: {x: 137.4, y: 183.9, z: 99.7}
-        inSlope: {x: 0, y: 0, z: -0.2}
-        outSlope: {x: 0, y: 0, z: -0.2}
+        value: {x: 137.4, y: 183.9, z: 99.2}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 10
@@ -135,20 +135,6 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
-      attribute: 4
-      script: {fileID: 0}
-      typeID: 95
-      customType: 8
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 0
-      attribute: 6
-      script: {fileID: 0}
-      typeID: 95
-      customType: 8
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 0
       attribute: 3
       script: {fileID: 0}
       typeID: 95
@@ -156,7 +142,21 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 95
+      customType: 8
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 0
       attribute: 5
+      script: {fileID: 0}
+      typeID: 95
+      customType: 8
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 0
+      attribute: 6
       script: {fileID: 0}
       typeID: 95
       customType: 8
@@ -280,15 +280,15 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 5
-        value: 100
-        inSlope: -0.30000305
-        outSlope: -0.30000305
+        value: 99.2
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 7
-        value: 99.7
-        inSlope: -0.2
-        outSlope: -0.2
+        value: 99.2
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 10
@@ -332,7 +332,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 10
-        value: 0
+        value: 4
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -366,13 +366,13 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 7
-        value: -90
+        value: -91.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 10
-        value: -90.00001
+        value: -91.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
