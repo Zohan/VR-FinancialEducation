@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Mod1Script : MonoBehaviour {
 
+	private Canvas Mod1Canvas;
 	private Canvas beginCanvas;
 	private Canvas safetyPlanningCanvas;
 	private Canvas f1ButtonCanvas;
@@ -71,38 +72,64 @@ public class Mod1Script : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		// First canvas will introduce Mod1
+		Mod1Canvas = GameObject.Find ("Mod1Canvas").GetComponent<Canvas> ();
+		Mod1Canvas.enabled = true;
+
+		// Begin Mod1 Canvas - here player may select to go to one of the three topics or the quiz
 		beginCanvas = GameObject.Find ("Begin").GetComponent<Canvas> ();
-		beginCanvas.enabled = true;
+		beginCanvas.enabled = false;
+
+		//--------------------------------------//
+
+		// 1st Canvas for Safety Planning topic
 		safetyPlanningCanvas = GameObject.Find ("SPCanvas").GetComponent<Canvas> ();
 		safetyPlanningCanvas.enabled = false;
+
+		// f1 : forward 1
 		f1ButtonCanvas = GameObject.Find ("Forward1").GetComponent<Canvas> ();
 		f1ButtonCanvas.enabled = false;
+
 		step1Prompt = GameObject.Find ("S1Prompt").GetComponent<Canvas> ();
 		step1Prompt.enabled = false;
+
 		step1Canvas = GameObject.Find ("Step1Canvas").GetComponent<Canvas> ();
 		step1Canvas.enabled = false;
+
 		step1ContinuedCanvas = GameObject.Find ("Step1Continued").GetComponent<Canvas> ();
 		step1ContinuedCanvas.enabled = false;
+
 		step1DocsCanvas = GameObject.Find ("Step1Docs").GetComponent<Canvas>();
 		step1DocsCanvas.enabled = false;
+
 		campDoneButtonCanvas = GameObject.Find ("CampBackButton").GetComponent<Canvas> ();
 		campDoneButtonCanvas.enabled = false;
+
 		f2ButtonCanvas = GameObject.Find ("Forward2").GetComponent<Canvas> ();
 		f2ButtonCanvas.enabled = false;
+
 		step2Prompt = GameObject.Find ("S2Prompt").GetComponent<Canvas> ();
 		step2Prompt.enabled = false;
+
 		step2Canvas = GameObject.Find ("Step2Canvas").GetComponent<Canvas> ();
 		step2Canvas.enabled = false;
+
 		step2HowCanvas = GameObject.Find ("Step2How").GetComponent<Canvas> ();
 		step2HowCanvas.enabled = false;
+
 		step2AssetsCanvas = GameObject.Find ("Step2Assets").GetComponent<Canvas> ();
 		step2AssetsCanvas.enabled = false;
+
 		step2ImportantCanvas = GameObject.Find ("Step2Important").GetComponent<Canvas> ();
 		step2ImportantCanvas.enabled = false;
+
 		f3ButtonCanvas = GameObject.Find ("Forward3").GetComponent<Canvas> ();
 		f3ButtonCanvas.enabled = false;
+
 		step3Prompt = GameObject.Find ("S3Prompt").GetComponent<Canvas> ();
 		step3Prompt.enabled = false;
+
 		step3Canvas = GameObject.Find ("Step3Canvas").GetComponent<Canvas> ();
 		step3Canvas.enabled = false;
 		step3BankCanvas = GameObject.Find ("Step3BankCanvas").GetComponent<Canvas> ();
@@ -112,6 +139,7 @@ public class Mod1Script : MonoBehaviour {
 
 		step3WhyCanvas = GameObject.Find ("Step3WhyCanvas").GetComponent<Canvas> ();
 		step3WhyCanvas.enabled = false;
+
 		step3BasicsCanvas = GameObject.Find ("Step3BasicsCanvas").GetComponent<Canvas> ();
 		step3BasicsCanvas.enabled = false;
 
@@ -126,12 +154,16 @@ public class Mod1Script : MonoBehaviour {
 
 		return1Canvas = GameObject.Find ("Return1").GetComponent<Canvas> ();
 		return1Canvas.enabled = false;
+
 		f4ButtonCanvas = GameObject.Find ("Forward4").GetComponent<Canvas> ();
 		f4ButtonCanvas.enabled = false;
+
 		sdcCanvasPrompt = GameObject.Find ("SDCCanvasPrompt").GetComponent<Canvas> ();
 		sdcCanvasPrompt.enabled = false;
+
 		sdcCanvas = GameObject.Find ("SDCCanvas").GetComponent<Canvas> ();
 		sdcCanvas.enabled = false;
+
 		sdcContinuedCanvas = GameObject.Find ("SDCcontinuedCanvas").GetComponent<Canvas> ();
 		sdcContinuedCanvas.enabled = false;
 
@@ -141,34 +173,62 @@ public class Mod1Script : MonoBehaviour {
 		
 		return2Canvas = GameObject.Find ("Return2").GetComponent<Canvas> ();
 		return2Canvas.enabled = false;
+
 		f5ButtonCanvas = GameObject.Find ("Forward5").GetComponent<Canvas> ();
 		f5ButtonCanvas.enabled = false;
+
 		privacyCanvasPrompt = GameObject.Find ("PCanvasPrompt").GetComponent<Canvas> ();
 		privacyCanvasPrompt.enabled = false;
+
 		privacyCanvas = GameObject.Find ("PCanvas").GetComponent<Canvas> ();
 		privacyCanvas.enabled = false;
 
-
 		return3Canvas = GameObject.Find ("Return3").GetComponent<Canvas> ();
 		return3Canvas.enabled = false;
+
 		toQuizCanvas = GameObject.Find ("ToQuiz").GetComponent<Canvas> ();
 		toQuizCanvas.enabled = false;
 	}
 
+
+	// ACTIONS / ANIMATIONS ---------------------------//
+
+	public void Mod1ButtonPressed(){
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		//GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+
+		//var BeginCanvasPos = GameObject.Find ("Begin");
+		//Vector3 movementVector = BeginCanvasPos.transform.position;
+	
+		//var forward = -5f;
+		//var left = 2f;
+		// Vector( -left / + right , -down / +up , -back / +forward )
+		Vector3 movementVector = new Vector3 (-4f, 3f, 1f);
+		//Vector3 movementVector = new Vector3 (-1f, 0, 7f);
+		player [0].transform.Translate (movementVector);
+		player [0].transform.rotation = Quaternion.Euler(new Vector3(-15, -456, 720));
+		beginCanvas.enabled = true;
+	}
+
+	//-----------------------------//
+
 	public void sPButtonPressed(){
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
-		GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		//GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
 		Vector3 movementVector = new Vector3 (-1f, 0, 7f);
 		player [0].transform.Translate (movementVector);
 		safetyPlanningCanvas.enabled = true;
 		beginCanvas.enabled = false;
 		step3BasicsCanvas.enabled = false;
 	}
+
+	// Commented the following while reorganizing first two canvas
 	// safety planning canvas done pressed
-	public void showF1Button(){
-		f1ButtonCanvas.enabled = true;
-		safetyPlanningCanvas.enabled = false;
-	}
+	//public void showF1Button(){
+	//	f1ButtonCanvas.enabled = true;
+	//	safetyPlanningCanvas.enabled = false;
+	//}
+
 	// f1button pressed 
 	public void forwardToStepOne(){
 		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
