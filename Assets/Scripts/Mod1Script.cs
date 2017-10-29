@@ -7,34 +7,32 @@ public class Mod1Script : MonoBehaviour {
 
 	private Canvas Mod1Canvas;
 	private Canvas beginCanvas;
+	//public bool mod1_button_pressed;
+
+	//-----------------------//
+
 	private Canvas safetyPlanningCanvas;
+
 	private Canvas f1ButtonCanvas;
+
 	private Canvas step1Prompt;
 	private Canvas step1Canvas;
 	private Canvas step1ContinuedCanvas;
-
 	private Canvas step1DocsCanvas;
-	private Canvas campDoneButtonCanvas;
-
-	private Canvas f2ButtonCanvas;
-	private Canvas step2Prompt;
-	private Canvas step2Canvas;
-	private Canvas step2HowCanvas;
-	private Canvas step2AssetsCanvas;
-	private Canvas step2ImportantCanvas;
-	private Canvas f3ButtonCanvas;
-	private Canvas step3Prompt;
-	private Canvas step3Canvas;
-	private Canvas step3BankCanvas;
-	private Canvas step3CreditCanvas;
-	private Canvas step3WhyCanvas;
-	private Canvas step3BasicsCanvas;
-
 	public GameObject stepOneHeader;
 	private Text stepOneHeaderText;
 	public GameObject stepOneBody;
 	private Text stepOneBodyText;
 
+	private Canvas campDoneButtonCanvas;
+
+	private Canvas f2ButtonCanvas;
+
+	private Canvas step2Prompt;
+	private Canvas step2Canvas;
+	private Canvas step2HowCanvas;
+	private Canvas step2AssetsCanvas;
+	private Canvas step2ImportantCanvas;
 	public GameObject stepTwoHeader;
 	private Text stepTwoHeaderText;
 	public GameObject stepTwoBody;
@@ -42,32 +40,43 @@ public class Mod1Script : MonoBehaviour {
 	public GameObject s2Button;
 	private Text s2ButtonText;
 
+	private Canvas f3ButtonCanvas;
+
+	private Canvas step3Prompt;
+	private Canvas step3Canvas;
+	private Canvas step3BankCanvas;
+	private Canvas step3CreditCanvas;
+	private Canvas step3WhyCanvas;
+	private Canvas step3BasicsCanvas;
 	public GameObject stepThreeHeader;
 	private Text stepThreeHeaderText;
 	public GameObject stepThreeBody;
 	private Text stepThreeBodyText;
 
 	private Canvas return1Canvas;
+
 	private Canvas f4ButtonCanvas;
+
 	private Canvas sdcCanvasPrompt;
 	private Canvas sdcCanvas;
 	private Canvas sdcContinuedCanvas;
-
 	public GameObject sdcHeader;
 	private Text sdcHeaderText;
 	public GameObject sdcBody;
 	private Text sdcBodyText;
 
 	private Canvas f5ButtonCanvas;
+
 	private Canvas return2Canvas;
+
 	private Canvas privacyCanvasPrompt;
 	private Canvas privacyCanvas;
 
 	private Canvas toQuizCanvas;
+
 	private Canvas return3Canvas;
 
-
-	static bool text = false;
+	//static bool text = false;
 
 
 	// Use this for initialization
@@ -90,6 +99,8 @@ public class Mod1Script : MonoBehaviour {
 		// f1 : forward 1
 		f1ButtonCanvas = GameObject.Find ("Forward1").GetComponent<Canvas> ();
 		f1ButtonCanvas.enabled = false;
+
+		//--------------------------------------//
 
 		step1Prompt = GameObject.Find ("S1Prompt").GetComponent<Canvas> ();
 		step1Prompt.enabled = false;
@@ -188,26 +199,35 @@ public class Mod1Script : MonoBehaviour {
 
 		toQuizCanvas = GameObject.Find ("ToQuiz").GetComponent<Canvas> ();
 		toQuizCanvas.enabled = false;
-	}
+	
+	} //EOF void Start
 
 
 	// ACTIONS / ANIMATIONS ---------------------------//
 
 	public void Mod1ButtonPressed(){
-		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
-		//GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
 
-		//var BeginCanvasPos = GameObject.Find ("Begin");
-		//Vector3 movementVector = BeginCanvasPos.transform.position;
-	
-		//var forward = -5f;
-		//var left = 2f;
-		// Vector( -left / + right , -down / +up , -back / +forward )
-		Vector3 movementVector = new Vector3 (-4f, 3f, 1f);
-		//Vector3 movementVector = new Vector3 (-1f, 0, 7f);
-		player [0].transform.Translate (movementVector);
-		player [0].transform.rotation = Quaternion.Euler(new Vector3(-15, -456, 720));
+		// Fetch the player object
+		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+
+		// Fetch its animatior
+		Animator playerAnimatior = player [0].GetComponent<Animator> ();
+
+		Mod1Canvas.enabled = false;
 		beginCanvas.enabled = true;
+
+		//Make the animator go to next state
+		playerAnimatior.SetTrigger ("ClickedMod1Button");
+
+		// Old Code ---------------------//
+
+		//GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
+		//GameObject[] camera = GameObject.FindGameObjectsWithTag ("MainCamera");
+		// Note: Vector( -left / + right , -down / +up , -back / +forward )
+		//Vector3 movementVector = new Vector3 (-4f, 3f, 1f);
+		//Vector3 movementVector = new Vector3 (-1f, 0, 7f);
+		//player [0].transform.rotation = Quaternion.Euler(new Vector3(-15, -456, 720));
+		//player [0].transform.Translate (movementVector);
 	}
 
 	//-----------------------------//
