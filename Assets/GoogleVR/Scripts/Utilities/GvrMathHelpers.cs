@@ -35,12 +35,19 @@ public static class GvrMathHelpers {
   public static Vector2 GetViewportCenter() {
     int viewportWidth = Screen.width;
     int viewportHeight = Screen.height;
+        /*
     if (UnityEngine.XR.XRSettings.enabled) {
       viewportWidth = UnityEngine.XR.XRSettings.eyeTextureWidth;
       viewportHeight = UnityEngine.XR.XRSettings.eyeTextureHeight;
     }
+    */
+        if (VRSettings.enabled)
+        {
+            viewportWidth = VRSettings.eyeTextureWidth;
+            viewportHeight = VRSettings.eyeTextureHeight;
+        }
 
-    return new Vector2(0.5f * viewportWidth, 0.5f * viewportHeight);
+        return new Vector2(0.5f * viewportWidth, 0.5f * viewportHeight);
   }
 
   public static Vector2 NormalizedCartesianToSpherical(Vector3 cartCoords) {
