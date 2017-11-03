@@ -629,7 +629,7 @@ public class Mod1Script : MonoBehaviour {
 	// SP Step 1--------- //
 
 	// Back to SP_Step1_Canvas from SP_Step1_A_Canvas
-	public void BackTo_SP_Step1_Canvas (){
+	public void SP_Step1_A_Back_Button_Pressed (){
 		// Hide
 		SP_Step1_A_Canvas.enabled = false;
 
@@ -638,7 +638,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SP_Step1_A_Canvas from SP_Step1_Canvas
-	public void ContinueTo_SP_Step1_A_Canvas (){
+	public void SP_Step1_Continue_Button_Pressed (){
 		// Hide
 		SP_Step1_Canvas.enabled = false;
 
@@ -647,7 +647,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to SP_Step1_A_Canvas from SP_Step1_B_Canvas
-	public void BackTo_SP_Step1_A_Canvas (){
+	public void SP_Step1_B_Back_Button_Pressed (){
 		// Hide
 		SP_Step1_B_Canvas.enabled = false;
 
@@ -656,7 +656,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SP_Step1_B_Canvas from SP_Step1_A_Canvas
-	public void ContinueTo_SP_Step1_B_Canvas (){
+	public void SP_Step1_A_Continue_Button_Pressed (){
 		// Hide
 		SP_Step1_A_Canvas.enabled = false;
 
@@ -665,7 +665,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 		
 	// Back to SP_Step1_B_Canvas from SP_Step1_C_Canvas
-	public void BackTo_SP_Step1_B_Canvas (){
+	public void SP_Step1_C_Back_Button_Pressed (){
 		// Hide
 		SP_Step1_C_Canvas.enabled = false;
 
@@ -674,7 +674,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SP_Step1_C_Canvas from SP_Step1_B_Canvas
-	public void ContinueTo_SP_Step1_C_Canvas (){
+	public void SP_Step1_B_Continue_Button_Pressed (){
 		// Hide
 		SP_Step1_B_Canvas.enabled = false;
 
@@ -685,7 +685,7 @@ public class Mod1Script : MonoBehaviour {
 	// SP Step 2--------- //
 
 	// Back to SP_Step2_Canvas from SP_Step2_A_Canvas
-	public void BackTo_SP_Step2_Canvas (){
+	public void SP_Step2_A_Back_Button_Pressed (){
 		// Hide
 		SP_Step2_A_Canvas.enabled = false;
 
@@ -694,7 +694,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SP_Step2_A_Canvas from SP_Step2_Canvas
-	public void ContinueTo_SP_Step2_A_Canvas (){
+	public void SP_Step2_Continue_Button_Pressed (){
 		// Hide
 		SP_Step2_Canvas.enabled = false;
 
@@ -703,7 +703,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to SP_Step2_A_Canvas from SP_Step2_B_Canvas
-	public void BackTo_SP_Step2_A_Canvas (){
+	public void SP_Step2_B_Back_Button_Pressed (){
 		// Hide
 		SP_Step2_B_Canvas.enabled = false;
 
@@ -712,7 +712,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SP_Step2_B_Canvas from SP_Step2_A_Canvas
-	public void ContinueTo_SP_Step2_B_Canvas (){
+	public void SP_Step2_A_Continue_Button_Pressed (){
 		// Hide
 		SP_Step2_A_Canvas.enabled = false;
 
@@ -721,7 +721,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to SP_Step2_B_Canvas from SP_Step2_B_2_Canvas
-	public void BackTo_SP_Step2_B_Canvas (){
+	public void SP_Step2_B_2_Back_Button_Pressed (){
 		// Hide
 		SP_Step2_B_2_Canvas.enabled = false;
 
@@ -730,7 +730,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SP_Step2_B_2_Canvas from SP_Step2_B_Canvas
-	public void ContinueTo_SP_Step2_B_2_Canvas (){
+	public void SP_Step2_B_Continue_Button_Pressed (){
 		// Hide
 		SP_Step2_B_Canvas.enabled = false;
 
@@ -741,7 +741,7 @@ public class Mod1Script : MonoBehaviour {
 	// SP Step 3--------- //
 
 	// Back to SP_Step3_Canvas from SP_Step3_A_Canvas
-	public void BackTo_SP_Step3_Canvas (){
+	public void SP_Step3_A_Back_Button_Pressed (){
 		// Hide
 		SP_Step3_A_Canvas.enabled = false;
 
@@ -750,7 +750,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SP_Step3_A_Canvas from SP_Step3_Canvas
-	public void ContinueTo_SP_Step3_A_Canvas (){
+	public void SP_Step3_Continue_Button_Pressed (){
 		// Hide
 		SP_Step3_Canvas.enabled = false;
 
@@ -759,7 +759,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to SP_Step3_A_Canvas from SP_Step3_B_Canvas
-	public void BackTo_SP_Step3_A_Canvas (){
+	public void SP_Step3_B_Back_Button_Pressed (){
 		// Hide
 		SP_Step3_B_Canvas.enabled = false;
 
@@ -768,7 +768,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SP_Step3_B_Canvas from SP_Step3_A_Canvas
-	public void ContinueTo_SP_Step3_B_Canvas (){
+	public void SP_Step3_A_Continue_Button_Pressed (){
 		// Hide
 		SP_Step3_A_Canvas.enabled = false;
 
@@ -777,7 +777,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to SP_Step3_B_Canvas from SP_Step3_B_2_Canvas
-	public void BackTo_SP_Step3_B_Canvas (){
+	public void SP_Step3_B_2_Back_Button_Pressed (){
 		// Hide
 		SP_Step3_B_2_Canvas.enabled = false;
 
@@ -786,7 +786,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SP_Step3_B_2_Canvas from SP_Step3_B_Canvas
-	public void ContinueTo_SP_Step3_B_2_Canvas (){
+	public void SP_Step3_B_Continue_Button_Pressed (){
 		// Hide
 		SP_Step3_B_Canvas.enabled = false;
 
@@ -795,7 +795,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to SP_Step3_B_2_Canvas from SP_Step3_B_3_Canvas
-	public void BackTo_SP_Step3_B_2_Canvas (){
+	public void SP_Step3_B_3_Back_Button_Pressed (){
 		// Hide
 		SP_Step3_B_3_Canvas.enabled = false;
 
@@ -804,7 +804,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SP_Step3_B_3_Canvas from SP_Step3_B_2_Canvas
-	public void ContinueTo_SP_Step3_B_3_Canvas (){
+	public void SP_Step3_B_2_Continue_Button_Pressed (){
 		// Hide
 		SP_Step3_B_2_Canvas.enabled = false;
 
@@ -815,7 +815,7 @@ public class Mod1Script : MonoBehaviour {
 	// SDCS canvases ---------------------------------------------------------
 
 	// Back to SDCS_Canvas from SDCS_1_Canvas
-	public void BackTo_SDCS_Canvas (){
+	public void SDCS_1_Back_Button_Pressed (){
 		// Hide
 		SDCS_1_Canvas.enabled = false;
 
@@ -824,7 +824,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SDCS_1_Canvas from SDCS_Canvas
-	public void ContinueTo_SDCS_1_Canvas (){
+	public void SDCS_Continue_Button_Pressed (){
 		// Hide
 		SDCS_Canvas.enabled = false;
 
@@ -833,7 +833,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 		
 	// Back to SDCS_1_Canvas from SDCS_2_Canvas
-	public void BackTo_SDCS_1_Canvas (){
+	public void SDCS_2_Back_Button_Pressed (){
 		// Hide
 		SDCS_2_Canvas.enabled = false;
 
@@ -842,7 +842,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SDCS_2_Canvas from SDCS_1_Canvas
-	public void ContinueTo_SDCS_2_Canvas (){
+	public void SDCS_1_Continue_Button_Pressed (){
 		// Hide
 		SDCS_1_Canvas.enabled = false;
 
@@ -851,7 +851,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to SDCS_2_Canvas from SDCS_3_Canvas
-	public void BackTo_SDCS_2_Canvas (){
+	public void SDCS_3_Back_Button_Pressed (){
 		// Hide
 		SDCS_3_Canvas.enabled = false;
 
@@ -860,7 +860,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to SDCS_3_Canvas from SDCS_2_Canvas
-	public void ContinueTo_SDCS_3_Canvas (){
+	public void SDCS_2_Continue_Button_Pressed (){
 		// Hide
 		SDCS_2_Canvas.enabled = false;
 
@@ -871,7 +871,7 @@ public class Mod1Script : MonoBehaviour {
 	// PCIC canvases ---------------------------------------------------------
 
 	// Back to PCIC_Canvas from PCIC_1_Canvas
-	public void BackTo_PCIC_Canvas (){
+	public void PCIC_1_Back_Button_Pressed (){
 		// Hide
 		PCIC_1_Canvas.enabled = false;
 
@@ -880,7 +880,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 		
 	// Continue to PCIC_1_Canvas from PCIC_Canvas
-	public void ContinueTo_PCIC_1_Canvas (){
+	public void PCIC_Continue_Button_Pressed (){
 		// Hide
 		PCIC_Canvas.enabled = false;
 
@@ -889,7 +889,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to PCIC_1_Canvas from PCIC_2_Canvas
-	public void BackTo_PCIC_1_Canvas (){
+	public void PCIC_2_Back_Button_Pressed (){
 		// Hide
 		PCIC_2_Canvas.enabled = false;
 
@@ -898,7 +898,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 		
 	// Continue to PCIC_2_Canvas from PCIC_1_Canvas
-	public void ContinueTo_PCIC_2_Canvas (){
+	public void PCIC_1_Continue_Button_Pressed (){
 		// Hide
 		PCIC_1_Canvas.enabled = false;
 
@@ -907,7 +907,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to PCIC_2_Canvas from PCIC_3_Canvas
-	public void BackTo_PCIC_2_Canvas (){
+	public void PCIC_3_Back_Button_Pressed (){
 		// Hide
 		PCIC_3_Canvas.enabled = false;
 
@@ -916,7 +916,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to PCIC_3_Canvas from PCIC_2_Canvas
-	public void ContinueTo_PCIC_3_Canvas (){
+	public void PCIC_2_Continue_Button_Pressed (){
 		// Hide
 		PCIC_2_Canvas.enabled = false;
 
@@ -925,7 +925,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to PCIC_3_Canvas from PCIC_4_Canvas
-	public void BackTo_PCIC_3_Canvas (){
+	public void PCIC_4_Back_Button_Pressed (){
 		// Hide
 		PCIC_4_Canvas.enabled = false;
 
@@ -935,7 +935,7 @@ public class Mod1Script : MonoBehaviour {
 
 //	PCIC_4_Canvas
 	// Continue to PCIC_4_Canvas from PCIC_3_Canvas
-	public void ContinueTo_PCIC_4_Canvas (){
+	public void PCIC_3_Continue_Button_Pressed (){
 		// Hide
 		PCIC_3_Canvas.enabled = false;
 
@@ -944,7 +944,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to PCIC_4_Canvas from PCIC_3_Canvas
-	public void BackTo_PCIC_4_Canvas (){
+	public void PCIC_5_Back_Button_Pressed (){
 		// Hide
 		PCIC_5_Canvas.enabled = false;
 
@@ -953,7 +953,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to PCIC_5_Canvas from PCIC_4_Canvas
-	public void ContinueTo_PCIC_5_Canvas (){
+	public void PCIC_4_Continue_Button_Pressed (){
 		// Hide
 		PCIC_4_Canvas.enabled = false;
 
@@ -962,7 +962,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to PCIC_5_Canvas from PCIC_6_Canvas
-	public void BackTo_PCIC_5_Canvas (){
+	public void PCIC_6_Back_Button_Pressed (){
 		// Hide
 		PCIC_6_Canvas.enabled = false;
 
@@ -971,7 +971,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to PCIC_6_Canvas from PCIC_5_Canvas
-	public void ContinueTo_PCIC_6_Canvas (){
+	public void PCIC_5_Continue_Button_Pressed (){
 		// Hide
 		PCIC_5_Canvas.enabled = false;
 
@@ -980,7 +980,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Back to PCIC_6_Canvas from PCIC_7_Canvas
-	public void BackTo_PCIC_6_Canvas (){
+	public void PCIC_7_Back_Button_Pressed (){
 		// Hide
 		PCIC_7_Canvas.enabled = false;
 
@@ -989,7 +989,7 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 	// Continue to PCIC_7_Canvas from PCIC_6_Canvas
-	public void ContinueTo_PCIC_7_Canvas (){
+	public void PCIC_6_Continue_Button_Pressed (){
 		// Hide
 		PCIC_6_Canvas.enabled = false;
 
