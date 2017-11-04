@@ -65,13 +65,9 @@ public class Mod1Script : MonoBehaviour {
 	// continue to Part B.2 of step 3, or go back to Part A of step 3
 	private Canvas SP_Step3_B_Canvas;
 
-	// SP_Step3_B_2 Canvas - here the player can read Part B.2 of step 3, 
-	// continue to Part B.3 of step 3, or go back to Part B of step 3
+	// SP_Step3_B_2 Canvas - here the player can read Part B.2 of step 2, 
+	// go back to Part B of step 3, or go to SP Menu
 	private Canvas SP_Step3_B_2_Canvas;
-
-	// SP_Step3_B_3 Canvas - here the player can read Part B.3 of step 3, 
-	// continue to the Mod1 Menu, or go back to Part B.2 of step 3
-	private Canvas SP_Step3_B_3_Canvas;
 
 	/*--------------------------------------------------------------------------------------------------------
 		SDCS Canvas - here the player can read about the Separation, Divorce, and Child Support (SDCS) topic, 
@@ -122,6 +118,14 @@ public class Mod1Script : MonoBehaviour {
 	private Canvas Quiz_Canvas;
 
 	//-----------------------//
+
+	private UnityEngine.Video.VideoPlayer Step3_A_video;
+	private UnityEngine.AudioSource Step3_A_video_audio;
+	private Renderer Step3_A_video_renderer;
+
+	private UnityEngine.Video.VideoPlayer Step3_B_video;
+	private UnityEngine.AudioSource Step3_B_video_audio;
+	private Renderer Step3_B_video_renderer;
 
 	//public GameObject stepOneHeader;
 	//private Text stepOneHeaderText;
@@ -195,9 +199,6 @@ public class Mod1Script : MonoBehaviour {
 		SP_Step3_B_2_Canvas = GameObject.Find ("SP_Step3_B_2_Canvas").GetComponent<Canvas> ();
 		SP_Step3_B_2_Canvas.enabled = false; // hide
 
-		SP_Step3_B_3_Canvas = GameObject.Find ("SP_Step3_B_3_Canvas").GetComponent<Canvas> ();
-		SP_Step3_B_3_Canvas.enabled = false; // hide
-
 		// SDCS canvases ---------------------------------------------------------
 
 		SDCS_Canvas = GameObject.Find ("SDCS_Canvas").GetComponent<Canvas> ();
@@ -247,6 +248,17 @@ public class Mod1Script : MonoBehaviour {
 		//stepOneHeaderText = GameObject.Find ("S1CHeader").GetComponent<Text> ();
 		//stepOneBodyText = GameObject.Find ("S1CBody").GetComponent<Text> ();
 
+		// Step3_A video
+		Step3_A_video = GameObject.FindGameObjectWithTag ("Step3_A_video").GetComponent<UnityEngine.Video.VideoPlayer>();
+		Step3_A_video_audio = GameObject.FindGameObjectWithTag ("Step3_A_video").GetComponent<UnityEngine.AudioSource>();
+		Step3_A_video_renderer = GameObject.FindGameObjectWithTag ("Step3_A_video").GetComponent<Renderer> ();
+		Step3_A_video_renderer.enabled = false;
+
+		// Step3_B video
+		Step3_B_video = GameObject.FindGameObjectWithTag ("Step3_B_video").GetComponent<UnityEngine.Video.VideoPlayer>();
+		Step3_B_video_audio = GameObject.FindGameObjectWithTag ("Step3_B_video").GetComponent<UnityEngine.AudioSource>();
+		Step3_B_video_renderer = GameObject.FindGameObjectWithTag ("Step3_B_video").GetComponent<Renderer> ();
+		Step3_B_video_renderer.enabled = false;
 	
 	} //EOF void Start
 
@@ -493,35 +505,35 @@ public class Mod1Script : MonoBehaviour {
 
 	} // EOF SP_Step3_SP_Menu_Button_Pressed
 
-	// SP_Step3_B_3_Canvas buttons---------------------//
+	// SP_Step3_B_2_Canvas buttons---------------------//
 
 	// SP_Menu_Button 
-	public void SP_Step3_B_3_SP_Menu_Button_Pressed(){
+	public void SP_Step3_B_2_SP_Menu_Button_Pressed(){
 
 		// Hide current
-		SP_Step3_B_3_Canvas.enabled = false;
+		SP_Step3_B_2_Canvas.enabled = false;
 
 		// Show
 		SP_Menu_Canvas.enabled = true;
 
 		// Set Trigger
-		playerAnimatior.SetTrigger ("Clicked_SP_Step3_B_3_SP_Menu_Button");
+		playerAnimatior.SetTrigger ("Clicked_SP_Step3_B_2_SP_Menu_Button");
 
-	} // EOF SP_Step3_B_3_SP_Menu_Button_Pressed
+	} // EOF SP_Step3_B_2_SP_Menu_Button_Pressed
 
 	// Mod1_Menu_Button 
-	public void SP_Step3_B_3_Mod1_Menu_Button_Pressed(){
+	public void SP_Step3_B_2_Mod1_Menu_Button_Pressed(){
 
 		// Hide current
-		SP_Step3_B_3_Canvas.enabled = false;
+		SP_Step3_B_2_Canvas.enabled = false;
 
 		// Show
 		Mod1_Menu_Canvas.enabled = true;
 
 		// Set Trigger
-		playerAnimatior.SetTrigger ("Clicked_SP_Step3_B_3_Mod1_Menu_Button");
+		playerAnimatior.SetTrigger ("Clicked_SP_Step3_B_2_Mod1_Menu_Button");
 
-	} // EOF SP_Step3_B_3_Mod1_Menu_Button_Pressed
+	} // EOF SP_Step3_B_2_Mod1_Menu_Button_Pressed
 
 	// SDCS_Canvas buttons---------------------//
 
@@ -744,6 +756,7 @@ public class Mod1Script : MonoBehaviour {
 	public void SP_Step3_A_Back_Button_Pressed (){
 		// Hide
 		SP_Step3_A_Canvas.enabled = false;
+		Step3_A_video_renderer.enabled = false; //-------------------------------------------------------
 
 		// Show
 		SP_Step3_Canvas.enabled = true;
@@ -756,24 +769,29 @@ public class Mod1Script : MonoBehaviour {
 
 		// Show
 		SP_Step3_A_Canvas.enabled = true;
+		Step3_A_video_renderer.enabled = true; //-------------------------------------------------------
 	}
 
 	// Back to SP_Step3_A_Canvas from SP_Step3_B_Canvas
 	public void SP_Step3_B_Back_Button_Pressed (){
 		// Hide
 		SP_Step3_B_Canvas.enabled = false;
+		Step3_B_video_renderer.enabled = false; //-------------------------------------------------------
 
 		// Show
 		SP_Step3_A_Canvas.enabled = true;
+		Step3_A_video_renderer.enabled = true; //-------------------------------------------------------
 	}
 
 	// Continue to SP_Step3_B_Canvas from SP_Step3_A_Canvas
 	public void SP_Step3_A_Continue_Button_Pressed (){
 		// Hide
 		SP_Step3_A_Canvas.enabled = false;
+		Step3_A_video_renderer.enabled = false; //-------------------------------------------------------
 
 		// Show
 		SP_Step3_B_Canvas.enabled = true;
+		Step3_B_video_renderer.enabled = true; //-------------------------------------------------------
 	}
 
 	// Back to SP_Step3_B_Canvas from SP_Step3_B_2_Canvas
@@ -783,33 +801,17 @@ public class Mod1Script : MonoBehaviour {
 
 		// Show
 		SP_Step3_B_Canvas.enabled = true;
+		Step3_B_video_renderer.enabled = true; //-------------------------------------------------------
 	}
 
 	// Continue to SP_Step3_B_2_Canvas from SP_Step3_B_Canvas
 	public void SP_Step3_B_Continue_Button_Pressed (){
 		// Hide
 		SP_Step3_B_Canvas.enabled = false;
+		Step3_B_video_renderer.enabled = false; //-------------------------------------------------------
 
 		// Show
 		SP_Step3_B_2_Canvas.enabled = true;
-	}
-
-	// Back to SP_Step3_B_2_Canvas from SP_Step3_B_3_Canvas
-	public void SP_Step3_B_3_Back_Button_Pressed (){
-		// Hide
-		SP_Step3_B_3_Canvas.enabled = false;
-
-		// Show
-		SP_Step3_B_2_Canvas.enabled = true;
-	}
-
-	// Continue to SP_Step3_B_3_Canvas from SP_Step3_B_2_Canvas
-	public void SP_Step3_B_2_Continue_Button_Pressed (){
-		// Hide
-		SP_Step3_B_2_Canvas.enabled = false;
-
-		// Show
-		SP_Step3_B_3_Canvas.enabled = true;
 	}
 
 	// SDCS canvases ---------------------------------------------------------
@@ -997,50 +999,76 @@ public class Mod1Script : MonoBehaviour {
 		PCIC_7_Canvas.enabled = true;
 	}
 
-	//stepOneHeaderText.text = "Should I document anything else?";
-	//stepOneBodyText.text = "Yes! Take pictures of any and all valuables in your home. To show these items were part of your home, include children, family, or friend sin the photos.";
-	//stepOneBodyText.text = "These documents need to be kept somewhere safe. Hide them if you need to." +
-	//"\nConsider using a fireproof safe box with a combination lock. This can be kept at a trusted friend or family member's house.";
-	//Debug.Log ("Made it");
+	//-----------------------------------
+	// Functions for video in SP_Step3_A
+	//-----------------------------------
 
-	// Step3 Credit Canvas contains the video - review code
+	// Play
+	public void SP_Step3_A_Play_Button_Pressed(){
+		if (!Step3_A_video.isPlaying) {
+			Step3_A_video.Play ();
+			Step3_A_video_audio.Play ();
+		} else {
+			Step3_A_video.Play ();
+			Step3_A_video_audio.UnPause ();
+		}
+	}
 
-	//	public void creditButtonPressed(){
-	//		step3Canvas.enabled = false;
-	//		step3CreditCanvas.enabled = true;
-	//		stepThreeHeaderText.text = "Using a credit card";
-	//		stepThreeBodyText.text = "Applying for a credit card is relatively easy-- you can go online and find many companies that are happy to lend you money--\"credit\"-- because they expect you to pay it back, onfen with very high rates of interest!" +
-	//		"\nUsing it wisely can be tricky. Here's a few tips for \"smart\" credit card use:";
-	//	}
+	// Pause
+	public void SP_Step3_A_Pause_Button_Pressed(){
+		if (Step3_A_video.isPlaying) {
+			Step3_A_video.Pause ();
+			Step3_A_video_audio.Pause ();
+		}
+	}
 
-	//	public void videoButtonPressed(){
-	//		Application.OpenURL ("https://www.youtube.com/watch?v=4Gv01qrJvcY");
-	//	}
+	// Stop
+	public void SP_Step3_A_Stop_Button_Pressed(){
+		Step3_A_video.Stop ();
+		Step3_A_video_audio.Stop ();	
+	}
 
-	//	public void beforeButtonPressed(){
-	//		sdcCanvas.enabled = false;
-	//		sdcContinuedCanvas.enabled = true;
-	//		sdcHeaderText.text = "Before you see a lawyer...";
-	//		sdcBodyText.text = 
-	//			"\n * Inventory and categorize possessions: yours, " +
-	//			"\n   your partner's, both of yorus." +
-	//			"\n * Determine living expenses, especially if there are " +
-	//			"\n   children." +
-	//			"\n * Research your insurance coverage: auto, home, " +
-	//			"\n   health, life.";
-	//	}
+	//-----------------------------------
+	// Functions for video in SP_Step3_B
+	//-----------------------------------
 
-	//	public void docsButtonPressed(){
-	//		sdcCanvas.enabled = false;
-	//		sdcContinuedCanvas.enabled = true;
-	//		sdcHeaderText.fontSize = 25;
-	//		sdcHeaderText.text = "Bring these documents when you meet your lawyer";
-	//		sdcBodyText.text = 
-	//			"\n " +
-	//			"\n * Past income tax returns" +
-	//			"\n * Paycheck stubs" +
-	//			"\n * Copies of employee benefit statement" +
-	//			"\n * Wish list of assets you would like to retian";
-	//	}
-		
+	// Play
+	public void SP_Step3_B_Play_Button_Pressed(){
+		if (!Step3_B_video.isPlaying) {
+			Step3_B_video.Play ();
+			Step3_B_video_audio.Play ();
+		} else {
+			Step3_B_video.Play ();
+			Step3_B_video_audio.UnPause ();
+		}
+	}
+
+	// Pause
+	public void SP_Step3_B_Pause_Button_Pressed(){
+		if (Step3_B_video.isPlaying) {
+			Step3_B_video.Pause ();
+			Step3_B_video_audio.Pause ();
+		}
+	}
+
+	// Stop
+	public void SP_Step3_B_Stop_Button_Pressed(){
+		Step3_B_video.Stop ();
+		Step3_B_video_audio.Stop ();	
+	}
+
 } // EOF class Mod1Script
+
+//		if (!Step3_A_video.isPlaying) { // Either because it has not been played yet OR it is paused
+//			Step3_A_video.Play ();
+//			if (EventSystem.current.currentSelectedGameObject.GetComponent<Text> ().text == "Pause") {
+//				Step3_A_video_audio.UnPause ();
+//			} else {
+//				Step3_A_video_audio.Play ();
+//			}
+//			EventSystem.current.currentSelectedGameObject.GetComponent<Text>().text = "Pause";
+//		} else {
+//			Step3_A_video.Pause ();
+//			Step3_A_video_audio.Pause ();
+//			EventSystem.current.currentSelectedGameObject.GetComponent<Text>().text = "Play";
+//		}

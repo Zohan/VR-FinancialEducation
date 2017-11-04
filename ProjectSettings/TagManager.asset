@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Begin
+  - Step3_video
+  - Step3_A_video
+  - Step3_B_video
   layers:
   - Default
   - TransparentFX
