@@ -114,6 +114,9 @@ public class Mod1Script : MonoBehaviour {
 	// PCIC_7 Canvas - here the player can read Myth #7, go back to the Mod1 Menu, or go back to Myth #6 
 	private Canvas PCIC_7_Canvas;
 
+	// PCIC_7 Canvas - here the player can read Myth #7, go back to the Mod1 Menu, or go back to Myth #6 
+	private Canvas PCIC_7_2_Canvas;
+
 	// Quiz Canvas - here the player can go to the Quiz Scene or continue to the Mod1 Menu
 	private Canvas Quiz_Canvas;
 
@@ -239,6 +242,9 @@ public class Mod1Script : MonoBehaviour {
 		PCIC_7_Canvas = GameObject.Find ("PCIC_7_Canvas").GetComponent<Canvas> ();
 		PCIC_7_Canvas.enabled = false; // hide
 
+		PCIC_7_2_Canvas = GameObject.Find ("PCIC_7_2_Canvas").GetComponent<Canvas> ();
+		PCIC_7_2_Canvas.enabled = false; // hide
+
 		// Quiz canvas ---------------------------------------------------------
 
 		Quiz_Canvas = GameObject.Find ("Quiz_Canvas").GetComponent<Canvas> ();
@@ -268,7 +274,7 @@ public class Mod1Script : MonoBehaviour {
 	// Mod1_Intro_Canvas Buttons---------------//
 
 	// Continue Button
-	public void Mod1_Intro_Button_Pressed(){
+	public void Mod1_Intro_Continue_Button_Pressed(){
 
 		// Hide current
 		Mod1_Intro_Canvas.enabled = false;
@@ -583,19 +589,19 @@ public class Mod1Script : MonoBehaviour {
 
 	} // EOF PCIC_Mod1_Menu_Button_Pressed
 
-	// PCIC_7_Canvas buttons---------------------//
+	// PCIC_7_2_Canvas buttons---------------------//
 
 	// Mod1_Menu_Button 
-	public void PCIC_7_Mod1_Menu_Button_Pressed(){
+	public void PCIC_7_2_Mod1_Menu_Button_Pressed(){
 
 		// Hide current
-		PCIC_7_Canvas.enabled = false;
+		PCIC_7_2_Canvas.enabled = false;
 
 		// Show
 		Mod1_Menu_Canvas.enabled = true;
 
 		// Set Trigger
-		playerAnimatior.SetTrigger ("Clicked_PCIC_7_Mod1_Menu_Button");
+		playerAnimatior.SetTrigger ("Clicked_PCIC_7_2_Mod1_Menu_Button");
 
 	} // EOF PCIC_7_Mod1_Menu_Button_Pressed
 
@@ -997,6 +1003,24 @@ public class Mod1Script : MonoBehaviour {
 
 		// Show
 		PCIC_7_Canvas.enabled = true;
+	}
+
+	// Back to PCIC_7_Canvas from PCIC_7_2_Canvas
+	public void PCIC_7_2_Back_Button_Pressed (){
+		// Hide
+		PCIC_7_2_Canvas.enabled = false;
+
+		// Show
+		PCIC_7_Canvas.enabled = true;
+	}
+
+	// Continue to PCIC_7_2_Canvas from PCIC_7_Canvas
+	public void PCIC_7_Continue_Button_Pressed (){
+		// Hide
+		PCIC_7_Canvas.enabled = false;
+
+		// Show
+		PCIC_7_2_Canvas.enabled = true;
 	}
 
 	//-----------------------------------
