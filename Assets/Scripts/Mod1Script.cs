@@ -445,7 +445,7 @@ public class Mod1Script : MonoBehaviour {
 		SP_Menu_Canvas.enabled = true;
 
 		// Set Trigger
-		playerAnimatior.SetTrigger ("Clicked_SP_Step1_C_SP_Menu_Button");
+		playerAnimatior.SetTrigger ("Clicked_SP_Step1_SP_Menu_Button");
 
 	} // EOF SP_Step1_C_SP_Menu_Button_Pressed
 		
@@ -477,7 +477,7 @@ public class Mod1Script : MonoBehaviour {
 		SP_Menu_Canvas.enabled = true;
 
 		// Set Trigger
-		playerAnimatior.SetTrigger ("Clicked_SP_Step2_B_2_SP_Menu_Button");
+		playerAnimatior.SetTrigger ("Clicked_SP_Step2_SP_Menu_Button");
 
 	} // EOF SP_Step2_B_2_SP_Menu_Button_Pressed
 		
@@ -523,23 +523,9 @@ public class Mod1Script : MonoBehaviour {
 		SP_Menu_Canvas.enabled = true;
 
 		// Set Trigger
-		playerAnimatior.SetTrigger ("Clicked_SP_Step3_B_2_SP_Menu_Button");
+		playerAnimatior.SetTrigger ("Clicked_SP_Step3_SP_Menu_Button");
 
 	} // EOF SP_Step3_B_2_SP_Menu_Button_Pressed
-
-	// Mod1_Menu_Button 
-	public void SP_Step3_B_2_Mod1_Menu_Button_Pressed(){
-
-		// Hide current
-		SP_Step3_B_2_Canvas.enabled = false;
-
-		// Show
-		Mod1_Menu_Canvas.enabled = true;
-
-		// Set Trigger
-		playerAnimatior.SetTrigger ("Clicked_SP_Step3_B_2_Mod1_Menu_Button");
-
-	} // EOF SP_Step3_B_2_Mod1_Menu_Button_Pressed
 
 	// SDCS_Canvas buttons---------------------//
 
@@ -569,7 +555,7 @@ public class Mod1Script : MonoBehaviour {
 		Mod1_Menu_Canvas.enabled = true;
 
 		// Set Trigger
-		playerAnimatior.SetTrigger ("Clicked_SDCS_3_Mod1_Menu_Button");
+		playerAnimatior.SetTrigger ("Clicked_SDCS_Mod1_Menu_Button");
 
 	} // EOF SDCS_3_Mod1_Menu_Button_Pressed
 
@@ -601,7 +587,7 @@ public class Mod1Script : MonoBehaviour {
 		Mod1_Menu_Canvas.enabled = true;
 
 		// Set Trigger
-		playerAnimatior.SetTrigger ("Clicked_PCIC_7_2_Mod1_Menu_Button");
+		playerAnimatior.SetTrigger ("Clicked_PCIC_Mod1_Menu_Button");
 
 	} // EOF PCIC_7_Mod1_Menu_Button_Pressed
 
