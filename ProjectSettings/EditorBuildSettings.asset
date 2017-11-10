@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainArea.unity
     guid: 7927c959bb3f949af987e424f130d6f7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SummerForest.unity
     guid: c3c44bdabb1eb46a28ab390fba24d8bd
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/StartHere.unity
     guid: 56dec6604b5e4714894f4f3af06ca06e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/VR_Module2_AutumnForest.unity
     guid: 818828471befb614392331073971a23d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Quiz.unity
     guid: 14204c10138373b4286c5ceef9f45a86
   - enabled: 1
