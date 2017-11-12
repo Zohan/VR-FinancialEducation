@@ -20,6 +20,7 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
     private int budgetExplainState = Animator.StringToHash("Base Layer.Budgeting and Saving.Explanation");
     private int makeBudgetState = Animator.StringToHash("Base Layer.Budgeting and Saving.Make Budget");
     private int thinkingSavingState = Animator.StringToHash("Base Layer.Budgeting and Saving.Thinking for Saving");
+    private int whereToPutMoney = Animator.StringToHash("Base Layer.Where to Put Money.Explanation");
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -89,8 +90,13 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
             }
             else if (currentStateHash == thinkingSavingState)
             {
-                // Trigger the next state (thinking for saving)
+                // Trigger the next state (where to put money)
                 progressionAnimator.SetTrigger("whereToPutMoney");
+            }
+            else if (currentStateHash == whereToPutMoney)
+            {
+                // Trigger the next state (check learning)
+                progressionAnimator.SetTrigger("checkLearning");
             }
         }
     }
