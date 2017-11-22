@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Module2_WhereMoney_Explain : StateMachineBehaviour
-{
+public class Module2_CheckLearning : StateMachineBehaviour {
+
     // Reference to module 2 main script
     public Module2_Main mainScript;
 
@@ -22,15 +22,15 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
     private string[] contentText;
     private int[] contentTransitionIndices;
     private int currentTextIndex;
-    private const int HEADER_COUNT = 6;
-    private const int TEXT_COUNT = 22;
+    private const int HEADER_COUNT = 1;
+    private const int TEXT_COUNT = 1;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Set player starting transform at the start of this state
-        mainScript.SetPlayerPosition(new Vector3(86f, 179.6f, 92f));
-        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -180f, 0f));
+        mainScript.SetPlayerPosition(new Vector3(69.13f, 177.67f, 118.8f));
+        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -63.823f, 0f));
 
         // Initialize content
         SetupContent();
@@ -55,48 +55,17 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
     {
         // Setup string array of header text
         headerText = new string[HEADER_COUNT] {
-            "Where to Put Your Money",
-            "How to Choose a Bank",
-            "Kinds of Financial Institutions",
-            "Credit Unions",
-            "Payday Lenders",
-            "Check Cashing Stores"
+            "Check Your Learning"
         };
 
         // Setup string array of context text
         contentText = new string[TEXT_COUNT] {
             // Where to Put Your Money [0]
-            "You have some options...",
-            // How to Choose a Bank [1]
-            "[VIDEO HERE]",
-            // Kinds of Financial Institutions [2]
-            "Banks are financial institutions that accept deposits and use the money for lending activites.",
-            "A traditional bank issues stock and is therefore owned by its stockholders.",
-            "Banks are for-profit businesses and serve customers from the general public.",
-            "Most banks offer online services, and there are also banks that are only on the internet.",
-            // Credit Unions [6]
-            "Credit unions are community-based financial institutions that offer a wide range of services.",
-            "They are owned and controlled by their members, who are also shareholders.",
-            "Credit unions serve their members and membership is defined by a credit unions's charter.",
-            "For example, a credit union may offer membership through certain employers or to certain professions.",
-            "Another credit union may have a broader membership. Credit unions often offer lower interest rates on loans.",
-            // Payday Lenders [11]
-            "Payday lenders are companies that lend customers small amounts of money at very high interest rates.",
-            "The borrower agrees that the loan will be repaid when the borrower's next paycheck arrives.",
-            "Payday loans are small cash advances, usually $500 or less.",
-            "To get a cash advance, a borrower typically gives the payday lender a postdated check or authorization to withdraw the funds from their bank account on an appointed date.",
-            "While these types of loans may appear to be an easy option, expensive loan fees often push the borrower into deeper debt.",
-            "This debt can be very difficult to get out of. Before taking this type of loan, explore all other options, including consulting your advocate or other support systems.",
-            // Check Cashing Stores [17]
-            "Check cashing stores are small businesses that cash checks for a fee.",
-            "In general, the fee is about 4%. However, you can likely avoid these fees if you have a bank account or are a member of a credit union.",
-            "If you have trouble keeping a minimum deposit in the bank, you may find the check cashing store a reasonable option in the short-term.",
-            "You will avoid fees, but banks are the only places where you can save and earn interest (free money!) on your savings.",
-            "It's best to open a bank account with a savings account as soon as you can."
+            "See how much you remember from Module 2: Financial Fundamentals with the following quiz."
         };
 
         // Setup int array to store indices of header transitions based on context text index
-        contentTransitionIndices = new int[HEADER_COUNT] { 0, 1, 2, 6, 11, 17 };
+        contentTransitionIndices = new int[HEADER_COUNT] { 0 };
 
         // Set initial text index
         currentTextIndex = 0;
@@ -154,7 +123,7 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
 
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
-                progressionAnimator.ResetTrigger("whereToPutMoney");
+                progressionAnimator.ResetTrigger("checkLearning");
 
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
@@ -194,7 +163,7 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
             {
-                progressionAnimator.ResetTrigger("whereToPutMoney");
+                progressionAnimator.ResetTrigger("checkLearning");
             }
         }
     }

@@ -23,9 +23,16 @@ public class Module2_BudgetSaving_Explain : StateMachineBehaviour {
     private const int HEADER_COUNT = 8;
     private const int TEXT_COUNT = 27;
 
+    // Starting transform of player at the start of this state
+    //private Transform playerTransform;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Set player starting transform at the start of this state
+        mainScript.SetPlayerPosition(new Vector3(107f, 178.7f, 110f));
+        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -67.5f, 0f));
+
         // Initialize content
         SetupContent();
 

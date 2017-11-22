@@ -38,6 +38,10 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
+        // Set player starting transform at the start of this state
+        mainScript.SetPlayerPosition(new Vector3(138f, 184f, 98f));
+        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -180f, 0f));
+
         // Initialize content
         SetupContent();
 
@@ -192,14 +196,4 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
         // Set initial text index
         currentTextIndex = 0;
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK(). Code that sets up animation IK (inverse kinematics) should be implemented here.
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
 }

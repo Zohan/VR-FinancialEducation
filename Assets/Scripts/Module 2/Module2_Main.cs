@@ -9,6 +9,10 @@ public class Module2_Main : MonoBehaviour {
 	// Reference to the main display object (containing header + body + sides)
 	public GameObject mainDisplayObj;
 
+    // Reference to main camera object
+    public Camera mainCamera;
+    private CameraFade mainCameraFade;
+
     // Reference to player's transform
     private Transform playerTransform;
 
@@ -42,23 +46,28 @@ public class Module2_Main : MonoBehaviour {
     private Module2_BudgetSaving_MakeBudget makeBudgetStateScript;
     private Module2_BudgetSaving_ThinkingSaving thinkingSavingStateScript;
     private Module2_WhereMoney_Explain whereMoneyExplainStateScript;
+    private Module2_CheckLearning checkLearningStateScript;
 
     // Reference to the header and body display text
     private Text headerDisplayText;
 	private Text bodyDisplayText;
 
     // References to Needs and Wants examples displays
-    GameObject needsDisplay;
-    GameObject wantsDisplay;
+    private GameObject needsDisplay;
+    private GameObject wantsDisplay;
 
     // Use this for initialization
     void Start () {
 
+        // Get reference to the main camera's fade object
+        mainCameraFade = mainCamera.GetComponent<CameraFade>();
+        mainCameraFade.mainScript = this;
+
         // Get reference to the player's transform
         playerTransform = gameObject.transform;
 
-		// Get references to display objects
-		headerDisplayObj = mainDisplayObj.transform.Find("Header Display").GetComponent<Canvas>();
+        // Get references to display objects
+        headerDisplayObj = mainDisplayObj.transform.Find("Header Display").GetComponent<Canvas>();
 		bodyDisplayObj = mainDisplayObj.transform.Find("Body Display").GetComponent<Canvas>();
 		sidesDisplayObj = mainDisplayObj.transform.Find("Buttons Display").GetComponent<Canvas>();
 
@@ -146,6 +155,10 @@ public class Module2_Main : MonoBehaviour {
         // Get reference to Budget and Saving Thinking for Saving State behavior script and pass reference to this Module 2 Main script
         whereMoneyExplainStateScript = moduleProgressionAnimator.GetBehaviour<Module2_WhereMoney_Explain>();
         whereMoneyExplainStateScript.mainScript = this;
+
+        // Get reference to Check Learning State behavior script and pass reference to this Module 2 Main script
+        checkLearningStateScript = moduleProgressionAnimator.GetBehaviour<Module2_CheckLearning>();
+        checkLearningStateScript.mainScript = this;
     }
     
 	// Update is called once per frame
@@ -228,5 +241,13 @@ public class Module2_Main : MonoBehaviour {
     public void HideWantsDisplay()
     {
         wantsDisplay.SetActive(false);
+    }
+    public void GoToState(string state)
+    {
+        if (state == null || state == "")
+            return;
+
+        // Go to the state in the state manager
+        moduleProgressionAnimator.Play(state);
     }
 }
