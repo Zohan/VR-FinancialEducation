@@ -7,6 +7,12 @@ using UnityEngine.UI;
 
 public class QuizQuestions : MonoBehaviour {
 
+	// The player object will be used to fetch its animatior for movement transitions
+	private GameObject[] player;
+
+	// Variable to hold the player's animatior
+	private Animator playerAnimatior;
+
 	GameObject startSign;
 	private Canvas startCanvas;
 
@@ -82,6 +88,12 @@ public class QuizQuestions : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		// Fetch the player object (to fetch its animatior for movement transitions)
+		player = GameObject.FindGameObjectsWithTag ("Player");
+
+		// Fetch the player's animator
+		playerAnimatior = player [0].GetComponent<Animator> ();
 		
 		// initializations for Start Sign
 		startSign = GameObject.Find("squareSignStart");
@@ -177,31 +189,38 @@ public class QuizQuestions : MonoBehaviour {
 		q1Canvas.enabled = true;
 		resultsCanvas.enabled = false;
 		reviewCanvas.enabled = false;
+
+		// Set Trigger
+		playerAnimatior.SetTrigger ("To_Q1");
 	}
-	// if no is pressed go back to Module 1
+
+	// if no is pressed go back to Module 1 ---------------------------------------- //
 	public void noButtonPressed(){
 		startSign.SetActive(false);
 		startCanvas.enabled = false;
-
 		// go back to Module 1
-
 	}
+
 	// q1 first choice selected
 	public void q1O1ButtonPressed(){
 		q1O1Pressed = true;
 		GameObject button = GameObject.Find ("Option1");
 		button.GetComponent<Image> ().color = green;
 	}
+
 	// q2 second choice selected
 	public void q1O2ButtonPressed(){
 		q1O2Pressed = true;
 		GameObject button = GameObject.Find ("Option2");
 		button.GetComponent<Image> ().color = Color.green;
 	}
+
 	// hide canvas for q1 and show canvas for q2
 	public void q1NextPressed(){
 		q1Canvas.enabled = false;
 		q2Canvas.enabled = true;
+		// Set Trigger
+		playerAnimatior.SetTrigger ("To_Q2");
 	}
 
 	public void q2SSButtonPressed(){
@@ -240,11 +259,14 @@ public class QuizQuestions : MonoBehaviour {
 		GameObject button = GameObject.Find ("PicsButton");
 		button.GetComponent<Image> ().color = Color.green;
 	}
+
 	// hide canvas for q2 and show canvas for q3
 	public void q2NextPressed(){
 		q2Canvas.enabled = false;
 		q3Canvas.enabled = true;
 		Debug.Log("q2 next pressed");
+		// Set Trigger
+		playerAnimatior.SetTrigger ("To_Q3");
 	}
 
 	public void q3IDButtonPressed(){
@@ -270,11 +292,14 @@ public class QuizQuestions : MonoBehaviour {
 		GameObject button = GameObject.Find ("VIButton");
 		button.GetComponent<Image> ().color = Color.green;
 	}
+
 	// hide canvas for q3 and show canvas for q4
 	public void q3NextPressed(){
 		q3Canvas.enabled = false;
 		q4Canvas.enabled = true;
 		Debug.Log("q3 next pressed");
+		// Set Trigger
+		playerAnimatior.SetTrigger ("To_Q4");
 	}
 
 	public void q4truePressed(){
@@ -288,11 +313,14 @@ public class QuizQuestions : MonoBehaviour {
 		GameObject button = GameObject.Find ("FButton");
 		button.GetComponent<Image> ().color = Color.green;
 	}
+
 	// hide canvas for q4 and show canvas for q5
 	public void q4NextPressed(){
 		q4Canvas.enabled = false;
 		q5Canvas.enabled = true;
 		Debug.Log("q4 next pressed");
+		// Set Trigger
+		playerAnimatior.SetTrigger ("To_Q5");
 	}
 
 	public void q5IDButtonPressed(){
@@ -319,11 +347,14 @@ public class QuizQuestions : MonoBehaviour {
 		button.GetComponent<Image> ().color = Color.green;
 
 	}
+
 	// hide canvas for q5 and show canvas for q6
 	public void q5NextPressed(){
 		q5Canvas.enabled = false;
 		q6Canvas.enabled = true;
 		Debug.Log("q5 next pressed");
+		// Set Trigger
+		playerAnimatior.SetTrigger ("To_Q6");
 	}
 
 	public void q6SpendButtonPressed(){
@@ -349,11 +380,14 @@ public class QuizQuestions : MonoBehaviour {
 		GameObject button = GameObject.Find ("HistoryButton");
 		button.GetComponent<Image> ().color = Color.green;
 	}
+
 	// hide canvas for q6 and show canvas for q7
 	public void q6NextPressed(){
 		q6Canvas.enabled = false;
 		q7Canvas.enabled = true;
 		Debug.Log("q6 next pressed");
+		// Set Trigger
+		playerAnimatior.SetTrigger ("To_Q7");
 	}
 
 	public void q7LawyerButtonPressed(){
@@ -373,11 +407,14 @@ public class QuizQuestions : MonoBehaviour {
 		GameObject button = GameObject.Find ("BothButton");
 		button.GetComponent<Image> ().color = Color.green;
 	}
+
 	// hide canvas for q7 and show canvas for q8
 	public void q7NextPressed(){
 		q7Canvas.enabled = false;
 		q8Canvas.enabled = true;
 		Debug.Log("q7 next pressed");
+		// Set Trigger
+		playerAnimatior.SetTrigger ("To_Q8");
 	}
 
 	public void q8SimpleButtonPressed(){
@@ -409,6 +446,10 @@ public class QuizQuestions : MonoBehaviour {
 		int playerScore = calculateScore ();
 		resultsCanvas.enabled = true;
 		reviewCanvas.enabled = false;
+
+		// Set Trigger
+		playerAnimatior.SetTrigger ("To_Quiz_Results");
+
 		quizScore.text = "You answered " + playerScore + " out of 18 questions correctly";
 		GameObject button = GameObject.Find ("FinishedButton");
 		button.GetComponent<Image> ().color = Color.green;
