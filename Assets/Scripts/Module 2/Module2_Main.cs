@@ -9,9 +9,12 @@ public class Module2_Main : MonoBehaviour {
 	// Reference to the main display object (containing header + body + sides)
 	public GameObject mainDisplayObj;
 
+    // Reference to start menu object
+    public GameObject startMenuObj;
+
     // Reference to main camera object
     public Camera mainCamera;
-    private CameraFade mainCameraFade;
+    public VR_CameraFade mainCameraFade;
 
     // Reference to player's transform
     private Transform playerTransform;
@@ -60,9 +63,9 @@ public class Module2_Main : MonoBehaviour {
     void Start () {
 
         // Get reference to the main camera's fade object
-        mainCameraFade = mainCamera.GetComponent<CameraFade>();
+        mainCameraFade = mainCamera.GetComponent<VR_CameraFade>();
         mainCameraFade.mainScript = this;
-
+        
         // Get reference to the player's transform
         playerTransform = gameObject.transform;
 
