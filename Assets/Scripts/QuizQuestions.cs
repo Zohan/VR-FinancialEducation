@@ -100,14 +100,14 @@ public class QuizQuestions : MonoBehaviour {
 		startCanvas = GameObject.Find ("StartCanvas").GetComponent<Canvas> ();
 		startCanvas.enabled = true;
 
-		// initializatin for Q1 Sign
+		// initializations for Q1 Sign
 		q1Canvas = GameObject.Find ("Q1Canvas").GetComponent<Canvas> ();
 		q1Sign = GameObject.Find ("squareSignQ1");
 		q1Canvas.enabled = false;
 		q1O1Pressed = false;
 		q1O2Pressed = false;
 
-		// initializatin for Q2 Sign
+		// initializations for Q2 Sign
 		q2Canvas = GameObject.Find ("Q2Canvas").GetComponent<Canvas> ();
 		q2Sign = GameObject.Find ("squareSignQ2");
 		q2Canvas.enabled = false;
@@ -118,7 +118,7 @@ public class QuizQuestions : MonoBehaviour {
 		q2PBButton = false;
 		q2PicButton = false;
 
-		// initializatin for Q3 Sign
+		// initializations for Q3 Sign
 		q3Canvas = GameObject.Find ("Q3Canvas").GetComponent<Canvas> ();
 		q3Sign = GameObject.Find ("squareSignQ3");
 		q3Canvas.enabled = false;
@@ -127,14 +127,14 @@ public class QuizQuestions : MonoBehaviour {
 		q3UIButton = false;
 		q3VIButton = false;
 
-		// initializatin for Q4 Sign
+		// initializations for Q4 Sign
 		q4Canvas = GameObject.Find ("Q4Canvas").GetComponent<Canvas> ();
 		q4Sign = GameObject.Find ("squareSignQ4");
 		q4Canvas.enabled = false;
 		q4true = false;
 		q4false = false;
 
-		// initializatin for Q5 Sign
+		// initializations for Q5 Sign
 		q5Canvas = GameObject.Find ("Q5Canvas").GetComponent<Canvas> ();
 		q5Sign = GameObject.Find ("squareSignQ5");
 		q5Canvas.enabled = false;
@@ -143,7 +143,7 @@ public class QuizQuestions : MonoBehaviour {
 		q5MinButton = false;
 		q5AllButton = false;
 
-		// initializatin for Q6
+		// initializations for Q6
 		q6Canvas = GameObject.Find ("Q6Canvas").GetComponent<Canvas> ();
 		q6Sign = GameObject.Find ("squareSignQ6");
 		q6Canvas.enabled = false;
@@ -153,7 +153,7 @@ public class QuizQuestions : MonoBehaviour {
 		q6CHButton = false;
 		q6AllButton = false;
 
-		// initializatin for Q7
+		// initializations for Q7
 		q7Canvas = GameObject.Find ("Q7Canvas").GetComponent<Canvas> ();
 		q7Sign = GameObject.Find ("squareSignQ7");
 		q7Canvas.enabled = false;
@@ -161,7 +161,7 @@ public class QuizQuestions : MonoBehaviour {
 		q7DocsButton = false;
 		q7BothButton = false;
 
-		// initializatin for Q8
+		// initializations for Q8
 		q8Canvas = GameObject.Find ("Q8Canvas").GetComponent<Canvas> ();
 		q8Sign = GameObject.Find ("squareSignQ8");
 		q8Canvas.enabled = false;
@@ -170,7 +170,7 @@ public class QuizQuestions : MonoBehaviour {
 		q8StatesButton = false;
 		q8ChangeButton = false;
 
-		// initializatin for results canvas  
+		// initializations for results canvas  
 		resultsCanvas = GameObject.Find ("ResultsCanvas").GetComponent<Canvas> ();
 		reviewCanvas = GameObject.Find ("ReviewCanvas").GetComponent<Canvas> ();
 		headerText = GameObject.Find("QuestionNumber").GetComponent<Text> ();
@@ -200,15 +200,17 @@ public class QuizQuestions : MonoBehaviour {
 		startCanvas.enabled = false;
 		// go back to Module 1
 	}
+		
+	// Question 1 ----------------------------------------- //
 
 	// q1 first choice selected
 	public void q1O1ButtonPressed(){
 		q1O1Pressed = true;
 		GameObject button = GameObject.Find ("Option1");
-		button.GetComponent<Image> ().color = green;
+		button.GetComponent<Image> ().color = Color.green;
 	}
 
-	// q2 second choice selected
+	// q1 second choice selected
 	public void q1O2ButtonPressed(){
 		q1O2Pressed = true;
 		GameObject button = GameObject.Find ("Option2");
@@ -222,6 +224,8 @@ public class QuizQuestions : MonoBehaviour {
 		// Set Trigger
 		playerAnimatior.SetTrigger ("To_Q2");
 	}
+
+	// Question 2 ----------------------------------------- //
 
 	public void q2SSButtonPressed(){
 		q2SSButton = true;
@@ -269,6 +273,8 @@ public class QuizQuestions : MonoBehaviour {
 		playerAnimatior.SetTrigger ("To_Q3");
 	}
 
+	// Question 3 ----------------------------------------- //
+
 	public void q3IDButtonPressed(){
 		q3IDButton = true;
 		GameObject button = GameObject.Find ("IdentityButton");
@@ -302,15 +308,17 @@ public class QuizQuestions : MonoBehaviour {
 		playerAnimatior.SetTrigger ("To_Q4");
 	}
 
+	// Question 4 ----------------------------------------- //
+
 	public void q4truePressed(){
 		q4true = true;
-		GameObject button = GameObject.Find ("TButton");
+		GameObject button = GameObject.Find ("TrueButton");
 		button.GetComponent<Image> ().color = Color.green;
 	}
 
 	public void q4falsePressed(){
 		q4false = true;
-		GameObject button = GameObject.Find ("FButton");
+		GameObject button = GameObject.Find ("FalseButton");
 		button.GetComponent<Image> ().color = Color.green;
 	}
 
@@ -322,6 +330,8 @@ public class QuizQuestions : MonoBehaviour {
 		// Set Trigger
 		playerAnimatior.SetTrigger ("To_Q5");
 	}
+
+	// Question 5 ----------------------------------------- //
 
 	public void q5IDButtonPressed(){
 		q5IDButton = true;
@@ -345,7 +355,6 @@ public class QuizQuestions : MonoBehaviour {
 		q5AllButton = true;GameObject 
 		button = GameObject.Find ("AllButton");
 		button.GetComponent<Image> ().color = Color.green;
-
 	}
 
 	// hide canvas for q5 and show canvas for q6
@@ -356,6 +365,8 @@ public class QuizQuestions : MonoBehaviour {
 		// Set Trigger
 		playerAnimatior.SetTrigger ("To_Q6");
 	}
+
+	// Question 6 ----------------------------------------- //
 
 	public void q6SpendButtonPressed(){
 		q6SpendButton = true;
@@ -390,6 +401,8 @@ public class QuizQuestions : MonoBehaviour {
 		playerAnimatior.SetTrigger ("To_Q7");
 	}
 
+	// Question 7 ----------------------------------------- //
+
 	public void q7LawyerButtonPressed(){
 		q7LawyerButton = true;
 		GameObject button = GameObject.Find ("LawyerButton");
@@ -417,6 +430,8 @@ public class QuizQuestions : MonoBehaviour {
 		playerAnimatior.SetTrigger ("To_Q8");
 	}
 
+	// Question 8 ----------------------------------------- //
+
 	public void q8SimpleButtonPressed(){
 		q8SimpleButton = true;
 		GameObject button = GameObject.Find ("SimpleButton");
@@ -425,7 +440,7 @@ public class QuizQuestions : MonoBehaviour {
 
 	public void q8SSButtonPressed(){
 		q8SSButton = true;
-		GameObject button = GameObject.Find ("SSButton");
+		GameObject button = GameObject.Find ("CSSButton");
 		button.GetComponent<Image> ().color = Color.green;
 	}
 
@@ -450,12 +465,14 @@ public class QuizQuestions : MonoBehaviour {
 		// Set Trigger
 		playerAnimatior.SetTrigger ("To_Quiz_Results");
 
-		quizScore.text = "You answered " + playerScore + " out of 18 questions correctly";
+		// Show score
+		quizScore.text = "Score: " + playerScore + " / 18 (" + (playerScore/18)*100 + "%)";
 		GameObject button = GameObject.Find ("FinishedButton");
 		button.GetComponent<Image> ().color = Color.green;
 	}
 		
 	public int calculateScore(){
+
 		// question 1
 		if (q1O1Pressed == true) {
 			score++;
@@ -463,6 +480,7 @@ public class QuizQuestions : MonoBehaviour {
 		if (q1O2Pressed == true) {
 				score++;
 		}
+
 		// question 2
 		if(q2SSButton == true){
 			score++;
@@ -482,6 +500,7 @@ public class QuizQuestions : MonoBehaviour {
 		if(q2PicButton == true){
 			score++;
 		}
+
 		// question 3
 		if(q3ChangeButton == true){
 			score++;
@@ -489,14 +508,17 @@ public class QuizQuestions : MonoBehaviour {
 		if(q3UIButton == true){
 			score++;
 		}
+
 		// question 4
 		if (q4true == true) {
 			score++;
 		}
+
 		// question 5
 		if(q5AllButton == true){
 			score++;
 		}
+
 		// question 6
 		if(q6BorrowButton == true){
 			score++;
@@ -504,6 +526,7 @@ public class QuizQuestions : MonoBehaviour {
 		if(q6CHButton == true){
 			score++;
 		}
+
 		//question 7
 		if(q7BothButton == true){
 			score++;
@@ -577,6 +600,7 @@ public class QuizQuestions : MonoBehaviour {
 			headerText.text = "Question 5";
 			questionText.fontSize = 20;
 			questionText.text = "What documents do you typically need to open a bank account at a bank branch office?" +
+				"\n" +
 				"\n\tAnswer: All of the following:" +
 				"\n\t * A valid ID, such as a drivers license" +
 				"\n\t * A Social Security card" +
