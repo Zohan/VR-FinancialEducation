@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System;
 
 
 public class QuizQuestions : MonoBehaviour {
@@ -80,6 +80,7 @@ public class QuizQuestions : MonoBehaviour {
 	private Text quizScore;
 
 	int score;
+	double score_percentage;
 	static int questionNum;
 
 	Color color;
@@ -180,8 +181,10 @@ public class QuizQuestions : MonoBehaviour {
 		reviewCanvas.enabled = false;
 		score = 0;
 		questionNum = 0;
+		//score_percentage = 0;
+
+	}// EOF void Start ()
 		
-	}
 
 	// if yes is pressed, proceed with the quiz
 	public void yesButtonPressed(){
@@ -466,7 +469,15 @@ public class QuizQuestions : MonoBehaviour {
 		playerAnimatior.SetTrigger ("To_Quiz_Results");
 
 		// Show score
-		quizScore.text = "Score: " + playerScore + " / 18 (" + (playerScore/18)*100 + "%)";
+		score_percentage = ( (double)playerScore / 18 ) * 100 ;
+		if ( (score_percentage % 1) == 0 ) {
+			//Debug.Log ("int Score: " + System.Math.Round(score_percentage,0));
+			score_percentage = System.Math.Round (score_percentage, 0);
+		} else {
+			//Debug.Log ("float Score: " + System.Math.Round(score_percentage,1));
+			score_percentage = System.Math.Round (score_percentage, 1);
+		}
+		quizScore.text = "Score: " + playerScore + " / 18 (" + score_percentage + "%)";
 		GameObject button = GameObject.Find ("FinishedButton");
 		button.GetComponent<Image> ().color = Color.green;
 	}
@@ -531,6 +542,7 @@ public class QuizQuestions : MonoBehaviour {
 		if(q7BothButton == true){
 			score++;
 		}
+
 		//question 8
 		if(q8SSButton == true){
 			score++;
@@ -541,6 +553,7 @@ public class QuizQuestions : MonoBehaviour {
 		if(q8ChangeButton == true){
 			score++;
 		}
+
 		Debug.Log ("Total score: " + score + "out of 18");
 		return score;
 	}
@@ -552,6 +565,11 @@ public class QuizQuestions : MonoBehaviour {
 		showQuestion (questionNum);
 		GameObject button = GameObject.Find ("ReviewButton");
 		button.GetComponent<Image> ().color = Color.green;
+	}
+
+	public void reviewNextPressed(){
+		questionNum++;
+		showQuestion (questionNum);
 	}
 
 	public void showQuestion(int qNum){
@@ -580,7 +598,7 @@ public class QuizQuestions : MonoBehaviour {
 			"\n\t * Proof of insurance (medical, life, home, auto), " +
 			"\n\t * Proof of any benefits received (disability, " +
 			"\n\t   public assistance, retirement), " +
-			"\n\t * and pictures of vaulable possessions in your " +
+			"\n\t * and Pictures of vaulable possessions in your " +
 			"\n\t   home";
 		}
 		if (qNum == 3) {
@@ -606,15 +624,20 @@ public class QuizQuestions : MonoBehaviour {
 				"\n\t * A Social Security card" +
 				"\n\t * Some minimum amount of money, which can " +
 				"\n\t   vary from bank to bank (often a couple " +
-				"\n\t   hundred of dollars, sometimes as little " +
-				"\n\t   as $25";
+				"\n\t   of hundred dollars, sometimes as little " +
+				"\n\t   as $25)";
 		}
 		if (qNum == 6) {
 			headerText.text = "Question 6";
 			questionText.fontSize = 20;
 			questionText.text = "What are some of the reasons it's smart to have and use a credit card?" +
 				"\n" +
-				"\nAnswer: It's a good way for you to start showing that you can borrow money and pay it back reliably, and, it's a way to start establishing history.";
+				"\nAnswer: " + 
+				"\n\t * It's a way for you to start showing that you" + 
+				"\n\t   can borrow money and pay it back reliably, and " + 
+				"\n\t * it's a way to start establishing a \"credit history\".";
+			//It's a way for you to start showing that you can borrow money and pay it back reliably.
+			//It's a way to start establishing a "credit history".
 		}
 		if (qNum == 7) {
 			headerText.text = "Question 7";
