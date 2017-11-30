@@ -9,8 +9,8 @@ public class Module2_StartMenuState : StateMachineBehaviour {
     public Module2_Main mainScript;
     
     // Player position during this state machine
-    public Vector3 playerPosition;
-    public Vector3 playerRotation;
+    public Vector3 playerStartingPosition = new Vector3(151f, 183.5f, 97f);
+    public Vector3 playerStartingRotation = new Vector3(0f, -150f, 0f);
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -19,11 +19,11 @@ public class Module2_StartMenuState : StateMachineBehaviour {
         mainScript.startMenuObj.SetActive(true);
 
         // Set the player's base position and rotation for this entire state
-        mainScript.SetPlayerPosition(playerPosition);
-        mainScript.SetPlayerRotation(Quaternion.Euler(playerRotation));
+        mainScript.SetPlayerPosition(playerStartingPosition);
+        mainScript.SetPlayerRotation(Quaternion.Euler(playerStartingRotation));
 
         // Fade in to the scene via the Main Camera's CameraFade script function "FadeIn()"
-        mainScript.mainCameraFade.FadeIn(2);
+        mainScript.GetCameraFadeObject().FadeIn(2);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

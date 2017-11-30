@@ -40,8 +40,8 @@ public class Module2_BudgetSaving_Explain : StateMachineBehaviour {
         SetupReferences();
 
         // Set "fadeIn" trigger to active
-        if (mainDisplayAnimator != null)
-            mainDisplayAnimator.SetTrigger("fadeIn");
+        //if (mainDisplayAnimator != null)
+        //    mainDisplayAnimator.SetTrigger("fadeIn");
 
         // Set button event listeners
         if (nextButton != null)

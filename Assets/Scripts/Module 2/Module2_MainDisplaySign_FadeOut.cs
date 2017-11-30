@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
-
+public class Module2_MainDisplaySign_FadeOut : StateMachineBehaviour {
     // Reference to Module 2 main script
     public Module2_Main mainScript;
 
@@ -23,7 +22,8 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
     private int whereToPutMoney = Animator.StringToHash("Base Layer.Where to Put Money.Explanation");
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
         // Reset this animator's "fadeIn" trigger
         animator.ResetTrigger("fadeIn");
 
@@ -31,13 +31,9 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
         progressionAnimator = mainScript.GetProgressionAnimator();
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
-
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
         // Reset this animator's "fadeOut" trigger
         animator.ResetTrigger("fadeOut");
 

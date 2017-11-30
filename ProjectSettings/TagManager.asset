@@ -8,6 +8,7 @@ TagManager:
   - Step3_video
   - Step3_A_video
   - Step3_B_video
+  - Canvas Text
   layers:
   - Default
   - TransparentFX
