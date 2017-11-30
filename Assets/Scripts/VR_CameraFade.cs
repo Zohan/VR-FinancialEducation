@@ -16,8 +16,8 @@ public class VR_CameraFade : MonoBehaviour
     private Color currentFadeColor = new Color(0, 0, 0, 0);             // default starting color: black and fully transparrent
     private Color targetFadeColor = new Color(0, 0, 0, 0);              // default target color: black and fully transparrent
     private Color deltaColor = new Color(0, 0, 0, 0);                   // the delta-color is basically the "speed / second" at which the current color should change
-    private bool runFadeIn = false;                                     // should be in FADE IN state
-    private bool runFadeOut = false;                                    // should be in FADE OUT state
+    //private bool runFadeIn = false;                                     // should be in FADE IN state
+    //private bool runFadeOut = false;                                    // should be in FADE OUT state
     private bool changeState = false;                                   // allow for state change after fade
     private string nextState = "";                                      // state to transition to after a fade event
 

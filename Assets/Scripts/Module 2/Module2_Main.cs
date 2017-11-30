@@ -207,16 +207,16 @@ public class Module2_Main : MonoBehaviour {
 	}
     public void SetPlayerPosition(Vector3 position)
     {
-        if (position == null || transform == null)
-            return;
+        //if (position == null || transform == null)
+        //    return;
         
         // Set the position of the player
         playerTransform.position = position;
     }
     public void SetPlayerRotation(Quaternion rotation)
     {
-        if (rotation == null || transform == null)
-            return;
+        //if (rotation == null || transform == null)
+        //    return;
 
         // Set the rotation of the player
         playerTransform.rotation = rotation;
