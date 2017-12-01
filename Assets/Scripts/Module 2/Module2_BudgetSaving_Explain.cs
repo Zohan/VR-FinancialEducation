@@ -30,7 +30,7 @@ public class Module2_BudgetSaving_Explain : StateMachineBehaviour {
     {
         // Set player starting transform at the start of this state
         mainScript.SetPlayerPosition(new Vector3(107f, 178.7f, 110f));
-        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -67.5f, 0f));
+        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -130.0f, 0f));
 
         // Set the state trigger for this state
         currentTrigger = "budgetSaving";
