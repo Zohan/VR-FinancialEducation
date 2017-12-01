@@ -84,6 +84,7 @@ public class QuizQuestions : MonoBehaviour {
 	static int questionNum;
 
 	Color color;
+	Color unselected_color;
 	Color green = new Color(90,70,10);
 
 
@@ -183,6 +184,9 @@ public class QuizQuestions : MonoBehaviour {
 		questionNum = 0;
 		//score_percentage = 0;
 
+		GameObject button = GameObject.Find ("Option1");
+		unselected_color = button.GetComponent<Image> ().color;
+
 	}// EOF void Start ()
 		
 
@@ -208,16 +212,26 @@ public class QuizQuestions : MonoBehaviour {
 
 	// q1 first choice selected
 	public void q1O1ButtonPressed(){
-		q1O1Pressed = true;
 		GameObject button = GameObject.Find ("Option1");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q1O1Pressed) {
+			q1O1Pressed = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q1O1Pressed = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	// q1 second choice selected
 	public void q1O2ButtonPressed(){
-		q1O2Pressed = true;
 		GameObject button = GameObject.Find ("Option2");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q1O2Pressed) {
+			q1O2Pressed = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q1O2Pressed = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	// hide canvas for q1 and show canvas for q2
@@ -231,40 +245,69 @@ public class QuizQuestions : MonoBehaviour {
 	// Question 2 ----------------------------------------- //
 
 	public void q2SSButtonPressed(){
-		q2SSButton = true;
-		color = Color.green;
 		GameObject button = GameObject.Find ("SSCButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q2SSButton) {
+			q2SSButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q2SSButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q2MCButtonPressed(){
-		q2MCButton = true;
 		GameObject button = GameObject.Find ("MCButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q2MCButton) {
+			q2MCButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q2MCButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q2BCButtonPressed(){
-		q2BCButton = true;
 		GameObject button = GameObject.Find ("BCButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q2BCButton) {
+			q2BCButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q2BCButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q2PIButtonPressed(){
-		q2PIButton = true;
 		GameObject button = GameObject.Find ("POIButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q2PIButton) {
+			q2PIButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q2PIButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q2PBButtonPressed(){
-		q2PBButton = true;
 		GameObject button = GameObject.Find ("POBButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q2PBButton) {
+			q2PBButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q2PBButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 		
 	public void q2PicButtonPressed(){
-		q2PicButton = true;
 		GameObject button = GameObject.Find ("PicsButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q2PicButton) {
+			q2PicButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q2PicButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	// hide canvas for q2 and show canvas for q3
@@ -279,27 +322,47 @@ public class QuizQuestions : MonoBehaviour {
 	// Question 3 ----------------------------------------- //
 
 	public void q3IDButtonPressed(){
-		q3IDButton = true;
 		GameObject button = GameObject.Find ("IdentityButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q3IDButton) {
+			q3IDButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q3IDButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q3ChangeButtonPressed(){
-		q3ChangeButton = true;
 		GameObject button = GameObject.Find ("ChangeButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q3ChangeButton) {
+			q3ChangeButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q3ChangeButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q3UIButtonPressed(){
-		q3UIButton = true;
 		GameObject button = GameObject.Find ("UIButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q3UIButton) {
+			q3UIButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q3UIButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q3VIButtonPressed(){
-		q3VIButton = true;
 		GameObject button = GameObject.Find ("VIButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q3VIButton) {
+			q3VIButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q3VIButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	// hide canvas for q3 and show canvas for q4
@@ -314,15 +377,25 @@ public class QuizQuestions : MonoBehaviour {
 	// Question 4 ----------------------------------------- //
 
 	public void q4truePressed(){
-		q4true = true;
 		GameObject button = GameObject.Find ("TrueButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q4true) {
+			q4true = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q4true = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q4falsePressed(){
-		q4false = true;
 		GameObject button = GameObject.Find ("FalseButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q4false) {
+			q4false = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q4false = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	// hide canvas for q4 and show canvas for q5
@@ -337,27 +410,47 @@ public class QuizQuestions : MonoBehaviour {
 	// Question 5 ----------------------------------------- //
 
 	public void q5IDButtonPressed(){
-		q5IDButton = true;
 		GameObject button = GameObject.Find ("IDButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q5IDButton) {
+			q5IDButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q5IDButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 		
 	public void q5SSButtonPressed(){
-		q5SSButton = true;
 		GameObject button = GameObject.Find ("SSButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q5SSButton) {
+			q5SSButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q5SSButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q5MinButtonPressed(){
-		q5MinButton = true;
 		GameObject button = GameObject.Find ("MinButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q5MinButton) {
+			q5MinButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q5MinButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q5AllButtonPressed(){
-		q5AllButton = true;GameObject 
-		button = GameObject.Find ("AllButton");
-		button.GetComponent<Image> ().color = Color.green;
+		GameObject button = GameObject.Find ("AllButton");
+		if (!q5AllButton) {
+			q5AllButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q5AllButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	// hide canvas for q5 and show canvas for q6
@@ -372,27 +465,47 @@ public class QuizQuestions : MonoBehaviour {
 	// Question 6 ----------------------------------------- //
 
 	public void q6SpendButtonPressed(){
-		q6SpendButton = true;
 		GameObject button = GameObject.Find ("SpendButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q6SpendButton) {
+			q6SpendButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q6SpendButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q6DebtButtonPressed(){
-		q6DebtButton = true;
 		GameObject button = GameObject.Find ("DebtButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q6DebtButton) {
+			q6DebtButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q6DebtButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q6BorrowButtonPressed(){
-		q6BorrowButton = true;
 		GameObject button = GameObject.Find ("BorrowButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q6BorrowButton) {
+			q6BorrowButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q6BorrowButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q6CHButtonPressed(){
-		q6CHButton = true;
 		GameObject button = GameObject.Find ("HistoryButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q6CHButton) {
+			q6CHButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q6CHButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	// hide canvas for q6 and show canvas for q7
@@ -407,21 +520,36 @@ public class QuizQuestions : MonoBehaviour {
 	// Question 7 ----------------------------------------- //
 
 	public void q7LawyerButtonPressed(){
-		q7LawyerButton = true;
 		GameObject button = GameObject.Find ("LawyerButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q7LawyerButton) {
+			q7LawyerButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q7LawyerButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q7DocsButtonPressed(){
-		q7DocsButton = true;
 		GameObject button = GameObject.Find ("KeyButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q7DocsButton) {
+			q7DocsButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q7DocsButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q7BothButtonPressed(){
-		q7BothButton = true;
 		GameObject button = GameObject.Find ("BothButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q7BothButton) {
+			q7BothButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q7BothButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	// hide canvas for q7 and show canvas for q8
@@ -436,39 +564,53 @@ public class QuizQuestions : MonoBehaviour {
 	// Question 8 ----------------------------------------- //
 
 	public void q8SimpleButtonPressed(){
-		q8SimpleButton = true;
 		GameObject button = GameObject.Find ("SimpleButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q8SimpleButton) {
+			q8SimpleButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q8SimpleButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q8SSButtonPressed(){
-		q8SSButton = true;
 		GameObject button = GameObject.Find ("CSSButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q8SSButton) {
+			q8SSButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q8SSButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q8StatesButtonPressed(){
-		q8StatesButton = true;
 		GameObject button = GameObject.Find ("StateButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q8StatesButton) {
+			q8StatesButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q8StatesButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 
 	public void q8ChangeButtonPressed(){
-		q8ChangeButton = true;
 		GameObject button = GameObject.Find ("OtherButton");
-		button.GetComponent<Image> ().color = Color.green;
+		if (!q8ChangeButton) {
+			q8ChangeButton = true;
+			button.GetComponent<Image> ().color = Color.green;
+		} else {
+			q8ChangeButton = false;
+			button.GetComponent<Image> ().color = unselected_color;
+		}
 	}
 		
 	public void q8FinishPressed(){
-		q8Canvas.enabled = false;
+
+		// Prep score text box
 		int playerScore = calculateScore ();
-		resultsCanvas.enabled = true;
-		reviewCanvas.enabled = false;
-
-		// Set Trigger
-		playerAnimatior.SetTrigger ("To_Quiz_Results");
-
-		// Show score
 		score_percentage = ( (double)playerScore / 18 ) * 100 ;
 		if ( (score_percentage % 1) == 0 ) {
 			//Debug.Log ("int Score: " + System.Math.Round(score_percentage,0));
@@ -478,8 +620,16 @@ public class QuizQuestions : MonoBehaviour {
 			score_percentage = System.Math.Round (score_percentage, 1);
 		}
 		quizScore.text = "Score: " + playerScore + " / 18 (" + score_percentage + "%)";
-		GameObject button = GameObject.Find ("FinishedButton");
-		button.GetComponent<Image> ().color = Color.green;
+
+		//GameObject button = GameObject.Find ("FinishedButton");
+		//button.GetComponent<Image> ().color = Color.green;
+
+		q8Canvas.enabled = false;
+		resultsCanvas.enabled = true;
+		reviewCanvas.enabled = false;
+
+		// Set Trigger
+		playerAnimatior.SetTrigger ("To_Quiz_Results");
 	}
 		
 	public int calculateScore(){
@@ -556,7 +706,8 @@ public class QuizQuestions : MonoBehaviour {
 
 		Debug.Log ("Total score: " + score + "out of 18");
 		return score;
-	}
+
+	} // EOF calculateScore()
 
 	public void reviewPressed(){
 		resultsCanvas.enabled = false;
@@ -564,7 +715,7 @@ public class QuizQuestions : MonoBehaviour {
 		questionNum++;
 		showQuestion (questionNum);
 		GameObject button = GameObject.Find ("ReviewButton");
-		button.GetComponent<Image> ().color = Color.green;
+		//button.GetComponent<Image> ().color = Color.green;
 	}
 
 	public void reviewNextPressed(){
@@ -592,14 +743,13 @@ public class QuizQuestions : MonoBehaviour {
 			questionText.text = "What are some key documents you should get ahold of and keep safe as you work to regain your financial independence? Choose all that apply:" +
 			"\n" +
 			"\nAnswer: You need the following:" +
-			"\n\t * Social security card, " +
-			"\n\t * Copy of marriage certificate, " +
-			"\n\t * Copy of birth certificates, " +
-			"\n\t * Proof of insurance (medical, life, home, auto), " +
-			"\n\t * Proof of any benefits received (disability, " +
-			"\n\t   public assistance, retirement), " +
-			"\n\t * and Pictures of vaulable possessions in your " +
-			"\n\t   home";
+			"\n\t * Social security card," +
+			"\n\t * Copy of marriage certificate," +
+			"\n\t * Copy of birth certificates," +
+			"\n\t * Proof of insurance (medical, life, home, auto)," +
+			"\n\t * Proof of any benefits received (disability, public assistance," +
+			"\n\t   retirement)," +
+			"\n\t * and Pictures of vaulable possessions in your home";
 		}
 		if (qNum == 3) {
 			headerText.text = "Question 3";
@@ -645,12 +795,12 @@ public class QuizQuestions : MonoBehaviour {
 			questionText.text = "What is a good first step if you want to find out about getting legally separated, divorced, or getting child support?" +
 				"\n" +
 				"\nAnswer: Both of the following:" +
-				"\n\t * Go to a support agency and inquire about " +
-				"\n\t   getting a lawyer" +
-				"\n\t * Assemble some key documents, like an " +
-				"\n\t   inventory of your possessions, some documentation " +
-				"\n\t   of your living expenses, and evicence of your " +
-				"\n\t   insurances (medical, auto, home, life)";
+				"\n\t * Go to a support agency and inquire about getting a" +
+				"\n\t   lawyer" +
+				"\n\t * Assemble some key documents, like an inventory" +
+				"\n\t   of your possessions, some documentation of your" +
+				"\n\t   living expenses, and evicence of your insurances" +
+				"\n\t   (medical, auto, home, life)";
 		}
 		if (qNum == 8) {
 			headerText.text = "Question 8";
@@ -659,9 +809,8 @@ public class QuizQuestions : MonoBehaviour {
 				"\n" +
 				"\nAnswer: The following are true:" +
 				"\n\t * If you change your Social Security number, you may " +
-				"\n\t   lose your credit history, educational " +
-				"\n\t   accomplishments, and other information tied to your" +
-				"\n\t   old identity" +
+				"\n\t   lose your credit history, educational accomplishments," +
+				"\n\t   and other information tied to your old identity" +
 				"\n\t * Most states require some form of public disclosure of " +
 				"\n\t   your identity" +
 				"\n\t * If you don't want to change your identity (name " +
@@ -673,21 +822,6 @@ public class QuizQuestions : MonoBehaviour {
 			resultsCanvas.enabled = true;
 			reviewCanvas.enabled = false;
 		}
-	}
-
-	public void retakePressed(){
-		GameObject[] player = GameObject.FindGameObjectsWithTag ("Player");
-		Vector3 movementVector = new Vector3 (19f,1.2f,34f);
-		player [0].transform.position = movementVector;
-		resultsCanvas.enabled = false;
-		startCanvas.enabled = true;
-		GameObject button = GameObject.Find ("RetakeButton");
-		button.GetComponent<Image> ().color = Color.green;
-	}
-
-	// change scene 
-	public void returnPressed(){
-		GameObject button = GameObject.Find ("ReturnButton");
-		button.GetComponent<Image> ().color = Color.green;
-	}
-} 
+	} // EOF showQuestion()
+		
+} // EOF public class QuizQuestions

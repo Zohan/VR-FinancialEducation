@@ -1068,17 +1068,3 @@ public class Mod1Script : MonoBehaviour {
 	}
 
 } // EOF class Mod1Script
-
-//		if (!Step3_A_video.isPlaying) { // Either because it has not been played yet OR it is paused
-//			Step3_A_video.Play ();
-//			if (EventSystem.current.currentSelectedGameObject.GetComponent<Text> ().text == "Pause") {
-//				Step3_A_video_audio.UnPause ();
-//			} else {
-//				Step3_A_video_audio.Play ();
-//			}
-//			EventSystem.current.currentSelectedGameObject.GetComponent<Text>().text = "Pause";
-//		} else {
-//			Step3_A_video.Pause ();
-//			Step3_A_video_audio.Pause ();
-//			EventSystem.current.currentSelectedGameObject.GetComponent<Text>().text = "Play";
-//		}
