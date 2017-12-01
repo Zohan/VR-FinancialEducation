@@ -38,7 +38,7 @@ public class Module2_Main : MonoBehaviour {
     private Module2_MainDisplaySign_FadeIn mainDisplayFadeInScript;
     private Module2_MainDisplaySign_FadeOut mainDisplayFadeOutScript;
     private Module2_IntroductionState introStateScript;
-	private Module2_QuestionsState questionsStateScript;
+	//private Module2_QuestionsState questionsStateScript;
     private Module2_NeedsWantsStateMachine needsWantsStateMachineScript;
     private Module2_NeedsWants_ExplainState needsWantsExplainStateScript;
     private Module2_NeedsWants_ExamplesState needsWantsExamplesStateScript;
@@ -119,8 +119,8 @@ public class Module2_Main : MonoBehaviour {
         introStateScript.mainScript = this;
 
         // Get reference to Questions State behavior script and pass reference to this Module 2 Main script
-        questionsStateScript = moduleProgressionAnimator.GetBehaviour<Module2_QuestionsState>();
-        questionsStateScript.mainScript = this;
+        //questionsStateScript = moduleProgressionAnimator.GetBehaviour<Module2_QuestionsState>();
+        //questionsStateScript.mainScript = this;
 
         // Get reference to Needs and Wants State Machine behavior script and pass reference to this Module 2 Main script
         needsWantsStateMachineScript = moduleProgressionAnimator.GetBehaviour<Module2_NeedsWantsStateMachine>();

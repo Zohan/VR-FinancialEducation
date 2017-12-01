@@ -11,6 +11,7 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
     private Animator progressionAnimator;
     private Animator mainDisplayAnimator;
     private Animator bodyDisplayAnimator;
+    private string currentTrigger;
 
     // References to buttons
     private Button nextButton;
@@ -19,6 +20,7 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
     // Fields for content text
     private string[] headerText;
     private string[] contentText;
+    private int[] contentTransitionIndices;
     private int currentTextIndex;
     private const int HEADER_COUNT = 2;
     private const int TEXT_COUNT = 4;
@@ -26,6 +28,9 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Set the state trigger for this state
+        currentTrigger = "thinkingSaving";
+
         // Initialize content
         SetupContent();
 
@@ -55,13 +60,16 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
 
         // Setup string array of context text
         contentText = new string[TEXT_COUNT] {
-            // Thinking for Saving
+            // Thinking for Saving [0]
             "Why is it so hard to manage our money so we can save for the future?",
             "The future feels so far away. Today feels more important, more meaningful.",
             "But remember, savings is a gift to your future yourself!",
-            // Tips for Saving Money
+            // Tips for Saving Money [3]
             "[VIDEO HERE]"
         };
+
+        // Setup int array to store indices of header transitions based on context text index
+        contentTransitionIndices = new int[HEADER_COUNT] { 0, 3 };
 
         // Set initial text index
         currentTextIndex = 0;
@@ -93,20 +101,24 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
     // Called when the "Next" button is clicked
     void NextContent()
     {
-        // Display correct header for subsection
-        if (currentTextIndex + 1 < 3)
+        // Store index of next content
+        int nextIndex = currentTextIndex + 1;
+        // If the previous state is not < 0, check for header transition
+        if (nextIndex < TEXT_COUNT)
         {
-            // Display the first header text for the first portion of content
-            mainScript.SetHeaderText(headerText[0]);
-        }
-        else
-        {
-            mainScript.SetHeaderText(headerText[1]);
-        }
+            // Check if the next index should transition to the next header text
+            for (int i = 0; i < HEADER_COUNT; i++)
+            {
+                // If the next index is the next header transition
+                if (nextIndex == contentTransitionIndices[i])
+                {
+                    // Show the next header text
+                    mainScript.SetHeaderText(headerText[i]);
+                    break;
+                }
+            }
 
-        // Set the body display text to the next text in the array or go to the next state
-        if (currentTextIndex + 1 < TEXT_COUNT)
-        {
+            // Set the body display text to the next text in the array
             mainScript.SetBodyText(contentText[++currentTextIndex]);
         }
         else
@@ -115,7 +127,7 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
 
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
-                progressionAnimator.ResetTrigger("thinkingSaving");
+                progressionAnimator.ResetTrigger(currentTrigger);
 
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
@@ -128,20 +140,24 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
     // Called when the "Back" button is clicked
     void PrevContent()
     {
-        // Display correct header for subsection
-        if (currentTextIndex - 1 < 3)
+        // Store index of previous content
+        int prevIndex = currentTextIndex - 1;
+        // If the previous state is not < 0, check for header transition
+        if (prevIndex >= 0)
         {
-            // Display the first header text for the first portion of content
-            mainScript.SetHeaderText(headerText[0]);
-        }
-        else
-        {
-            mainScript.SetHeaderText(headerText[1]);
-        }
+            // Check if the next index should transition to the next header text
+            for (int i = HEADER_COUNT - 1; i >= 0; i--)
+            {
+                // If the previous index is the previous header transition
+                if (prevIndex == contentTransitionIndices[i] - 1)
+                {
+                    // Show the previous header text
+                    mainScript.SetHeaderText(headerText[i - 1]);
+                    break;
+                }
+            }
 
-        // Set the body display text to the previous text in the array or go to the previous state
-        if (currentTextIndex - 1 >= 0)
-        {
+            // Set the body display text to the previous text in the array
             mainScript.SetBodyText(contentText[--currentTextIndex]);
         }
         else
@@ -151,15 +167,10 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
             {
-                progressionAnimator.ResetTrigger("thinkingSaving");
+                progressionAnimator.ResetTrigger(currentTrigger);
             }
         }
     }
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

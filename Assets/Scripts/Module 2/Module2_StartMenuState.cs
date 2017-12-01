@@ -15,12 +15,15 @@ public class Module2_StartMenuState : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // Show start menu
-        mainScript.startMenuObj.SetActive(true);
-
         // Set the player's base position and rotation for this entire state
         mainScript.SetPlayerPosition(playerStartingPosition);
         mainScript.SetPlayerRotation(Quaternion.Euler(playerStartingRotation));
+        //Debug.Log("Entered Start Menu State");
+        //mainScript.SetPlayerPosition(new Vector3(0, 0, 0));
+        //mainScript.SetPlayerRotation(Quaternion.Euler(0, 0, 0));
+
+        // Show start menu
+        mainScript.startMenuObj.SetActive(true);
 
         // Fade in to the scene via the Main Camera's CameraFade script function "FadeIn()"
         mainScript.GetCameraFadeObject().FadeIn(2);

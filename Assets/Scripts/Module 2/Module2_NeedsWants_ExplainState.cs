@@ -12,6 +12,7 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     private Animator progressionAnimator;
     private Animator mainDisplayAnimator;
     private Animator bodyDisplayAnimator;
+    private string currentTrigger;
 
     // References to buttons
     private Button nextButton;
@@ -20,27 +21,19 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     // Fields for content text
     private string[] headerText;
     private string[] contentText;
+    private int[] contentTransitionIndices;
     private int currentTextIndex;
     private const int HEADER_COUNT = 2;
-    private const int TEXT_COUNT = 5;
-
-    // Header text
-    //private const string h0 = "Prioritizing:\nWants vs. Needs";
-    //private const string h1 = "First Steps";
-
-    // Content text for the introduction state
-    //private const string t0 = "Early on, it's important to get priorities and resources straight.";
-    //private const string t1 = "What do we really need, what resources are available?";
-    //private const string t2 = "It's important to know the difference between a 'need' and a 'want' when thinking about spending.";
-    //private const string t3 = "A 'need' is something you must have to survive, like food or shelter.";
-    //private const string t4 = "A 'want' is something that makes life more pleasant or easier.";
+    private const int TEXT_COUNT = 6;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
         // Set player starting transform at the start of this state
-        mainScript.SetPlayerPosition(new Vector3(138f, 184f, 98f));
-        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -180f, 0f));
+        mainScript.SetPlayerPosition(new Vector3(138.11f, 183.808f, 99.115f));
+        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -220f, 0f));
+
+        currentTrigger = "firstSteps";
 
         // Initialize content
         SetupContent();
@@ -66,25 +59,23 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
         // Setup string array of header text
         headerText = new string[HEADER_COUNT] {
             "First Steps",
-            "Prioritizing:\nWants vs. Needs"
+            "Prioritizing:\nWANTS vs. NEEDS"
         };
 
         // Setup string array of context text
         contentText = new string[TEXT_COUNT] {
+            // First Steps [0]
             "Early on, it's important to get priorities and resources straight.",
             "What do we really need, what resources are available?",
+            // Prioritizing:\nWants vs. Needs [2]
             "It's important to know the difference between a NEED and a WANT when thinking about spending.",
             "A NEED is something you must have to survive, like food or shelter.",
-            "A WANT is something that makes life more pleasant or easier."
+            "A WANT is something that makes life more pleasant or easier.",
+            "Take a look at examples of NEEDS and WANTS, respectively."
         };
 
-        //for (int i = 0; i < TEXT_COUNT; i++)
-        //{
-        //    //contentText[i] = 
-        //}
-        //contentText[0] = t0;
-        //contentText[1] = t1;
-        //contentText[2] = t2;
+        // Setup int array to store indices of header transitions based on context text index
+        contentTransitionIndices = new int[HEADER_COUNT] { 0, 2 };
 
         // Set initial text index
         currentTextIndex = 0;
@@ -116,30 +107,33 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     // Called when the "Next" button is clicked
     void NextContent()
     {
-        // Check which display stage we're in (i.e., first portion of content, or second portion)
-        if (currentTextIndex + 1 < 2)
+        // Store index of next content
+        int nextIndex = currentTextIndex + 1;
+        // If the previous state is not < 0, check for header transition
+        if (nextIndex < TEXT_COUNT)
         {
-            // Display the first header text for the first portion of content
-            mainScript.SetHeaderText(headerText[0]);
-        } else
-        {
-            // Display the second header text for the second portion of content
-            mainScript.SetHeaderText(headerText[1]);
-        }
+            // Check if the next index should transition to the next header text
+            for (int i = 0; i < HEADER_COUNT; i++)
+            {
+                // If the next index is the next header transition
+                if (nextIndex == contentTransitionIndices[i])
+                {
+                    // Show the next header text
+                    mainScript.SetHeaderText(headerText[i]);
+                    break;
+                }
+            }
 
-        // Set the body display text to the next text in the array or go to the next state
-        if (currentTextIndex + 1 < TEXT_COUNT)
-        {
+            // Set the body display text to the next text in the array
             mainScript.SetBodyText(contentText[++currentTextIndex]);
         }
         else
         {
             // Go to the next state
 
-
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
-                progressionAnimator.ResetTrigger("firstSteps");
+                progressionAnimator.ResetTrigger(currentTrigger);
 
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
@@ -152,21 +146,24 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     // Called when the "Back" button is clicked
     void PrevContent()
     {
-        // Check which display stage we're in (i.e., first portion of content, or second portion)
-        if (currentTextIndex - 1 < 2)
+        // Store index of previous content
+        int prevIndex = currentTextIndex - 1;
+        // If the previous state is not < 0, check for header transition
+        if (prevIndex >= 0)
         {
-            // Display the first header text for the first portion of content
-            mainScript.SetHeaderText(headerText[0]);
-        }
-        else
-        {
-            // Display the second header text for the second portion of content
-            mainScript.SetHeaderText(headerText[1]);
-        }
+            // Check if the next index should transition to the next header text
+            for (int i = HEADER_COUNT - 1; i >= 0; i--)
+            {
+                // If the previous index is the previous header transition
+                if (prevIndex == contentTransitionIndices[i] - 1)
+                {
+                    // Show the previous header text
+                    mainScript.SetHeaderText(headerText[i - 1]);
+                    break;
+                }
+            }
 
-        // Set the body display text to the previous text in the array or go to the previous state
-        if (currentTextIndex - 1 >= 0)
-        {
+            // Set the body display text to the previous text in the array
             mainScript.SetBodyText(contentText[--currentTextIndex]);
         }
         else
@@ -176,16 +173,10 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
             {
-                progressionAnimator.ResetTrigger("firstSteps");
-                //progressionAnimator.SetTrigger("questions");
+                progressionAnimator.ResetTrigger(currentTrigger);
             }
         }
     }
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

@@ -12,6 +12,7 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
     private Animator progressionAnimator;
     private Animator mainDisplayAnimator;
     private Animator bodyDisplayAnimator;
+    private string currentTrigger;
 
     // References to buttons
     private Button nextButton;
@@ -31,6 +32,9 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
         // Set player starting transform at the start of this state
         mainScript.SetPlayerPosition(new Vector3(86f, 179.6f, 92f));
         mainScript.SetPlayerRotation(Quaternion.Euler(0f, -180f, 0f));
+
+        // Set the state trigger for this state
+        currentTrigger = "whereToPutMoney";
 
         // Initialize content
         SetupContent();
@@ -154,7 +158,7 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
 
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
-                progressionAnimator.ResetTrigger("whereToPutMoney");
+                progressionAnimator.ResetTrigger(currentTrigger);
 
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
@@ -194,7 +198,7 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
             {
-                progressionAnimator.ResetTrigger("whereToPutMoney");
+                progressionAnimator.ResetTrigger(currentTrigger);
             }
         }
     }

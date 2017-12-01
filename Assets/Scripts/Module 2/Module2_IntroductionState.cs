@@ -4,127 +4,186 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Module2_IntroductionState : StateMachineBehaviour {
+public class Module2_IntroductionState : StateMachineBehaviour
+{
 
-	// Reference to module 2 main script
-	public Module2_Main mainScript;
+    // Reference to module 2 main script
+    public Module2_Main mainScript;
 
-	// References to animators
-	private Animator progressionAnimator;
-	private Animator mainDisplayAnimator;
-	private Animator bodyDisplayAnimator;
+    // References to animators
+    private Animator progressionAnimator;
+    private Animator mainDisplayAnimator;
+    private Animator bodyDisplayAnimator;
 
-	// References to buttons
-	private Button nextButton;
-	private Button backButton;
+    // References to buttons
+    private Button nextButton;
+    private Button backButton;
 
-	// Fields for content text
-	private string[] introTexts;
-	private int currentTextIndex;
-	private const int numText = 3;
+    // Fields for content text
+    private string[] headerText;
+    private string[] contentText;
+    private int[] contentTransitionIndices;
+    private int currentTextIndex;
+    private const int HEADER_COUNT = 2;
+    private const int TEXT_COUNT = 6;
 
-	// Header text
-	private const string h0 = "Module 2:\nFinancial Fundamentals";
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        // Initialize content
+        SetupContent();
 
-	// Content text for the introduction state
-	private const string t0 = "Welcome!";
-	private const string t1 = "You are seeking to build a solid financial future. This module outlines some important information you'll need to do this.";
-	private const string t2 = "It will help you review your complete income, debt, budgeting, and finance picture.";
+        // Initialize references
+        SetupReferences();
 
-	// OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        // Set "fadeIn" trigger to active
+        if (mainDisplayAnimator != null)
+            mainDisplayAnimator.SetTrigger("fadeIn");
 
-		// Setup string array of context text
-		introTexts = new string[numText];
-		introTexts [0] = t0;
-		introTexts [1] = t1;
-		introTexts [2] = t2;
+        // Set button event listeners
+        if (nextButton != null)
+            nextButton.onClick.AddListener(NextContent);
 
-		// Set initial text index
-		currentTextIndex = 0;
+        if (backButton != null)
+            backButton.onClick.AddListener(PrevContent);
+    }
 
-		// Set the header text
-		mainScript.SetHeaderText(h0);
+    // Initialize the display content
+    private void SetupContent()
+    {
+        // Setup string array of header text
+        headerText = new string[HEADER_COUNT] {
+            "Module 2:\nFinancial Fundamentals",
+            "Questions"
+        };
 
-		// Get reference to module progression animator controller
-		progressionAnimator = mainScript.GetProgressionAnimator();
+        // Setup string array of context text
+        contentText = new string[TEXT_COUNT] {
+            // Module 2:\nFinancial Fundamentals [0]
+            "Welcome!",
+            "You are seeking to build a solid financial future. This module outlines some important information you'll need to do this.",
+            "It will help you review your complete income, debt, budgeting, and finance picture.",
+            // Questions [3]
+            "On a scale of 1 - 10, how comfortable are you thinking about your personal finances? Why do you think you gave that rating?",
+            "Do you have a formal budget somewhere that you try to follow? Why or why not?",
+            "What are some financial goals you would like to achieve in the next year? Five years? Ten years?"
+        };
 
-		// Get reference to main display animator controller
-		mainDisplayAnimator = mainScript.GetMainDisplayAnimator();
-		// Set "fadeIn" trigger to active
-		if (mainDisplayAnimator != null)
-			mainDisplayAnimator.SetTrigger ("fadeIn");
+        // Setup int array to store indices of header transitions based on context text index
+        contentTransitionIndices = new int[HEADER_COUNT] { 0, 3 };
 
-		// Set the body display text to the starting text (t1)
-		mainScript.SetBodyText(introTexts[currentTextIndex]);
+        // Set initial text index
+        currentTextIndex = 0;
 
-		// Get reference to body display animator controller
-		bodyDisplayAnimator = mainScript.GetBodyDisplayAnimator();
+        // Set the header text
+        mainScript.SetHeaderText(headerText[0]);
 
-		// Set button event listeners
-		nextButton = mainScript.GetButton("Next");
-		if (nextButton != null)
-			nextButton.onClick.AddListener (NextContent);
-		backButton = mainScript.GetButton("Back");
-		if (backButton != null)
-			backButton.onClick.AddListener (PrevContent);
-	}
+        // Set the body display text to the starting text
+        mainScript.SetBodyText(contentText[0]);
+    }
 
-	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//	
-	//}
+    // Setup references to objects
+    private void SetupReferences()
+    {
+        // Get reference to module progression animator controller
+        progressionAnimator = mainScript.GetProgressionAnimator();
 
-	void NextContent() {
-		if (bodyDisplayAnimator != null) {
-			bodyDisplayAnimator.ResetTrigger ("fadeIn");
-			bodyDisplayAnimator.ResetTrigger ("fadeOut");
-		}
+        // Get reference to main display animator controller
+        mainDisplayAnimator = mainScript.GetMainDisplayAnimator();
 
-		// Set the body display text to the next text in the array
-		if (currentTextIndex + 1 < numText) {
-			mainScript.SetBodyText (introTexts [++currentTextIndex]);
-		} else {
-			if (progressionAnimator != null) {
-				progressionAnimator.ResetTrigger ("intro");
-				progressionAnimator.SetTrigger ("questions");
-			}
-		}
-	}
+        // Get reference to body display animator controller
+        bodyDisplayAnimator = mainScript.GetBodyDisplayAnimator();
 
-	void PrevContent() {
-		// Set the body display text to the next text in the array
-		if (currentTextIndex-1 >= 0) {
-			mainScript.SetBodyText(introTexts[--currentTextIndex]);
-		}
+        // Get references to buttons
+        nextButton = mainScript.GetButton("Next");
+        backButton = mainScript.GetButton("Back");
+    }
 
-		if (bodyDisplayAnimator != null) {
-			bodyDisplayAnimator.ResetTrigger ("fadeIn");
-			bodyDisplayAnimator.ResetTrigger ("fadeOut");
-		}
-	}
+    // Called when the "Next" button is clicked
+    void NextContent()
+    {
+        // Store index of next content
+        int nextIndex = currentTextIndex + 1;
+        // If the previous state is not < 0, check for header transition
+        if (nextIndex < TEXT_COUNT)
+        {
+            // Check if the next index should transition to the next header text
+            for (int i = 0; i < HEADER_COUNT; i++)
+            {
+                // If the next index is the next header transition
+                if (nextIndex == contentTransitionIndices[i])
+                {
+                    // Show the next header text
+                    mainScript.SetHeaderText(headerText[i]);
+                    break;
+                }
+            }
 
-	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		//Debug.Log ("Exiting Introduction State...");
-		// Remove event listeners from buttons
-		nextButton.onClick.RemoveAllListeners ();
-		backButton.onClick.RemoveAllListeners ();
+            // Set the body display text to the next text in the array
+            mainScript.SetBodyText(contentText[++currentTextIndex]);
+        }
+        else
+        {
+            // Go to the next state
 
-		if (mainDisplayAnimator != null)
-			mainDisplayAnimator.ResetTrigger ("fadeIn");
+            // Reset the progression animator's trigger for this state in case it's active
+            if (progressionAnimator != null)
+                progressionAnimator.ResetTrigger("intro");
 
-		// Set initial text index
-		currentTextIndex = 0;
-	}
+            // Set main display animator's "fadeOut" trigger
+            if (mainDisplayAnimator != null)
+            {
+                mainDisplayAnimator.SetTrigger("fadeOut");
+            }
+        }
+    }
 
-	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
-	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
+    // Called when the "Back" button is clicked
+    void PrevContent()
+    {
+        // Store index of previous content
+        int prevIndex = currentTextIndex - 1;
+        // If the previous state is not < 0, check for header transition
+        if (prevIndex >= 0)
+        {
+            // Check if the next index should transition to the next header text
+            for (int i = HEADER_COUNT - 1; i >= 0; i--)
+            {
+                // If the previous index is the previous header transition
+                if (prevIndex == contentTransitionIndices[i] - 1)
+                {
+                    // Show the previous header text
+                    mainScript.SetHeaderText(headerText[i - 1]);
+                    break;
+                }
+            }
 
-	// OnStateIK is called right after Animator.OnAnimatorIK(). Code that sets up animation IK (inverse kinematics) should be implemented here.
-	//override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
+            // Set the body display text to the previous text in the array
+            mainScript.SetBodyText(contentText[--currentTextIndex]);
+        }
+        else
+        {
+            // Go to the previous state
+
+            // Reset the progression animator's trigger for this state in case it's active
+            if (progressionAnimator != null)
+            {
+                progressionAnimator.ResetTrigger("intro");
+            }
+        }
+    }
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        // Remove event listeners from buttons
+        nextButton.onClick.RemoveAllListeners();
+        backButton.onClick.RemoveAllListeners();
+
+        if (mainDisplayAnimator != null)
+            mainDisplayAnimator.ResetTrigger("fadeIn");
+
+        // Set initial text index
+        currentTextIndex = 0;
+    }
 }

@@ -12,6 +12,7 @@ public class Module2_CheckLearning : StateMachineBehaviour {
     private Animator progressionAnimator;
     private Animator mainDisplayAnimator;
     private Animator bodyDisplayAnimator;
+    private string currentTrigger;
 
     // References to buttons
     private Button nextButton;
@@ -31,6 +32,9 @@ public class Module2_CheckLearning : StateMachineBehaviour {
         // Set player starting transform at the start of this state
         mainScript.SetPlayerPosition(new Vector3(69.13f, 177.67f, 118.8f));
         mainScript.SetPlayerRotation(Quaternion.Euler(0f, -63.823f, 0f));
+
+        // Set the state trigger for this state
+        currentTrigger = "checkLearning";
 
         // Initialize content
         SetupContent();
@@ -123,12 +127,12 @@ public class Module2_CheckLearning : StateMachineBehaviour {
 
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
-                progressionAnimator.ResetTrigger("checkLearning");
+                progressionAnimator.ResetTrigger(currentTrigger);
 
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
             {
-                mainDisplayAnimator.SetTrigger("fadeOut");
+                //mainDisplayAnimator.SetTrigger("fadeOut");
             }
         }
     }
@@ -163,7 +167,7 @@ public class Module2_CheckLearning : StateMachineBehaviour {
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
             {
-                progressionAnimator.ResetTrigger("checkLearning");
+                progressionAnimator.ResetTrigger(currentTrigger);
             }
         }
     }

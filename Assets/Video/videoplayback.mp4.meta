@@ -1,6 +1,7 @@
 fileFormatVersion: 2
 guid: e1dd6679abdd70c409a03c3d2c0e0597
 VideoClipImporter:
+  externalObjects: {}
   serializedVersion: 2
   useLegacyImporter: 0
   quality: 0.5
@@ -10,7 +11,7 @@ VideoClipImporter:
   frameRange: 0
   startFrame: -1
   endFrame: -1
-  frameCount: 2565
+  frameCount: 2566
   frameRate: 30
   colorSpace: 0
   deinterlace: 0
@@ -19,12 +20,14 @@ VideoClipImporter:
   sourceHasAlpha: 0
   flipVertical: 0
   flipHorizontal: 0
+  pixelAspectRatioNumerator: 1
+  pixelAspectRatioDenominator: 1
   importAudio: 1
   sourceAudioChannelCount: 0200
   sourceAudioSampleRate: 44ac0000
   targetSettings: {}
   output:
-    format: 0
+    format: 1
     settings:
       enableTranscoding: 0
       codec: 0
@@ -37,7 +40,7 @@ VideoClipImporter:
     encodedWidth: 1280
     encodedHeight: 720
     encodedStartFrame: 0
-    encodedEndFrame: 2565
+    encodedEndFrame: 2566
     streamedResource:
       source: 
       offset: 0

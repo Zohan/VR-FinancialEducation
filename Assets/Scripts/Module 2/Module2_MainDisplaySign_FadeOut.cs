@@ -10,7 +10,8 @@ public class Module2_MainDisplaySign_FadeOut : StateMachineBehaviour {
     private Animator progressionAnimator;
 
     // Hash of main progression states
-    private int questionsState = Animator.StringToHash("Base Layer.Introduction.Questions");
+    //private int questionsState = Animator.StringToHash("Base Layer.Introduction.Questions");
+    private int introState = Animator.StringToHash("Base Layer.Introduction");
     private int explanationState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Explanation");
     private int needsExamplesState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Needs Examples");
     private int wantsExamplesState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Wants Examples");
@@ -44,7 +45,7 @@ public class Module2_MainDisplaySign_FadeOut : StateMachineBehaviour {
             int currentStateHash = progressionAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash;
 
             // If the main progression animator is in the "Questions" state
-            if (currentStateHash == questionsState)
+            if (currentStateHash == introState)
             {
                 // Trigger the next state (firstSteps)
                 progressionAnimator.SetTrigger("firstSteps");

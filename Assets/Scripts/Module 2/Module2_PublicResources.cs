@@ -11,6 +11,7 @@ public class Module2_PublicResources : StateMachineBehaviour {
     private Animator progressionAnimator;
     private Animator mainDisplayAnimator;
     private Animator bodyDisplayAnimator;
+    private string currentTrigger;
 
     // References to buttons
     private Button nextButton;
@@ -19,6 +20,7 @@ public class Module2_PublicResources : StateMachineBehaviour {
     // Fields for content text
     private string[] headerText;
     private string[] contentText;
+    private int[] contentTransitionIndices;
     private int currentTextIndex;
     private const int HEADER_COUNT = 5;
     private const int TEXT_COUNT = 9;
@@ -26,6 +28,9 @@ public class Module2_PublicResources : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Set the state trigger for this state
+        currentTrigger = "pubResources";
+
         // Initialize content
         SetupContent();
 
@@ -58,16 +63,24 @@ public class Module2_PublicResources : StateMachineBehaviour {
 
         // Setup string array of context text
         contentText = new string[TEXT_COUNT] {
+            // Find out about\nPublic Resources [0]
             "On the practical side, get access to all of the resources that are available to you in the present.",
             "An advocate from your local domestic violence program can help you locate the contact information.",
             "Here are some good starting points...",
+            // Benefits.gov [3]
             "This website can help you find state-based public assistance for you and/or your family:\nhttps://www.benefits.gov",
+            // TANF: Temporary Assistance for Needy Families [4]
             "This is a federal program that helps get financial resources to families that need them while working to get back on their feet:\nhttps://www.tanfprogram.com",
+            // Your local domestic voilence service program [5]
             "An advocate from your local domestic violence program can help you locate the contact information for resources specific to your needs, your family and your location.",
+            // Social Security [6]
             "If you are 62 or older, remember that you are eligible for Social Security benefits. These benefits are determined by the amount of income earned over your working life.",
             "Were you married for at least 10 years and have an ex-spouse who is also 62 or older? If so, you may also be eligible to obtain benefits based on the working life of your spouse.",
             "Drawing upon these benefits does not affect the benefits that an ex-spouse receives.\nwww.socialsecurity.gov"
         };
+
+        // Setup int array to store indices of header transitions based on context text index
+        contentTransitionIndices = new int[HEADER_COUNT] { 0, 3, 4, 5, 6 };
 
         // Set initial text index
         currentTextIndex = 0;
@@ -99,32 +112,24 @@ public class Module2_PublicResources : StateMachineBehaviour {
     // Called when the "Next" button is clicked
     void NextContent()
     {
-        // Display correct header for subsection
-        if (currentTextIndex + 1 < 3)
+        // Store index of next content
+        int nextIndex = currentTextIndex + 1;
+        // If the previous state is not < 0, check for header transition
+        if (nextIndex < TEXT_COUNT)
         {
-            // Display the first header text for the first portion of content
-            mainScript.SetHeaderText(headerText[0]);
-        }
-        else if (currentTextIndex + 1 < 4)
-        {
-            mainScript.SetHeaderText(headerText[1]);
-        }
-        else if (currentTextIndex + 1 < 5)
-        {
-            mainScript.SetHeaderText(headerText[2]);
-        }
-        else if (currentTextIndex + 1 < 6)
-        {
-            mainScript.SetHeaderText(headerText[3]);
-        }
-        else
-        {
-            mainScript.SetHeaderText(headerText[4]);
-        }
+            // Check if the next index should transition to the next header text
+            for (int i = 0; i < HEADER_COUNT; i++)
+            {
+                // If the next index is the next header transition
+                if (nextIndex == contentTransitionIndices[i])
+                {
+                    // Show the next header text
+                    mainScript.SetHeaderText(headerText[i]);
+                    break;
+                }
+            }
 
-        // Set the body display text to the next text in the array or go to the next state
-        if (currentTextIndex + 1 < TEXT_COUNT)
-        {
+            // Set the body display text to the next text in the array
             mainScript.SetBodyText(contentText[++currentTextIndex]);
         }
         else
@@ -133,7 +138,7 @@ public class Module2_PublicResources : StateMachineBehaviour {
 
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
-                progressionAnimator.ResetTrigger("pubResources");
+                progressionAnimator.ResetTrigger(currentTrigger);
 
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
@@ -146,32 +151,24 @@ public class Module2_PublicResources : StateMachineBehaviour {
     // Called when the "Back" button is clicked
     void PrevContent()
     {
-        // Display correct header for subsection
-        if (currentTextIndex - 1 < 3)
+        // Store index of previous content
+        int prevIndex = currentTextIndex - 1;
+        // If the previous state is not < 0, check for header transition
+        if (prevIndex >= 0)
         {
-            // Display the first header text for the first portion of content
-            mainScript.SetHeaderText(headerText[0]);
-        }
-        else if (currentTextIndex - 1 < 4)
-        {
-            mainScript.SetHeaderText(headerText[1]);
-        }
-        else if (currentTextIndex - 1 < 5)
-        {
-            mainScript.SetHeaderText(headerText[2]);
-        }
-        else if (currentTextIndex - 1 < 6)
-        {
-            mainScript.SetHeaderText(headerText[3]);
-        }
-        else
-        {
-            mainScript.SetHeaderText(headerText[4]);
-        }
+            // Check if the next index should transition to the next header text
+            for (int i = HEADER_COUNT - 1; i >= 0; i--)
+            {
+                // If the previous index is the previous header transition
+                if (prevIndex == contentTransitionIndices[i] - 1)
+                {
+                    // Show the previous header text
+                    mainScript.SetHeaderText(headerText[i - 1]);
+                    break;
+                }
+            }
 
-        // Set the body display text to the previous text in the array or go to the previous state
-        if (currentTextIndex - 1 >= 0)
-        {
+            // Set the body display text to the previous text in the array
             mainScript.SetBodyText(contentText[--currentTextIndex]);
         }
         else
@@ -181,15 +178,10 @@ public class Module2_PublicResources : StateMachineBehaviour {
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
             {
-                progressionAnimator.ResetTrigger("pubResources");
+                progressionAnimator.ResetTrigger(currentTrigger);
             }
         }
     }
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -201,14 +193,4 @@ public class Module2_PublicResources : StateMachineBehaviour {
         // Set initial text index
         currentTextIndex = 0;
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK(). Code that sets up animation IK (inverse kinematics) should be implemented here.
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
 }

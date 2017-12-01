@@ -11,6 +11,7 @@ public class Module2_BudgetSaving_MakeBudget : StateMachineBehaviour {
     private Animator progressionAnimator;
     private Animator mainDisplayAnimator;
     private Animator bodyDisplayAnimator;
+    private string currentTrigger;
 
     // References to buttons
     private Button nextButton;
@@ -19,6 +20,7 @@ public class Module2_BudgetSaving_MakeBudget : StateMachineBehaviour {
     // Fields for content text
     private string[] headerText;
     private string[] contentText;
+    private int[] contentTransitionIndices;
     private int currentTextIndex;
     private const int HEADER_COUNT = 6;
     private const int TEXT_COUNT = 9;
@@ -26,6 +28,9 @@ public class Module2_BudgetSaving_MakeBudget : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Set the state trigger for this state
+        currentTrigger = "makeBudget";
+
         // Initialize content
         SetupContent();
 
@@ -59,22 +64,25 @@ public class Module2_BudgetSaving_MakeBudget : StateMachineBehaviour {
 
         // Setup string array of context text
         contentText = new string[TEXT_COUNT] {
-            // Make a Budget
+            // Make a Budget [0]
             "Your next step is to make a budget. The following will guide you through the steps necessary for doing so.",
-            // Step 1
+            // Step 1 [1]
             "Identify your net monthly income. This is the money that comes into your household, after deducting taxes, Social Security insurance, etc.",
-            // Step 2
+            // Step 2 [2]
             "Identify your monthly expenses. Monthly expenses include rent and phone bills, as well as those that occur periodically, like car insurance and medical expenses.",
-            // Step 3
+            // Step 3 [3]
             "Subtract your monthly expenses from your income. The difference between your income and expenses indicates whether or not you have any money to spare.",
             "Can you reduce expenses or earn more money to cover shortages?",
-            // Budget Tools
+            // Budget Tools [5]
             "This is an online calculator that can help you calculate your budget.\nhttps://www.quicken.com/budget-calculator",
             "Just click on the boxes to enter the amounts you spend in each category, then click 'next' on the site. The app will calculate your budget and show you clearly what you have and what you spend.",
-            // Spreadsheets
+            // Spreadsheets [7]
             "Try the following budget template from Microsoft Excel.\nhttps://goo.gl/YqXi8v",
             "This is a document you can fill in and save on your computer to make adjustments and check whenever you want."
         };
+
+        // Setup int array to store indices of header transitions based on context text index
+        contentTransitionIndices = new int[HEADER_COUNT] { 0, 1, 2, 3, 5, 7 };
 
         // Set initial text index
         currentTextIndex = 0;
@@ -106,36 +114,24 @@ public class Module2_BudgetSaving_MakeBudget : StateMachineBehaviour {
     // Called when the "Next" button is clicked
     void NextContent()
     {
-        // Display correct header for subsection
-        if (currentTextIndex + 1 < 1)
+        // Store index of next content
+        int nextIndex = currentTextIndex + 1;
+        // If the previous state is not < 0, check for header transition
+        if (nextIndex < TEXT_COUNT)
         {
-            // Display the first header text for the first portion of content
-            mainScript.SetHeaderText(headerText[0]);
-        }
-        else if (currentTextIndex + 1 < 2)
-        {
-            mainScript.SetHeaderText(headerText[1]);
-        }
-        else if (currentTextIndex + 1 < 3)
-        {
-            mainScript.SetHeaderText(headerText[2]);
-        }
-        else if (currentTextIndex + 1 < 5)
-        {
-            mainScript.SetHeaderText(headerText[3]);
-        }
-        else if (currentTextIndex + 1 < 7)
-        {
-            mainScript.SetHeaderText(headerText[4]);
-        }
-        else
-        {
-            mainScript.SetHeaderText(headerText[5]);
-        }
+            // Check if the next index should transition to the next header text
+            for (int i = 0; i < HEADER_COUNT; i++)
+            {
+                // If the next index is the next header transition
+                if (nextIndex == contentTransitionIndices[i])
+                {
+                    // Show the next header text
+                    mainScript.SetHeaderText(headerText[i]);
+                    break;
+                }
+            }
 
-        // Set the body display text to the next text in the array or go to the next state
-        if (currentTextIndex + 1 < TEXT_COUNT)
-        {
+            // Set the body display text to the next text in the array
             mainScript.SetBodyText(contentText[++currentTextIndex]);
         }
         else
@@ -144,7 +140,7 @@ public class Module2_BudgetSaving_MakeBudget : StateMachineBehaviour {
 
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
-                progressionAnimator.ResetTrigger("makeBudget");
+                progressionAnimator.ResetTrigger(currentTrigger);
 
             // Set main display animator's "fadeOut" trigger
             if (mainDisplayAnimator != null)
@@ -157,36 +153,24 @@ public class Module2_BudgetSaving_MakeBudget : StateMachineBehaviour {
     // Called when the "Back" button is clicked
     void PrevContent()
     {
-        // Display correct header for subsection
-        if (currentTextIndex - 1 < 1)
+        // Store index of previous content
+        int prevIndex = currentTextIndex - 1;
+        // If the previous state is not < 0, check for header transition
+        if (prevIndex >= 0)
         {
-            // Display the first header text for the first portion of content
-            mainScript.SetHeaderText(headerText[0]);
-        }
-        else if (currentTextIndex - 1 < 2)
-        {
-            mainScript.SetHeaderText(headerText[1]);
-        }
-        else if (currentTextIndex - 1 < 3)
-        {
-            mainScript.SetHeaderText(headerText[2]);
-        }
-        else if (currentTextIndex - 1 < 5)
-        {
-            mainScript.SetHeaderText(headerText[3]);
-        }
-        else if (currentTextIndex - 1 < 7)
-        {
-            mainScript.SetHeaderText(headerText[4]);
-        }
-        else
-        {
-            mainScript.SetHeaderText(headerText[5]);
-        }
+            // Check if the next index should transition to the next header text
+            for (int i = HEADER_COUNT - 1; i >= 0; i--)
+            {
+                // If the previous index is the previous header transition
+                if (prevIndex == contentTransitionIndices[i] - 1)
+                {
+                    // Show the previous header text
+                    mainScript.SetHeaderText(headerText[i - 1]);
+                    break;
+                }
+            }
 
-        // Set the body display text to the previous text in the array or go to the previous state
-        if (currentTextIndex - 1 >= 0)
-        {
+            // Set the body display text to the previous text in the array
             mainScript.SetBodyText(contentText[--currentTextIndex]);
         }
         else
@@ -196,15 +180,10 @@ public class Module2_BudgetSaving_MakeBudget : StateMachineBehaviour {
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
             {
-                progressionAnimator.ResetTrigger("makeBudget");
+                progressionAnimator.ResetTrigger(currentTrigger);
             }
         }
     }
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
