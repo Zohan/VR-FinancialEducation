@@ -68,7 +68,6 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SrcBlend: 1
-    - _SunDisk: 2
     - _SunSize: 0.076
     - _UVSec: 0
     - _ZWrite: 1
