@@ -30,7 +30,7 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Set player starting transform at the start of this state
-        mainScript.SetPlayerPosition(new Vector3(86f, 179.6f, 92f));
+        mainScript.SetPlayerPosition(new Vector3(85f, 179.6f, 90f));
         mainScript.SetPlayerRotation(Quaternion.Euler(0f, -180f, 0f));
 
         // Set the state trigger for this state

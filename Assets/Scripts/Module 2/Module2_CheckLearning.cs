@@ -30,8 +30,8 @@ public class Module2_CheckLearning : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Set player starting transform at the start of this state
-        mainScript.SetPlayerPosition(new Vector3(69.13f, 177.67f, 118.8f));
-        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -63.823f, 0f));
+        mainScript.SetPlayerPosition(new Vector3(68.5f, 177.7f, 119.5f));
+        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -18f, 0f));
 
         // Set the state trigger for this state
         currentTrigger = "checkLearning";
