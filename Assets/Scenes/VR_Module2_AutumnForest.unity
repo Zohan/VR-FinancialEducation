@@ -993,8 +993,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 39564874}
-  m_LocalRotation: {x: 0.13871853, y: 0.46491838, z: 0.07402631, w: -0.87127966}
-  m_LocalPosition: {x: 71.32502, y: 171.46278, z: 118.28342}
+  m_LocalRotation: {x: 0.03376161, y: 0.8651031, z: 0.058760524, w: -0.496995}
+  m_LocalPosition: {x: 151.98709, y: 167.3539, z: 98.792114}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13822,16 +13822,16 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 218650732}
+      objectReference: {fileID: 565354993}
     - target: {fileID: 114523249311748686, guid: 0acc923a55fd84cd2a5f9561b371bdb3,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: FadeToState
+      value: touched
       objectReference: {fileID: 0}
     - target: {fileID: 114523249311748686, guid: 0acc923a55fd84cd2a5f9561b371bdb3,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114523249311748686, guid: 0acc923a55fd84cd2a5f9561b371bdb3,
         type: 2}
@@ -14025,6 +14025,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0acc923a55fd84cd2a5f9561b371bdb3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &565354992 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1429883744509440, guid: 0acc923a55fd84cd2a5f9561b371bdb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 565354991}
+--- !u!114 &565354993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 565354992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafd1b02c99374358ac3d1fafbde0dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 0}
+  newScene: Scenes/MainArea
+  fadeSpeed: 0.8
 --- !u!4 &566883994 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4374233074748016, guid: a9d75ae70f113fe4daa46ba82c5bbe47,
@@ -41654,16 +41673,16 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 814581551}
+      objectReference: {fileID: 1666448812}
     - target: {fileID: 114523249311748686, guid: 0acc923a55fd84cd2a5f9561b371bdb3,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: FadeToState
+      value: touched
       objectReference: {fileID: 0}
     - target: {fileID: 114523249311748686, guid: 0acc923a55fd84cd2a5f9561b371bdb3,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114523249311748686, guid: 0acc923a55fd84cd2a5f9561b371bdb3,
         type: 2}
@@ -41857,6 +41876,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0acc923a55fd84cd2a5f9561b371bdb3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1666448811 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1429883744509440, guid: 0acc923a55fd84cd2a5f9561b371bdb3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1666448810}
+--- !u!114 &1666448812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1666448811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafd1b02c99374358ac3d1fafbde0dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 0}
+  newScene: Scenes/MainArea
+  fadeSpeed: 0.8
 --- !u!1001 &1668540216
 Prefab:
   m_ObjectHideFlags: 0
