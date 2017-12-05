@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 // REF: http://wiki.unity3d.com/index.php?title=FadeInOut
@@ -16,10 +17,10 @@ public class VR_CameraFade : MonoBehaviour
     private Color currentFadeColor = new Color(0, 0, 0, 0);             // default starting color: black and fully transparrent
     private Color targetFadeColor = new Color(0, 0, 0, 0);              // default target color: black and fully transparrent
     private Color deltaColor = new Color(0, 0, 0, 0);                   // the delta-color is basically the "speed / second" at which the current color should change
-    //private bool runFadeIn = false;                                     // should be in FADE IN state
-    //private bool runFadeOut = false;                                    // should be in FADE OUT state
     private bool changeState = false;                                   // allow for state change after fade
+    private bool changeScene = false;                                   // allow for scene change after fade
     private string nextState = "";                                      // state to transition to after a fade event
+    private string nextScene = "";                                      // scene to transition to after a fade event
 
     // initialize the texture, background-style and initial color:
     private void Awake()
@@ -67,9 +68,17 @@ public class VR_CameraFade : MonoBehaviour
                 // If a state change is expected
                 if (changeState && mainScript != null)
                 {
+                    // Go to the next state and fade in
                     changeState = false;
                     mainScript.GoToState(nextState);
                     FadeIn(defaultFadeTime);
+                }
+                // If a scene change is expected
+                else if (changeScene && mainScript != null)
+                {
+                    // Go to the next state and fade in
+                    changeScene = false;
+                    SceneManager.LoadScene(nextScene);
                 }
             }
             else
@@ -96,6 +105,15 @@ public class VR_CameraFade : MonoBehaviour
         {
             changeState = true;
             nextState = state;
+        }
+        FadeOut(defaultFadeTime);
+    }
+    public void FadeToScene(string scene)
+    {
+        if (scene != null && scene != "")
+        {
+            changeScene = true;
+            nextScene = scene;
         }
         FadeOut(defaultFadeTime);
     }

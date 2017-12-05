@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Video;
 
 public class Module2_Main : MonoBehaviour {
 
@@ -13,8 +14,9 @@ public class Module2_Main : MonoBehaviour {
     public GameObject headerDisplayObj;     // Reference to header display object in main display
     public GameObject bodyDisplayObj;       // Reference to body display object in main display
     public GameObject footerDisplayObj;     // Reference to footer display object in main display
+    public GameObject videoPlayerObj;      // Reference to the video player game child object of Main Display
 
-    
+
     // PRIVATE FIELDS
     private Transform playerTransform;      // Reference to player's transform
     private VR_CameraFade mainCameraFade;   // Reference to VR camera fade object + canvas panel
@@ -27,6 +29,7 @@ public class Module2_Main : MonoBehaviour {
     // References to the sides display buttons
     private Button nextButton;
 	private Button backButton;
+    private Button videoButton;
 
 	// References to the animator controllers (module progression + main display + body display)
 	private Animator moduleProgressionAnimator;
@@ -70,7 +73,7 @@ public class Module2_Main : MonoBehaviour {
         playerTransform = gameObject.transform;
 
         // Get references to display objects
-        //      headerDisplayCanvas = mainDisplayObj.transform.Find("Header Display").GetComponent<Canvas>();
+        //headerDisplayCanvas = mainDisplayObj.transform.Find("Header Display").GetComponent<Canvas>();
         //bodyDisplayCanvas = mainDisplayObj.transform.Find("Body Display").GetComponent<Canvas>();
         //buttonsDisplayCanvas = mainDisplayObj.transform.Find("Buttons Display").GetComponent<Canvas>();
         //headerDisplayCanvas = headerDisplayObj.get
@@ -80,6 +83,7 @@ public class Module2_Main : MonoBehaviour {
         //      backButton = buttonsDisplayCanvas.transform.Find("Back Button").GetComponent<Button>();
         nextButton = footerDisplayObj.transform.Find("Next Button").GetComponent<Button>();
         backButton = footerDisplayObj.transform.Find("Back Button").GetComponent<Button>();
+        videoButton = videoPlayerObj.GetComponent<Button>();
 
         // Get reference to module progression animator controller component
         moduleProgressionAnimator = this.GetComponent<Animator> ();
@@ -89,6 +93,8 @@ public class Module2_Main : MonoBehaviour {
         // Get reference to text component of the header and body
         headerDisplayText = headerDisplayObj.GetComponentInChildren<Text>(); //headerDisplayObj.FindWithTag("Header Text").GetComponent<Text>();
 		bodyDisplayText = bodyDisplayObj.GetComponentInChildren<Text>(); //bodyDisplayObj.transform.Find("Body Text").GetComponent<Text>();
+
+        //videoPlayerObj = mainDisplayObj.transform.Find("Video Player Display").GetComponent<GameObject>();
 
         // Initialize the links to the states
         SetupStateScripts();
@@ -182,12 +188,18 @@ public class Module2_Main : MonoBehaviour {
 	public Animator GetBodyDisplayAnimator() {
 		return bodyDisplayAnimator;
 	}
+    public VideoPlayer GetVideoPlayerDisplay()
+    {
+        return videoPlayerObj.GetComponent<VideoPlayer>();
+    }
 	public Button GetButton(string button) {
 		switch (button) {
 			case "Next":
 				return nextButton;
 			case "Back":
 				return backButton;
+            case "Video":
+                return videoButton;
 			default:
 				return null;
 		}

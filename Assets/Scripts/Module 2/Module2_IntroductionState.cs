@@ -30,6 +30,10 @@ public class Module2_IntroductionState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Set player starting transform at the start of this state
+        mainScript.SetPlayerPosition(new Vector3(151f, 183.5f, 97f));
+        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -150f, 0f));
+
         // Initialize content
         SetupContent();
 

@@ -208,6 +208,10 @@ public class Module2_BudgetSaving_Explain : StateMachineBehaviour {
             {
                 progressionAnimator.ResetTrigger(currentTrigger);
             }
+
+            // Fade to previous section
+            mainScript.GetMainDisplayAnimator().SetTrigger("hide");
+            mainScript.GetCameraFadeObject().FadeToState("Base Layer.First Steps.Public Resources");
         }
     }
 

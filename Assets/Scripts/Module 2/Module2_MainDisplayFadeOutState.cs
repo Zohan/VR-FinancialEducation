@@ -15,7 +15,7 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
     private int explanationState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Explanation");
     private int needsExamplesState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Needs Examples");
     private int wantsExamplesState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Wants Examples");
-    private int stayFocusedState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Stay Focused");
+    private int stayFocusedState = Animator.StringToHash("Base Layer.First Steps.Stay Focused");
     private int publicResourcesState = Animator.StringToHash("Base Layer.First Steps.Public Resources");
     private int budgetExplainState = Animator.StringToHash("Base Layer.Budgeting and Saving.Explanation");
     private int makeBudgetState = Animator.StringToHash("Base Layer.Budgeting and Saving.Make Budget");

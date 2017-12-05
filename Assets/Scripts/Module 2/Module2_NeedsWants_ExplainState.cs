@@ -27,8 +27,8 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
     private const int TEXT_COUNT = 6;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
         // Set player starting transform at the start of this state
         mainScript.SetPlayerPosition(new Vector3(138.11f, 183.808f, 99.115f));
         mainScript.SetPlayerRotation(Quaternion.Euler(0f, -220f, 0f));
@@ -175,6 +175,10 @@ public class Module2_NeedsWants_ExplainState : StateMachineBehaviour {
             {
                 progressionAnimator.ResetTrigger(currentTrigger);
             }
+
+            // Fade to previous section
+            mainScript.GetMainDisplayAnimator().SetTrigger("hide");
+            mainScript.GetCameraFadeObject().FadeToState("Base Layer.Introduction");
         }
     }
 

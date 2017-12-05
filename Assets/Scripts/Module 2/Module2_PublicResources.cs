@@ -28,6 +28,10 @@ public class Module2_PublicResources : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Set player starting transform at the start of this state
+        mainScript.SetPlayerPosition(new Vector3(114f, 179.15f, 103f));
+        mainScript.SetPlayerRotation(Quaternion.Euler(0f, 0f, 0f));
+
         // Set the state trigger for this state
         currentTrigger = "pubResources";
 
@@ -180,6 +184,10 @@ public class Module2_PublicResources : StateMachineBehaviour {
             {
                 progressionAnimator.ResetTrigger(currentTrigger);
             }
+
+            // Fade to previous section
+            mainScript.GetMainDisplayAnimator().SetTrigger("hide");
+            mainScript.GetCameraFadeObject().FadeToState("Base Layer.First Steps.Stay Focused");
         }
     }
 

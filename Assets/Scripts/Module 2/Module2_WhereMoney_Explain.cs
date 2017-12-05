@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class Module2_WhereMoney_Explain : StateMachineBehaviour
 {
@@ -14,9 +15,14 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
     private Animator bodyDisplayAnimator;
     private string currentTrigger;
 
+    // Video player fields
+    private VideoPlayer videoPlayer;
+    private string videoURL;
+
     // References to buttons
     private Button nextButton;
     private Button backButton;
+    private Button videoButton;
 
     // Fields for content text
     private string[] headerText;
@@ -36,11 +42,11 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
         // Set the state trigger for this state
         currentTrigger = "whereToPutMoney";
 
-        // Initialize content
-        SetupContent();
-
         // Initialize references
         SetupReferences();
+
+        // Initialize content
+        SetupContent();
 
         // Set "fadeIn" trigger to active
         if (mainDisplayAnimator != null)
@@ -52,6 +58,30 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
 
         if (backButton != null)
             backButton.onClick.AddListener(PrevContent);
+
+        if (videoButton != null)
+            videoButton.onClick.AddListener(PlayPauseVideo);
+    }
+
+    // Setup references to objects
+    private void SetupReferences()
+    {
+        // Get reference to module progression animator controller
+        progressionAnimator = mainScript.GetProgressionAnimator();
+
+        // Get reference to main display animator controller
+        mainDisplayAnimator = mainScript.GetMainDisplayAnimator();
+
+        // Get reference to body display animator controller
+        bodyDisplayAnimator = mainScript.GetBodyDisplayAnimator();
+
+        // Get reference to the video player display object
+        videoPlayer = mainScript.GetVideoPlayerDisplay();
+
+        // Get references to buttons
+        nextButton = mainScript.GetButton("Next");
+        backButton = mainScript.GetButton("Back");
+        videoButton = mainScript.GetButton("Video");
     }
 
     // Initialize the display content
@@ -71,7 +101,7 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
         contentText = new string[TEXT_COUNT] {
             // Where to Put Your Money [0]
             "You have some options...",
-            // How to Choose a Bank [1]
+            // How to Choose a Bank [1] Video
             "[VIDEO HERE]",
             // Kinds of Financial Institutions [2]
             "Banks are financial institutions that accept deposits and use the money for lending activites.",
@@ -110,23 +140,10 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
 
         // Set the body display text to the starting text
         mainScript.SetBodyText(contentText[0]);
-    }
 
-    // Setup references to objects
-    private void SetupReferences()
-    {
-        // Get reference to module progression animator controller
-        progressionAnimator = mainScript.GetProgressionAnimator();
-
-        // Get reference to main display animator controller
-        mainDisplayAnimator = mainScript.GetMainDisplayAnimator();
-
-        // Get reference to body display animator controller
-        bodyDisplayAnimator = mainScript.GetBodyDisplayAnimator();
-
-        // Get references to buttons
-        nextButton = mainScript.GetButton("Next");
-        backButton = mainScript.GetButton("Back");
+        // Video to load
+        videoURL = "Assets/Video/5 Factors to Look at When Choosing a Bank by Rocky Clancy.mp4";
+        videoPlayer.url = videoURL;
     }
 
     // Called when the "Next" button is clicked
@@ -151,10 +168,24 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
 
             // Set the body display text to the next text in the array
             mainScript.SetBodyText(contentText[++currentTextIndex]);
+
+            // If we should play the video
+            if (currentTextIndex == 1)
+            {
+                // Show the video player
+                mainScript.videoPlayerObj.SetActive(true);
+            }
+            else
+            {
+                // Hide the video player
+                mainScript.videoPlayerObj.SetActive(false);
+            }
         }
         else
         {
             // Go to the next state
+            // Hide the video player
+            mainScript.videoPlayerObj.SetActive(false);
 
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
@@ -190,6 +221,18 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
 
             // Set the body display text to the previous text in the array
             mainScript.SetBodyText(contentText[--currentTextIndex]);
+
+            // If we should play the video
+            if (currentTextIndex == 1)
+            {
+                // Show the video player
+                mainScript.videoPlayerObj.SetActive(true);
+            }
+            else
+            {
+                // Hide the video player
+                mainScript.videoPlayerObj.SetActive(false);
+            }
         }
         else
         {
@@ -200,15 +243,31 @@ public class Module2_WhereMoney_Explain : StateMachineBehaviour
             {
                 progressionAnimator.ResetTrigger(currentTrigger);
             }
+
+            // Fade to previous section
+            mainScript.GetMainDisplayAnimator().SetTrigger("hide");
+            mainScript.GetCameraFadeObject().FadeToState("Base Layer.Budgeting and Saving.Thinking for Saving");
         }
+    }
+
+    void PlayPauseVideo()
+    {
+        if (videoPlayer.isPlaying)
+            videoPlayer.Pause();
+        else
+            videoPlayer.Play();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Hide the video player
+        mainScript.videoPlayerObj.SetActive(false);
+
         // Remove event listeners from buttons
         nextButton.onClick.RemoveAllListeners();
         backButton.onClick.RemoveAllListeners();
+        videoButton.onClick.RemoveAllListeners();
 
         // Set initial text index
         currentTextIndex = 0;

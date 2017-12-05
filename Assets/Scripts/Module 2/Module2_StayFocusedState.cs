@@ -28,6 +28,10 @@ public class Module2_StayFocusedState : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Set player starting transform at the start of this state
+        mainScript.SetPlayerPosition(new Vector3(129f, 183f, 98.8f));
+        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -180f, 0f));
+
         // Set the state trigger for this state
         currentTrigger = "moveToStayFocused";
 
@@ -176,6 +180,10 @@ public class Module2_StayFocusedState : StateMachineBehaviour {
             {
                 progressionAnimator.ResetTrigger(currentTrigger);
             }
+
+            // Fade to previous section
+            mainScript.GetMainDisplayAnimator().SetTrigger("hide");
+            mainScript.GetCameraFadeObject().FadeToState("Base Layer.First Steps.Needs vs Wants.Explanation");
         }
     }
 

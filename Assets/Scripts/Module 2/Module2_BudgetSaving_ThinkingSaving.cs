@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
     // Reference to module 2 main script
@@ -13,9 +14,14 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
     private Animator bodyDisplayAnimator;
     private string currentTrigger;
 
+    // Video player fields
+    private VideoPlayer videoPlayer;
+    private string videoURL;
+
     // References to buttons
     private Button nextButton;
     private Button backButton;
+    private Button videoButton;
 
     // Fields for content text
     private string[] headerText;
@@ -28,14 +34,18 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Set player starting transform at the start of this state
+        mainScript.SetPlayerPosition(new Vector3(87f, 177f, 113.3f));
+        mainScript.SetPlayerRotation(Quaternion.Euler(0f, -240.0f, 0f));
+
         // Set the state trigger for this state
         currentTrigger = "thinkingSaving";
 
-        // Initialize content
-        SetupContent();
-
         // Initialize references
         SetupReferences();
+
+        // Initialize content
+        SetupContent();
 
         // Set "fadeIn" trigger to active
         if (mainDisplayAnimator != null)
@@ -47,6 +57,30 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
 
         if (backButton != null)
             backButton.onClick.AddListener(PrevContent);
+
+        if (videoButton != null)
+            videoButton.onClick.AddListener(PlayPauseVideo);
+    }
+
+    // Setup references to objects
+    private void SetupReferences()
+    {
+        // Get reference to module progression animator controller
+        progressionAnimator = mainScript.GetProgressionAnimator();
+
+        // Get reference to main display animator controller
+        mainDisplayAnimator = mainScript.GetMainDisplayAnimator();
+
+        // Get reference to body display animator controller
+        bodyDisplayAnimator = mainScript.GetBodyDisplayAnimator();
+
+        // Get reference to the video player display object
+        videoPlayer = mainScript.GetVideoPlayerDisplay();
+
+        // Get references to buttons
+        nextButton = mainScript.GetButton("Next");
+        backButton = mainScript.GetButton("Back");
+        videoButton = mainScript.GetButton("Video");
     }
 
     // Initialize the display content
@@ -64,8 +98,8 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
             "Why is it so hard to manage our money so we can save for the future?",
             "The future feels so far away. Today feels more important, more meaningful.",
             "But remember, savings is a gift to your future yourself!",
-            // Tips for Saving Money [3]
-            "[VIDEO HERE]"
+            // Tips for Saving Money [3] Video
+            ""
         };
 
         // Setup int array to store indices of header transitions based on context text index
@@ -79,24 +113,12 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
 
         // Set the body display text to the starting text
         mainScript.SetBodyText(contentText[0]);
+
+        // Video to load
+        videoURL = "Assets/Video/How to Save Money Every Day.mp4";
+        videoPlayer.url = videoURL;
     }
-
-    // Setup references to objects
-    private void SetupReferences()
-    {
-        // Get reference to module progression animator controller
-        progressionAnimator = mainScript.GetProgressionAnimator();
-
-        // Get reference to main display animator controller
-        mainDisplayAnimator = mainScript.GetMainDisplayAnimator();
-
-        // Get reference to body display animator controller
-        bodyDisplayAnimator = mainScript.GetBodyDisplayAnimator();
-
-        // Get references to buttons
-        nextButton = mainScript.GetButton("Next");
-        backButton = mainScript.GetButton("Back");
-    }
+    
 
     // Called when the "Next" button is clicked
     void NextContent()
@@ -120,10 +142,24 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
 
             // Set the body display text to the next text in the array
             mainScript.SetBodyText(contentText[++currentTextIndex]);
+
+            // If we should play the video
+            if (currentTextIndex == 3)
+            {
+                // Show the video player
+                mainScript.videoPlayerObj.SetActive(true);
+            }
+            else
+            {
+                // Hide the video player
+                mainScript.videoPlayerObj.SetActive(false);
+            }
         }
         else
         {
             // Go to the next state
+            // Hide the video player
+            mainScript.videoPlayerObj.SetActive(false);
 
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
@@ -159,6 +195,18 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
 
             // Set the body display text to the previous text in the array
             mainScript.SetBodyText(contentText[--currentTextIndex]);
+
+            // If we should play the video
+            if (currentTextIndex == 3)
+            {
+                // Show the video player
+                mainScript.videoPlayerObj.SetActive(true);
+            }
+            else
+            {
+                // Hide the video player
+                mainScript.videoPlayerObj.SetActive(false);
+            }
         }
         else
         {
@@ -169,15 +217,31 @@ public class Module2_BudgetSaving_ThinkingSaving : StateMachineBehaviour {
             {
                 progressionAnimator.ResetTrigger(currentTrigger);
             }
+
+            // Fade to previous section
+            mainScript.GetMainDisplayAnimator().SetTrigger("hide");
+            mainScript.GetCameraFadeObject().FadeToState("Base Layer.Budgeting and Saving.Make Budget");
         }
+    }
+
+    void PlayPauseVideo()
+    {
+        if (videoPlayer.isPlaying)
+            videoPlayer.Pause();
+        else
+            videoPlayer.Play();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Hide the video player
+        mainScript.videoPlayerObj.SetActive(false);
+
         // Remove event listeners from buttons
         nextButton.onClick.RemoveAllListeners();
         backButton.onClick.RemoveAllListeners();
+        videoButton.onClick.RemoveAllListeners();
 
         // Set initial text index
         currentTextIndex = 0;

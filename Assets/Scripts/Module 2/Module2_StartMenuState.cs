@@ -22,6 +22,9 @@ public class Module2_StartMenuState : StateMachineBehaviour {
         //mainScript.SetPlayerPosition(new Vector3(0, 0, 0));
         //mainScript.SetPlayerRotation(Quaternion.Euler(0, 0, 0));
 
+        // Hide the video player object
+        mainScript.videoPlayerObj.SetActive(false);
+
         // Show start menu
         mainScript.startMenuObj.SetActive(true);
 

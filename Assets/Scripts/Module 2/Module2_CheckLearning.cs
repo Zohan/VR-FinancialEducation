@@ -96,6 +96,10 @@ public class Module2_CheckLearning : StateMachineBehaviour {
         // Get references to buttons
         nextButton = mainScript.GetButton("Next");
         backButton = mainScript.GetButton("Back");
+
+        // Change the text of the "Next" button
+        nextButton.GetComponentInChildren<Text>().text = "Return to Main Area";
+        //backButton.GetComponentInChildren<Text>().text = "Reset Module 2";
     }
 
     // Called when the "Next" button is clicked
@@ -133,6 +137,7 @@ public class Module2_CheckLearning : StateMachineBehaviour {
             if (mainDisplayAnimator != null)
             {
                 //mainDisplayAnimator.SetTrigger("fadeOut");
+                mainScript.GetCameraFadeObject().FadeToScene("Scenes/MainArea");
             }
         }
     }
@@ -162,19 +167,26 @@ public class Module2_CheckLearning : StateMachineBehaviour {
         }
         else
         {
-            // Go to the previous state
+            // Go to the previous section
 
             // Reset the progression animator's trigger for this state in case it's active
             if (progressionAnimator != null)
             {
                 progressionAnimator.ResetTrigger(currentTrigger);
             }
+
+            // Fade to previous section
+            mainScript.GetMainDisplayAnimator().SetTrigger("hide");
+            mainScript.GetCameraFadeObject().FadeToState("Base Layer.Where to Put Money.Explanation");
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Change the "Next" button text back to "Next"
+        nextButton.GetComponentInChildren<Text>().text = "Next";
+
         // Remove event listeners from buttons
         nextButton.onClick.RemoveAllListeners();
         backButton.onClick.RemoveAllListeners();

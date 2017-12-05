@@ -28,6 +28,10 @@ public class Module2_BudgetSaving_MakeBudget : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Set player starting transform at the start of this state
+        mainScript.SetPlayerPosition(new Vector3(95f, 176.7f, 114.6f));
+        mainScript.SetPlayerRotation(Quaternion.Euler(0f, 0f, 0f));
+
         // Set the state trigger for this state
         currentTrigger = "makeBudget";
 
@@ -182,6 +186,10 @@ public class Module2_BudgetSaving_MakeBudget : StateMachineBehaviour {
             {
                 progressionAnimator.ResetTrigger(currentTrigger);
             }
+
+            // Fade to previous section
+            mainScript.GetMainDisplayAnimator().SetTrigger("hide");
+            mainScript.GetCameraFadeObject().FadeToState("Base Layer.Budgeting and Saving.Explanation");
         }
     }
 
