@@ -15,7 +15,7 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
     private int explanationState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Explanation");
     private int needsExamplesState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Needs Examples");
     private int wantsExamplesState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Wants Examples");
-    private int stayFocusedState = Animator.StringToHash("Base Layer.First Steps.Stay Focused");
+    private int stayFocusedState = Animator.StringToHash("Base Layer.First Steps.Needs vs Wants.Stay Focused");
     private int publicResourcesState = Animator.StringToHash("Base Layer.First Steps.Public Resources");
     private int budgetExplainState = Animator.StringToHash("Base Layer.Budgeting and Saving.Explanation");
     private int makeBudgetState = Animator.StringToHash("Base Layer.Budgeting and Saving.Make Budget");
@@ -31,11 +31,6 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
         progressionAnimator = mainScript.GetProgressionAnimator();
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
-
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         // Reset this animator's "fadeOut" trigger
@@ -45,7 +40,8 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
         // TODO: Make functionality to pass state from calling state (e.g., questions) to this animator/state script
         if (progressionAnimator != null)
         {
-            int currentStateHash = progressionAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash;
+            //int currentStateHash = progressionAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash;
+            int currentStateHash = stateInfo.fullPathHash;
 
             // If the main progression animator is in the "Questions" state
             if (currentStateHash == questionsState)
@@ -70,7 +66,7 @@ public class Module2_MainDisplayFadeOutState : StateMachineBehaviour {
             }
             else if (currentStateHash == stayFocusedState)
             {
-                // Trigger the next state (stay focused)
+                // Trigger the next state (public resources)
                 progressionAnimator.SetTrigger("pubResources");
             }
             else if (currentStateHash == publicResourcesState)
