@@ -236,6 +236,7 @@ public class Module2_Main : MonoBehaviour {
         // Set the rotation of the player
         playerTransform.rotation = rotation;
     }
+
     public void ActivateTrigger(string trigger)
     {
         if (trigger == null || trigger == "")
@@ -271,5 +272,9 @@ public class Module2_Main : MonoBehaviour {
     public VR_CameraFade GetCameraFadeObject()
     {
         return mainCameraFade;
+    }
+    public void RecenterVRCamera()
+    {
+        GvrCardboardHelpers.Recenter();
     }
 }
