@@ -36,9 +36,9 @@ public static class GvrMathHelpers {
     int viewportWidth = Screen.width;
     int viewportHeight = Screen.height;
 
-    if (UnityEngine.XR.XRSettings.enabled) {
-      viewportWidth = UnityEngine.XR.XRSettings.eyeTextureWidth;
-      viewportHeight = UnityEngine.XR.XRSettings.eyeTextureHeight;
+    if (UnityEngine.VR.VRSettings.enabled) {
+      viewportWidth = UnityEngine.VR.VRSettings.eyeTextureWidth;
+      viewportHeight = UnityEngine.VR.VRSettings.eyeTextureHeight;
     }
 
         //if (VRSettings.enabled)
