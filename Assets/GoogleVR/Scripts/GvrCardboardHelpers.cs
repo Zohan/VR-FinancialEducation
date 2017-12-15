@@ -27,7 +27,7 @@ public class GvrCardboardHelpers {
   public static void Recenter() {
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
     //gvr_reset_tracking(VRDevice.GetNativePtr());
-    IntPtr gvrContextPtr = UnityEngine.XR.XRDevice.GetNativePtr();
+    IntPtr gvrContextPtr = UnityEngine.VR.VRDevice.GetNativePtr();
     if (gvrContextPtr == IntPtr.Zero) {
       Debug.LogError("Zero native context pointer");
       return;
@@ -42,7 +42,7 @@ public class GvrCardboardHelpers {
   /// http://google.com/cardboard/cfg?p=CgZHb29nbGUSEkNhcmRib2FyZCBJL08gMjAxNR0rGBU9JQHegj0qEAAASEIAAEhCAABIQgAASEJYADUpXA89OggeZnc-Ej6aPlAAYAM
   public static void SetViewerProfile(String viewerProfileUri) {
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
-    gvr_set_default_viewer_profile(UnityEngine.XR.XRDevice.GetNativePtr(), viewerProfileUri);
+    gvr_set_default_viewer_profile(UnityEngine.VR.VRDevice.GetNativePtr(), viewerProfileUri);
 #endif  // (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
     Debug.Log("Unavailable for non-Android and non-iOS builds");
   }

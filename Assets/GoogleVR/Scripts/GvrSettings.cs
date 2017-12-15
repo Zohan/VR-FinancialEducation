@@ -53,7 +53,7 @@ public static class GvrSettings {
 #else
     // Running on Android.
     get {
-      IntPtr gvrContextPtr = UnityEngine.XR.XRDevice.GetNativePtr();
+      IntPtr gvrContextPtr = UnityEngine.VR.VRDevice.GetNativePtr();
       if (gvrContextPtr == IntPtr.Zero) {
         Debug.Log("Null GVR context pointer, could not get viewer platform type");
         return ViewerPlatformType.Error;
@@ -99,7 +99,7 @@ public static class GvrSettings {
 #else
     // Running on Android.
     get {
-      IntPtr gvrContextPtr = UnityEngine.XR.XRDevice.GetNativePtr();
+      IntPtr gvrContextPtr = UnityEngine.VR.VRDevice.GetNativePtr();
       if (gvrContextPtr == IntPtr.Zero) {
         Debug.Log("Null GVR context pointer, could not get GVR user prefs' handedness");
         return UserPrefsHandedness.Error;

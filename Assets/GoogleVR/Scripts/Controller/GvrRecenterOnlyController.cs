@@ -40,7 +40,7 @@ public class GvrRecenterOnlyController : MonoBehaviour {
     }
     // Daydream is loaded only on deivce, not in editor.
 #if UNITY_ANDROID && !UNITY_EDITOR
-        if (UnityEngine.XR.XRSettings.loadedDeviceName != "daydream")
+        if (UnityEngine.VR.VRSettings.loadedDeviceName != "daydream")
         {
             return;
         }
