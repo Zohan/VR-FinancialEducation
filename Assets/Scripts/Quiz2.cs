@@ -29,15 +29,33 @@ public class Quiz2 : MonoBehaviour {
 	private Canvas shelterCanvas;
 	private Canvas coffeeCanvas;
 
-	public static int tv;
-	public static int movie;
-	public static int car;
-	public static int heat;
-	public static int videoGames;
-	public static int candy;
-	public static int food;
-	public static int shelter;
-	public static int coffee;
+//	public static int tv;
+//	public static int movie;
+//	public static int car;
+//	public static int heat;
+//	public static int videoGames;
+//	public static int candy;
+//	public static int food;
+//	public static int shelter;
+//	public static int coffee;
+	public static bool tvWantsButtonPressed;
+	public static bool tvNeedsButtonPressed;
+	public static bool movieWantsButtonPressed;
+	public static bool movieNeedsButtonPressed;
+	public static bool carWantsButtonPressed;
+	public static bool carNeedsButtonPressed;
+	public static bool heatWantsButtonPressed;
+	public static bool heatNeedsButtonPressed;
+	public static bool videoGamesWantsButtonPressed;
+	public static bool videoGamesNeedsButtonPressed;
+	public static bool candyWantsButtonPressed;
+	public static bool candyNeedsButtonPressed;
+	public static bool foodWantsButtonPressed;
+	public static bool foodNeedsButtonPressed;
+	public static bool shelterWantsButtonPressed;
+	public static bool shelterNeedsButtonPressed;
+	public static bool coffeeWantsButtonPressed;
+	public static bool coffeeNeedsButtonPressed;
 
 	static int q1Count;
 
@@ -141,15 +159,33 @@ public class Quiz2 : MonoBehaviour {
 		shelterCanvas.enabled = false;
 		coffeeCanvas.enabled = false;
 
-		tv = -1;
-		movie = -1;
-		car = -1;
-		heat = -1;
-		videoGames = -1;
-		candy = -1;
-		food = -1;
-		shelter = -1;
-		coffee = -1;
+		tvWantsButtonPressed = false;
+		tvNeedsButtonPressed = false;
+		movieWantsButtonPressed = false;
+		movieNeedsButtonPressed = false;
+		carWantsButtonPressed = false;
+		carNeedsButtonPressed = false;
+		heatWantsButtonPressed = false;
+		heatNeedsButtonPressed = false;
+		videoGamesWantsButtonPressed = false;
+		videoGamesNeedsButtonPressed = false;
+		candyWantsButtonPressed = false;
+		candyNeedsButtonPressed = false;
+		foodWantsButtonPressed = false;
+		foodNeedsButtonPressed = false;
+		shelterWantsButtonPressed = false;
+		shelterNeedsButtonPressed = false;
+		coffeeWantsButtonPressed = false;
+		coffeeNeedsButtonPressed = false;
+//		tv = -1;
+//		movie = -1;
+//		car = -1;
+//		heat = -1;
+//		videoGames = -1;
+//		candy = -1;
+//		food = -1;
+//		shelter = -1;
+//		coffee = -1;
 		q1Count = 0;
 
 		// initialization for question 2
@@ -239,175 +275,190 @@ public class Quiz2 : MonoBehaviour {
 		
 	/************************* QUESTION 1 FUNCTIONS *************************/
 
-	// wants = 0
-	// needs = 1
-
-	public void tvWantPressed(){ //correct answer
-		tv = 0;
+	public void tvWantPressed(){ 
 		GameObject button = GameObject.Find ("TVWantButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			tvWantsButtonPressed = true; //correct answer
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			tvWantsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void tvNeedsPressed(){
-		tv = 1;
 		GameObject button = GameObject.Find ("TVNeedsButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			tvNeedsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			tvNeedsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
-	public void movieWantPressed(){ //correct answer
-		movie = 0;
+	public void movieWantPressed(){ 
 		GameObject button = GameObject.Find ("MovieWantButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			movieWantsButtonPressed = true; //correct answer
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			movieWantsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void movieNeedsPressed(){
-		movie = 1;
 		GameObject button = GameObject.Find ("MovieNeedsButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			movieNeedsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			movieNeedsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void carWantPressed(){
-		car = 0;
 		GameObject button = GameObject.Find ("CarWantButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			carWantsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			carWantsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
-	public void carNeedsPressed(){ //correct answer
-		car = 1;
+	public void carNeedsPressed(){ 
 		GameObject button = GameObject.Find ("CarNeedsButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			carNeedsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			carNeedsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void heatWantPressed(){
-		heat = 0;
 		GameObject button = GameObject.Find ("HeatWantButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			heatWantsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			heatWantsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void heatNeedsPressed(){ //correct answer
-		heat = 1;
 		GameObject button = GameObject.Find ("HeatNeedsButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			heatNeedsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			heatNeedsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void videoGamesWantPressed(){ //correct answer
-		videoGames = 0;
 		GameObject button = GameObject.Find ("VideoGameWantButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			videoGamesWantsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			videoGamesWantsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void videoGamesNeedsPressed(){
-		videoGames = 1;
 		GameObject button = GameObject.Find ("VideoGameNeedsButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			videoGamesNeedsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			videoGamesNeedsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void candyWantPressed(){ //correct answer
-		candy = 0;
 		GameObject button = GameObject.Find ("CandyWantButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			candyWantsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			candyWantsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void candyNeedsPressed(){
-		candy = 1;
 		GameObject button = GameObject.Find ("CandyNeedsButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			candyNeedsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			candyNeedsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void foodWantPressed(){
-		food = 0;
 		GameObject button = GameObject.Find ("FoodWantButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			foodWantsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			foodWantsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void foodNeedsPressed(){ //correct answer
-		food = 1;
 		GameObject button = GameObject.Find ("FoodNeedsButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			foodNeedsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			foodNeedsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void shelterWantPressed(){
-		shelter = 0;
 		GameObject button = GameObject.Find ("ShelterWantButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			shelterWantsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			shelterWantsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void shelterNeedsPressed(){ //correct answer
-		shelter = 1;
 		GameObject button = GameObject.Find ("ShelterNeedsButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			shelterNeedsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			shelterNeedsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void coffeeWantPressed(){ //correct answer
-		tv = 0;
 		GameObject button = GameObject.Find ("CoffeeWantButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			coffeeWantsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			coffeeWantsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 	public void coffeeNeedsPressed(){
-		tv = 1;
 		GameObject button = GameObject.Find ("CoffeeNeedsButton1");
 		if (button.GetComponent<Image> ().color == unselected_color) {
+			coffeeNeedsButtonPressed = true;
 			button.GetComponent<Image> ().color = Color.green;
 		} else {
+			coffeeNeedsButtonPressed = false;
 			button.GetComponent<Image> ().color = unselected_color;
 		}
 	}
 
 	public void q1NextPressed(){
 		q1Count++;
-		Debug.Log("count: " + q1Count);
+		//Debug.Log("count: " + q1Count);
 		if (q1Count == 1) {
 			tvCanvas.enabled = false;
 			movieCanvas.enabled = true;
@@ -628,9 +679,9 @@ public class Quiz2 : MonoBehaviour {
 
 	public void q4NextPressed(){
 		q4Canvas.enabled = false;
-		q5Canvas.enabled = true;
 		// Set Trigger
 		playerAnimatior.SetTrigger ("To_Q5");
+		q5Canvas.enabled = true;
 	}
 
 	/************************* QUESTION 5 FUNCTIONS *************************/
@@ -792,35 +843,34 @@ public class Quiz2 : MonoBehaviour {
 
 	/************************* REVIEW CANVAS FUNCTIONS *************************/
 
-
 	public int calculateScore(){
 
 		// question 1 ========================================= //
-		if (tv == 0) {
+		if (tvWantsButtonPressed) {
 			score++;
 		}
-		if (movie == 0) {
+		if (movieWantsButtonPressed) {
 			score++;
 		}
-		if (car == 1) {
+		if (carNeedsButtonPressed) {
 			score++;
 		}
-		if (heat == 1) {
+		if (heatNeedsButtonPressed) {
 			score++;
 		}
-		if (videoGames == 0) {
+		if (videoGamesWantsButtonPressed) {
 			score++;
 		}
-		if (candy == 0) {
+		if (candyWantsButtonPressed) {
 			score++;
 		}
-		if (food == 1) {
+		if (foodNeedsButtonPressed) {
 			score++;
 		}
-		if (shelter == 1) {
+		if (shelterNeedsButtonPressed) {
 			score++;
 		}
-		if (coffee == 0) {
+		if (coffeeWantsButtonPressed) {
 			score++;
 		}
 			
